@@ -16,6 +16,14 @@
   "vars": {
     "SLACK_CHANNEL_ID": "C0BV9BP95T3"
   },
+  // Preview builds (one Worker per branch, `wrangler preview`) get no Slack
+  // channel, so a form sent from a preview link never reaches the real one:
+  // worker.js skips the post when SLACK_CHANNEL_ID is empty.
+  "previews": {
+    "vars": {
+      "SLACK_CHANNEL_ID": ""
+    }
+  },
   "compatibility_flags": [
     "nodejs_compat"
   ]
