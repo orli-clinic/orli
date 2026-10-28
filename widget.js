@@ -31,6 +31,10 @@
      components/PatientStep.vue     — patientHtml() + field validation
      components/ConfirmStep.vue     — confirmHtml()
      components/SuccessStep.vue     — successHtml()
+     components/ChatStep.vue        — chatHtml(): the clinic agent's panel,
+                                      reached from practitionerHtml()'s
+                                      "ask the clinic" entry; the two
+                                      replies here are canned (DEMO_CHAT)
 
    ManageStep.vue (reschedule/cancel) is deliberately NOT mirrored:
    it is reached from an emailed link, never from the booking flow
@@ -92,6 +96,14 @@
     // DEMO-ONLY: the real widget checks the code against the server; here any
     // 6 digits pass, so the visitor has to be told that.
     otpDemoHint: ['לצורך ההדגמה: כל 6 ספרות יתקבלו', 'Demo: any 6-digit code works'],
+    // SOURCE: i18n.ts — the clinic agent's chat panel (orli-calendar #279).
+    askClinic: ['שאל/י את המרפאה', 'Ask the clinic'],
+    askClinicHint: ['שאלות על טיפולים, שעות ומחירים — ותורים פנויים', 'Treatments, hours and prices — and free times'],
+    chatTitle: ['שיחה עם המרפאה', 'Chat with the clinic'],
+    chatPlaceholder: ['כתבו הודעה…', 'Write a message…'],
+    chatSend: ['שליחה', 'Send'],
+    chatTyping: ['מקליד/ה…', 'Typing…'],
+    chatBookThisTime: ['לקביעת התור הזה', 'Book this time'],
     // DEMO-ONLY: the real SuccessStep.vue ends the flow with no controls,
     // because there the patient is finished and closes the widget. On a
     // marketing page the success scene is a dead end instead, so the demo
@@ -196,6 +208,18 @@
     bookingId: 'demo-booking-001',
   };
 
+  // SOURCE: demo.ts — the canned two-turn conversation the demo page's chat
+  // plays: no backend, whatever the visitor types gets the next reply. The
+  // second reply carries the booking link, which jumps into the wizard the
+  // way the real widget's ChatStep does.
+  var DEMO_CHAT = {
+    opening: ['שלום! אני העוזר הדיגיטלי של המרפאה. איך אפשר לעזור?', "Hi! I'm the clinic's virtual assistant. How can I help?"],
+    replies: [
+      ['ייעוץ ראשוני נמשך כ-30 דקות ואפשר לקבוע אותו אונליין. רוצים שאבדוק מתי ד"ר כהן פנוי/ה?', 'An initial consultation takes about 30 minutes and can be booked online. Shall I check when Dr. Cohen is free?'],
+      ['יש תור פנוי ב-{time}. אפשר לקבוע אותו כאן:', 'There is a free time at {time}. You can book it here:'],
+    ],
+  };
+
   function iso(date) {
     var m = String(date.getMonth() + 1).padStart(2, '0');
     var d = String(date.getDate()).padStart(2, '0');
@@ -253,6 +277,9 @@
     function reset() {
       st = {
         step: 'practitioner',
+        // The chat's canned transcript (ChatStep.vue's messages) and typing state.
+        chat: [],
+        chatPending: false,
         practitioner: null, treatments: [], treatment: null,
         monthOffset: 0, day: null, time: '',
         // Pre-filled with the real demo build's placeholder identity so this
@@ -332,10 +359,13 @@
 
     // SOURCE: App.vue — template.
     function render() {
-      var showProgress = st.step !== 'success';
+      // SOURCE: App.vue — showControls / showProgress: the chat keeps the
+      // language toggle but has no progress position.
+      var showControls = st.step !== 'success';
+      var showProgress = showControls && st.step !== 'chat';
       var idx = STEP_ORDER.indexOf(st.step);
       var controls = '';
-      if (showProgress) {
+      if (showControls) {
         var segs = '';
         for (var n = 0; n < STEP_ORDER.length; n++) {
           segs += '<span class="obw-progress-seg' + (n < idx ? ' is-on' : '') + '"></span>';
@@ -347,9 +377,11 @@
           '<button class="obw-lang-btn" type="button" data-lang aria-label="' +
             (LANG === 'he' ? 'Switch to English' : 'החלף לעברית') + '">' +
             globeSvg + '<span>' + (LANG === 'he' ? 'עב' : 'EN') + '</span></button>' +
-          '<div class="obw-progress" role="progressbar" aria-valuemin="0" aria-valuemax="' + STEP_ORDER.length + '"' +
-            ' aria-valuenow="' + idx + '" aria-valuetext="' + esc(labelText) + '">' +
-            segs + '<span class="obw-visually-hidden">' + esc(labelText) + '</span></div>' +
+          (showProgress
+            ? '<div class="obw-progress" role="progressbar" aria-valuemin="0" aria-valuemax="' + STEP_ORDER.length + '"' +
+              ' aria-valuenow="' + idx + '" aria-valuetext="' + esc(labelText) + '">' +
+              segs + '<span class="obw-visually-hidden">' + esc(labelText) + '</span></div>'
+            : '') +
         '</div>';
       }
       var stepClass = 'obw-step' +
@@ -387,6 +419,7 @@
         case 'patient': return patientHtml();
         case 'confirm': return confirmHtml();
         case 'success': return successHtml();
+        case 'chat': return chatHtml();
       }
       return '';
     }
@@ -427,7 +460,32 @@
           '<span class="obw-option-content">' + bi([p.he, p.en]) + description + '</span>' +
         '</button>';
       }).join('');
-      return '<div>' + header(bi(S.bookTitle)) + '<div class="obw-list">' + list + '</div></div>';
+      // SOURCE: PractitionerStep.vue — the "ask the clinic" entry the real
+      // widget shows when the clinic's agent is on (orli-calendar #279).
+      var chatEntry = '<button class="obw-option obw-chat-entry" type="button" data-chat>' +
+        '<span class="obw-option-content">' + bi(S.askClinic) + bi(S.askClinicHint, 'obw-option-description') + '</span>' +
+      '</button>';
+      return '<div>' + header(bi(S.bookTitle)) + chatEntry + '<div class="obw-list">' + list + '</div></div>';
+    }
+
+    // SOURCE: ChatStep.vue — message list, composer, typing indicator, and
+    // the booking link a reply can carry. Canned here (DEMO_CHAT).
+    function chatHtml() {
+      var bubbles = st.chat.map(function (m) {
+        var action = m.bookingLink
+          ? '<button class="obw-primary-btn obw-primary-btn--compact obw-chat-action" type="button" data-chat-book>' + bi(S.chatBookThisTime) + '</button>'
+          : '';
+        return '<div class="obw-chat-msg obw-chat-msg--' + m.role + '"><p class="obw-chat-bubble">' + esc(LANG === 'he' ? m.he : m.en) + '</p>' + action + '</div>';
+      }).join('');
+      var typing = st.chatPending ? '<p class="obw-chat-typing obw-muted">' + bi(S.chatTyping) + '</p>' : '';
+      var placeholder = LANG === 'he' ? S.chatPlaceholder[0] : S.chatPlaceholder[1];
+      return '<div class="obw-chat-step">' + header(bi(S.chatTitle), true) +
+        '<div class="obw-chat-list" role="log">' + bubbles + typing + '</div>' +
+        '<form class="obw-chat-composer" data-chat-form>' +
+          '<input class="obw-chat-input" data-chat-input aria-label="' + esc(placeholder) + '" placeholder="' + esc(placeholder) + '" maxlength="2000" autocomplete="off"' + (st.chatPending ? ' disabled' : '') + '>' +
+          '<button class="obw-primary-btn obw-primary-btn--compact" type="submit"' + (st.chatPending ? ' disabled' : '') + '>' + bi(S.chatSend) + '</button>' +
+        '</form>' +
+      '</div>';
     }
 
     // SOURCE: TreatmentStep.vue
@@ -659,9 +717,45 @@
           render();
         });
       });
+      var chatEntry = root.querySelector('[data-chat]');
+      if (chatEntry) chatEntry.addEventListener('click', function () {
+        if (!st.chat.length) st.chat = [{ role: 'agent', he: DEMO_CHAT.opening[0], en: DEMO_CHAT.opening[1] }];
+        st.step = 'chat'; render();
+      });
+      var chatForm = root.querySelector('[data-chat-form]');
+      if (chatForm) chatForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = chatForm.querySelector('[data-chat-input]');
+        var text = input.value.trim();
+        if (!text || st.chatPending) return;
+        st.chat.push({ role: 'patient', he: text, en: text });
+        st.chatPending = true; render();
+        setTimeout(function () {
+          var turn = st.chat.filter(function (m) { return m.role === 'patient'; }).length - 1;
+          var reply = DEMO_CHAT.replies[Math.min(turn, DEMO_CHAT.replies.length - 1)];
+          var vars = { time: DEMO_PREFILL.time };
+          var filled = fill(reply, vars);
+          st.chat.push({ role: 'agent', he: filled[0], en: filled[1], bookingLink: turn >= 1 });
+          st.chatPending = false; render();
+          var list = root.querySelector('.obw-chat-list');
+          if (list) list.scrollTop = list.scrollHeight;
+        }, 700);
+      });
+      var chatBook = root.querySelector('[data-chat-book]');
+      if (chatBook) chatBook.addEventListener('click', function () {
+        // SOURCE: App.vue applyBookingLink — the wizard opens on the time
+        // step with the practitioner, treatment and slot already chosen.
+        var card = CARDS[DEMO_PREFILL.cardIndex];
+        st.practitioner = card.practitioner;
+        st.treatments = card.treatments;
+        st.treatment = card.treatments[DEMO_PREFILL.treatmentIndex];
+        st.day = { date: DEMO_PREFILL.day.date, slots: DEMO_PREFILL.day.slots.filter(function (s) { return s.start === DEMO_PREFILL.time; }) };
+        st.time = DEMO_PREFILL.time;
+        st.step = 'time'; render();
+      });
       var backEl = root.querySelector('[data-back]');
       if (backEl) backEl.addEventListener('click', function () {
-        var prev = { treatment: 'practitioner', date: 'treatment', time: 'date', patient: 'time', confirm: 'patient' }[st.step];
+        var prev = { treatment: 'practitioner', date: 'treatment', time: 'date', patient: 'time', confirm: 'patient', chat: 'practitioner' }[st.step];
         st.step = prev; render();
       });
       root.querySelectorAll('[data-month]').forEach(function (b) {

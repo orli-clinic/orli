@@ -937,3 +937,17 @@
   color: var(--obw-muted); cursor: pointer;
 }
 .orli-live .obw-restart-btn:hover { border-color: var(--obw-border-strong); color: var(--obw-text); }
+
+/* SOURCE: style.css — the clinic agent's chat panel (orli-calendar #279). */
+.orli-live .obw-chat-step { display: flex; flex-direction: column; min-height: 320px; }
+.orli-live .obw-chat-entry { margin-bottom: 12px; }
+.orli-live .obw-chat-list { flex: 1; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; max-height: 46vh; padding: 4px 0; }
+.orli-live .obw-chat-msg { display: flex; flex-direction: column; gap: 6px; max-width: 88%; align-self: flex-start; }
+.orli-live .obw-chat-msg--patient { align-self: flex-end; }
+.orli-live .obw-chat-bubble { margin: 0; padding: 10px 12px; border-radius: var(--obw-radius-lg, 14px); background: var(--obw-surface, #f3f4f2); color: var(--obw-text); line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.orli-live .obw-chat-msg--patient .obw-chat-bubble { background: var(--obw-primary); color: #fff; }
+.orli-live .obw-chat-typing { margin: 0; font-size: .9em; }
+.orli-live .obw-chat-composer { display: flex; gap: 8px; margin-top: 10px; }
+.orli-live .obw-chat-input { flex: 1; min-width: 0; padding: 10px 12px; border: 1px solid var(--obw-border, #dfe3e0); border-radius: var(--obw-radius-pill, 999px); font: inherit; color: var(--obw-text); background: var(--obw-bg, #fff); }
+.orli-live .obw-chat-input:focus { outline: 2px solid var(--obw-primary); outline-offset: 1px; }
+.orli-live .obw-chat-composer .obw-primary-btn { width: auto; margin: 0; }
