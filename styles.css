@@ -1875,3 +1875,37 @@ main > .section:not(.alt):not([hidden]) + .cta-band--tail { padding-top: 0; }
 .cta-alt-link { padding: 6px 4px; border: 0; background: none; color: inherit; font: inherit; font-size: .98rem; opacity: .9; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
 .cta-alt-link:hover { opacity: 1; }
 .cta-alt-link[hidden] { display: none; }
+
+/* ===== WhatsApp badge =====
+   The sales line: one fixed round button at the page's start corner (the
+   right, on this RTL site). The accessibility button holds the end corner
+   (a11y.css) and its panel opens on that side, so the two never meet. It
+   is drawn like that button: the white ring and the --shadow token, which
+   the Clean block resolves to none, so it stays as flat as the rest of the
+   site (DESIGN.md). z-index: over the page and the nav (60), under the
+   accessibility button and panel (90/91); an open <dialog> is in the top
+   layer, above all of it. WhatsApp's own green so it reads as WhatsApp; the
+   white ring is the accessibility button's. No pulse: it sits still, and
+   grows a touch on hover the way the pill buttons do. */
+.wa-badge {
+  position: fixed;
+  inset-block-end: max(16px, env(safe-area-inset-bottom));
+  inset-inline-start: max(16px, env(safe-area-inset-right));
+  z-index: 80;
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: #25d366; color: #fff;
+  border: 2px solid #fff; box-shadow: var(--shadow);
+  transition: scale .4s ease;
+}
+.wa-badge:hover, .wa-badge:focus-visible { scale: 1.05; }
+.wa-badge:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.wa-badge svg { width: 30px; height: 30px; display: block; }
+@media (hover: none) {
+  .wa-badge:hover { scale: none; }
+  .wa-badge:active { transform: scale(.985); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-badge { transition: none; }
+  .wa-badge:hover { scale: none; }
+}
