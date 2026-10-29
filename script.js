@@ -35,8 +35,8 @@
 
   // ---------------------------------------------------------------------
   // Cal.com: the part of the booking URL after https://cal.com/. Empty it to
-  // switch the booking button off (see #calDemo in index.html): a booking
-  // button that opens onto nothing would be the same lie as an unconnected
+  // switch the booking links off: a booking
+  // link that opens onto nothing would be the same lie as an unconnected
   // form claiming it sent. Namespace and config are what Cal.com's own
   // "element click" embed snippet for this event hands out.
   // ---------------------------------------------------------------------
@@ -45,12 +45,13 @@
 
   // Cal.com's own embed loader, verbatim from their "popup via element click"
   // snippet, so a booking opens in a modal instead of sending the visitor
-  // off-site. Loaded only on a page with a call link: the home page's
-  // closing band (#calDemoBtn) and its FAQ's "book a call" links (a
-  // [data-demo-cta] left after the sign-up buttons above dropped theirs).
-  // Every other button on the site is the sign-up, so no other page talks
-  // to app.cal.com.
-  if (CAL_LINK && document.querySelector('#calDemoBtn, [data-demo-cta]')) {
+  // off-site. Loaded only on a page that still has a call link: a
+  // [data-demo-cta] left after the sign-up buttons above dropped theirs,
+  // which today is the home page's FAQ and its two "book a call" links
+  // alone. The home band's quiet line under the buttons is a WhatsApp
+  // link, not Cal's, and every other button on the site is the sign-up,
+  // so no other page talks to app.cal.com.
+  if (CAL_LINK && document.querySelector('[data-demo-cta]')) {
     (function (C, A, L) {
       const p = (a, ar) => { a.q.push(ar); };
       const d = C.document;
@@ -104,10 +105,7 @@
     //     navigating once the popup can really open. Swallowing the click
     //     unconditionally, as this used to, turned every "book a demo" on all
     //     five pages into a dead control the moment Cal was unreachable.
-    //   - #calDemoBtn, "pick a time", is a <button> with nothing to fall back
-    //     to, so it stays hidden until there is something behind it.
     const calCtas = document.querySelectorAll('[data-demo-cta]');
-    const calWrap = document.getElementById('calDemoBtn');
     let calReady = false;
     let calSettled = false;
 
@@ -115,7 +113,6 @@
       if (calSettled) return;
       calSettled = true;
       calReady = true;
-      if (calWrap) calWrap.hidden = false;
     };
     const calFailed = () => {
       if (calSettled) return;
@@ -128,7 +125,6 @@
         el.removeAttribute('data-cal-namespace');
         el.removeAttribute('data-cal-config');
       });
-      if (calWrap) calWrap.hidden = true;
       console.warn('[orli] Cal.com embed unavailable — demo CTAs fall back to the form at #contact.');
     };
 
@@ -136,9 +132,6 @@
       openCal(el);
       el.addEventListener('click', (e) => { if (calReady) e.preventDefault(); });
     });
-    const calBtn = document.getElementById('calDemoBtn');
-    if (calBtn) openCal(calBtn);
-
     // The loader above appends the tag synchronously, so it is already here.
     const calScript = document.querySelector('script[src="https://app.cal.com/embed/embed.js"]');
     if (calScript) {
@@ -170,10 +163,10 @@
   });
 
   // Contact form. Lives in a <dialog> on index.html (#contactDialog), opened
-  // from the CTA band's "צרו קשר" and from the footer link on that page. On
-  // the other pages the same footer link carries no dialog to open, so it is
-  // left alone and simply goes to /#contact. Guarded so this file can be
-  // shared as-is across every page.
+  // by any [data-contact-open]. Since the band's and the footer's "צרו קשר"
+  // became WhatsApp links no control carries that attribute, so the dialog
+  // waits unopened; the wiring stays for the day one does. Guarded so this
+  // file can be shared as-is across every page.
   const dialog = document.getElementById('contactDialog');
   const form = document.getElementById('demoForm');
   if (dialog && form) {
@@ -271,15 +264,11 @@
         note.focus();
       } catch (err) {
         // Never clear the form on failure — retyping it is the fastest way to
-        // lose someone who was already willing. The other way in is Cal's
-        // "pick a time" on the band behind this dialog, and only while Cal
-        // actually loaded; offer it when it is there, promise nothing when not.
-        const calBtn = document.getElementById('calDemoBtn');
-        const calUp = !!calBtn && !calBtn.hidden;
+        // lose someone who was already willing. The other way in is the
+        // WhatsApp line under this dialog's intro (.contact-wa), always there.
         const timedOut = err && err.name === 'AbortError';
         note.classList.add('is-error');
-        note.textContent = (timedOut ? 'השליחה נתקעה. ' : 'השליחה נכשלה. ') + 'ההודעה נשמרה כאן. נסו שוב בעוד רגע'
-          + (calUp ? ', או סגרו את החלון ובחרו שעה להדגמה.' : '.');
+        note.textContent = (timedOut ? 'השליחה נתקעה. ' : 'השליחה נכשלה. ') + 'ההודעה נשמרה כאן. נסו שוב בעוד רגע, או כתבו לנו בוואטסאפ.';
         // Nothing else moves focus on this path, so a polite status region
         // could go unread. Land on the message; the retry sits right above it.
         note.focus();

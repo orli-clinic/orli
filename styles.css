@@ -1188,7 +1188,13 @@ html:has(dialog[open]) { overflow: hidden; }
 }
 .contact-close:hover { background: var(--cream-2); color: var(--ink); }
 .contact-close svg { width: 18px; height: 18px; }
-.contact-lead { color: var(--ink-soft); margin: 8px 0 20px; }
+.contact-lead { color: var(--ink-soft); margin: 8px 0 8px; }
+/* Under the intro, the other way in: WhatsApp, for whoever would rather
+   write there. Same voice as the intro; the link in the site's teal with
+   the site's underline. */
+.contact-wa { color: var(--ink-soft); margin: 0 0 20px; }
+.contact-wa a { color: var(--teal-deep); text-decoration: underline; text-underline-offset: 4px; }
+.contact-wa a:hover { color: var(--teal); }
 .contact-form .field { margin-bottom: 14px; text-align: start; }
 .contact-form .field label { display: block; font-size: .8rem; font-weight: 700; color: var(--ink-soft); margin-bottom: 6px; }
 .contact-form .field :is(input, textarea) {
@@ -1208,7 +1214,7 @@ html:has(dialog[open]) { overflow: hidden; }
 .contact-form .form-note.is-error { background: color-mix(in srgb, #e11d48 12%, var(--surface)); color: #9f1239; }
 /* Sent: the fields go, the confirmation and a way out stay. */
 .contact-done { display: none; margin-top: 16px; }
-.contact-form.is-sent :is(.contact-lead, .field, .contact-actions) { display: none; }
+.contact-form.is-sent :is(.contact-lead, .contact-wa, .field, .contact-actions) { display: none; }
 .contact-form.is-sent .contact-done { display: inline-flex; }
 @media (max-width: 560px) {
   .cta-actions { flex-direction: column; align-items: stretch; }
@@ -1870,11 +1876,10 @@ main > .section:not(.alt):not([hidden]) + .cta-band--tail { padding-top: 0; }
 .steps-cta { display: flex; justify-content: center; margin-top: 44px; }
 @media (max-width: 720px) { .steps-cta { margin-top: 32px; } .steps-cta .btn-teal { width: 100%; text-align: center; } }
 
-/* The home band's one Cal.com link (index.html #calDemoBtn): a quiet line under the buttons. */
+/* The home band's quiet line under the buttons (index.html .cta-alt): the WhatsApp link. */
 .cta-alt { margin: 18px 0 0; text-align: center; }
 .cta-alt-link { padding: 6px 4px; border: 0; background: none; color: inherit; font: inherit; font-size: .98rem; opacity: .9; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
 .cta-alt-link:hover { opacity: 1; }
-.cta-alt-link[hidden] { display: none; }
 
 /* ===== WhatsApp badge =====
    The sales line: one fixed round button at the page's start corner (the
