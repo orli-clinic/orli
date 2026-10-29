@@ -192,7 +192,7 @@ drives `widget.js` through a controller handle):
 - Scripts wrap themselves in an IIFE (`(function () { 'use strict'; ... })()`) rather
   than using ES modules.
 - Every cache-busting query string (`styles.css?v=…`, `script.js?v=…`, the wordmark)
-  carries the **same** token on every page (`?v=20261019h` today). Bump them all
+  carries the **same** token on every page (`?v=20261029a` today). Bump them all
   together with one search-and-replace when any asset changes; a per-file counter
   drifted across pages and left stale copies in caches. The token is load-bearing:
   `_headers` caches every `.css` and `.js` for a year as `immutable`, so a CSS or
