@@ -23,9 +23,9 @@
        sets Hebrew and Latin (spaces, digits) in it. -->
   <link rel="preload" href="assets/fonts/heebo-v28-hebrew.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/heebo-v28-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20261029a" />
-  <link rel="stylesheet" href="a11y.css?v=20261029a" />
-  <link rel="stylesheet" href="films.css?v=20261029a" />
+  <link rel="stylesheet" href="styles.css?v=20261109k" />
+  <link rel="stylesheet" href="a11y.css?v=20261109k" />
+  <link rel="stylesheet" href="films.css?v=20261109k" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png" />
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
@@ -97,7 +97,7 @@
   </script>
   <!-- Accessibility menu. In the head so the visitor's saved settings are
        applied before the first paint, and before the scripts that animate. -->
-  <script src="a11y.js?v=20261029a"></script>
+  <script src="a11y.js?v=20261109k"></script>
 </head>
 <body>
   <span id="top" aria-hidden="true"></span>
@@ -106,7 +106,7 @@
     <div class="wrap">
       <div class="nav-pill">
         <a href="/#top" class="brand" aria-label="אורלי, לדף הבית">
-          <img class="brand-logo brand-logo--he" src="assets/brand/orli-wordmark-he.png?v=20261029a" width="480" height="151" alt="אורלי" />
+          <img class="brand-logo brand-logo--he" src="assets/brand/orli-wordmark-he.png?v=20261109k" width="480" height="151" alt="אורלי" />
         </a>
         <nav class="nav-links" id="navMenu" aria-label="ניווט ראשי">
           <a href="/">ראשי</a>
@@ -132,7 +132,7 @@
     <section class="section page-head page-head--short">
       <div class="wrap narrow center">
         <h1 class="display display--page">כל מה שאורלי עושה, <span class="ital">על היומן שכבר יש לכם.</span></h1>
-        <p class="section-lead section-lead--intro center">המטופלים קובעים תור בעצמם, סוכן ה-AI עונה וקובע, התזכורות מחזירות אותם, והנתונים מראים מה עובד. הכול נכתב ישר לאופטימה.</p>
+        <p class="section-lead section-lead--intro center">המטופלים קובעים תור בעצמם, אורלי עונה לטלפון, סוכן ה-AI עונה וקובע, התזכורות מחזירות אותם, והנתונים מראים מה עובד. הכול נכתב ישר לאופטימה.</p>
       </div>
     </section>
 
@@ -141,6 +141,7 @@
     <nav class="chapter-nav" aria-label="פרקי העמוד">
       <div class="wrap">
         <a href="#booking">זימון תורים</a>
+        <a href="#phone">סוכנת טלפונית</a>
         <a href="#agent">סוכן AI</a>
         <a href="#automations">תזכורות</a>
         <a href="#analytics">נתונים</a>
@@ -222,10 +223,54 @@
       </div>
     </section>
 
+    <!-- PHONE. A call that plays itself out (films.js "call").
+         SOURCE: orli-calendar voice_tools.py. Names no language and nothing
+         about how it is built. A recording of a sample call goes above the
+         number once it exists. -->
+    <section class="section chapter chapter--flip" id="phone">
+      <div class="wrap chapter-grid">
+        <div>
+          <h2 class="display display--sub">אף אחד לא יכול לענות? <span class="ital">אורלי עונה.</span></h2>
+          <p class="section-lead">כשהצוות עסוק או שהמרפאה סגורה, השיחה מגיעה לאורלי. היא עונה, מוצאת שעה פנויה מהיומן וקובעת את הפגישה באותה שיחה.</p>
+          <ul class="check-list">
+            <li>הצוות עונה כרגיל. אורלי נכנסת רק כשאף אחד לא יכול</li>
+            <li>המטופל מקבל אישור בהודעה עם פרטי הפגישה</li>
+            <li>כל בקשה אחרת מגיעה למסך הניהול בכתב, עם תמליל השיחה</li>
+          </ul>
+          <a class="chapter-link" href="tel:+97233769623">נסו בעצמכם: <span dir="ltr">03-376-9623</span></a>
+        </div>
+        <div class="film film-call" data-film="call" role="img" aria-label="שיחת טלפון למרפאה: אף אחד לא פנוי, אורלי עונה, מוצאת שעה פנויה, הפגישה נקבעת והמטופלת מקבלת הודעה">
+          <div class="film-frame">
+            <div class="fp-sms"><b>מרפאת כהן</b>הפגישה נקבעה ליום רביעי בשעה 10:30</div>
+            <div class="fp-status"><span class="fp-s1">שיחה נכנסת למרפאה</span><span class="fp-s2">אורלי עונה</span><span class="fp-s3">השיחה הסתיימה</span></div>
+            <div class="fp-avatar"><i class="fp-ring"></i><i class="fp-ring"></i><img src="assets/brand/favicon-64.png" alt="" width="64" height="64" /></div>
+            <div class="fp-time" dir="ltr">00:00</div>
+            <div class="fp-stage">
+              <div class="fp-talk">
+                <div class="fp-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="fp-lines">
+                  <p class="fp-line"><b>אורלי</b>שלום, הגעתם למרפאת כהן, מדברת אורלי. במה אפשר לעזור?</p>
+                  <p class="fp-line me"><b>מטופלת</b>רציתי לקבוע ניקוי שיניים השבוע</p>
+                  <p class="fp-line"><b>אורלי</b>יש ביום רביעי בעשר וחצי. מתאים לך?</p>
+                  <p class="fp-line me"><b>מטופלת</b>מעולה, תודה</p>
+                </div>
+              </div>
+              <div class="fp-done">
+                <span class="f-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span>
+                <b>הפגישה נקבעה</b>
+                <small>ניקוי שיניים · ד"ר כהן</small>
+                <small>יום רביעי · 10:30</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- AGENT. One conversation that plays itself out (films.js "chat"):
          Orli's lines wait behind typing dots. SOURCE: orli-calendar
          widget ChatStep.vue and the agent's permissions in AgentView.vue. -->
-    <section class="section chapter chapter--flip" id="agent">
+    <section class="section alt chapter" id="agent">
       <div class="wrap chapter-grid">
         <div>
           <h2 class="display display--sub">עונה למטופלים. <span class="ital">רק מהמידע של המרפאה.</span></h2>
@@ -257,7 +302,7 @@
     <!-- AUTOMATIONS. The months pass, the clinic's email arrives, one tap,
          the booking panel opens on the right treatment. SOURCE:
          AutomationsView.vue (recurring reminder), follow_up_service.py. -->
-    <section class="section alt chapter" id="automations">
+    <section class="section chapter chapter--flip" id="automations">
       <div class="wrap chapter-grid">
         <div>
           <h2 class="display display--sub">המטופלים חוזרים <span class="ital">בדיוק בזמן.</span></h2>
@@ -311,7 +356,7 @@
          Labels are the admin's own (AnalyticsView.vue, i18n.ts:
          "פגישות שנקבעו", "שעות יומן שמולאו", "ביטולים", "פגישות לפי יום",
          "ממוצע 7 ימים", "לעומת 30 הימים שלפני"). Sample numbers. -->
-    <section class="section chapter chapter--flip" id="analytics">
+    <section class="section alt chapter" id="analytics">
       <div class="wrap chapter-grid">
         <div>
           <h2 class="display display--sub">רואים מה עובד, <span class="ital">לא מנחשים.</span></h2>
@@ -401,7 +446,7 @@
          patient is told only "booked", Optima is back and it is written.
          SOURCE: CalendarView.vue ("אין חיבור לאופטימה", "פגישות אופטימה
          מוצגות מעותק מ־", "טרם נרשם ביומן אופטימה"), features.md §11. -->
-    <section class="section alt chapter" id="reliability">
+    <section class="section chapter chapter--flip" id="reliability">
       <div class="wrap chapter-grid">
         <div>
           <h2 class="display display--sub">עובד גם כשאופטימה <span class="ital">לא.</span></h2>
@@ -431,7 +476,7 @@
     </section>
 
     <!-- ADMIN: a short pointer to panel.html, which walks the screens. -->
-    <section class="section chapter" id="admin">
+    <section class="section alt chapter" id="admin">
       <div class="wrap narrow center">
         <h2 class="display display--sub">אתם קובעים את הכללים. <span class="ital">אורלי אוכפת אותם.</span></h2>
         <p class="section-lead">יומן, מטפלים ושעות, טיפולים ומחירים, עיצוב ומיילים, משתמשים והתראות. הכול במקום אחד.</p>
@@ -466,7 +511,7 @@
     <div class="wrap footer-inner">
       <div class="footer-brand">
         <a href="/#top" class="brand" aria-label="אורלי, לדף הבית">
-          <img class="brand-logo brand-logo--he brand-logo--footer" loading="lazy" decoding="async" src="assets/brand/orli-wordmark-he.png?v=20261029a" width="480" height="151" alt="אורלי" />
+          <img class="brand-logo brand-logo--he brand-logo--footer" loading="lazy" decoding="async" src="assets/brand/orli-wordmark-he.png?v=20261109k" width="480" height="151" alt="אורלי" />
         </a>
         <p>קביעת פגישות אונליין קלה למרפאות שמריצות אופטימה. מהאתר שלכם, ישר ליומן.</p>
       </div>
@@ -513,7 +558,7 @@
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </a>
 
-  <script src="script.js?v=20261029a"></script>
-  <script src="films.js?v=20261029a"></script>
+  <script src="script.js?v=20261109k"></script>
+  <script src="films.js?v=20261109k"></script>
 </body>
 </html>

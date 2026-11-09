@@ -10,12 +10,13 @@ What a clinic gets (all live in production):
 - Patients reschedule or cancel from the link in their confirmation email, without phoning the clinic.
 - Bookings keep working while Optima is unreachable: free times come from Orli's own copy of the calendar, and the booking is written into Optima once it is back.
 - An AI receptionist (on the AI agent and AI Booking packages): a chat on the clinic's site that answers only from the clinic's own information (what Orli reads on the clinic's website, live at once, and what the clinic writes; the clinic corrects or hides any fact), never invents a price, opening hour, phone number or address, and hands topics the clinic chose to a person. On the AI Booking package it also offers real free times and books inside the chat.
+- A phone agent (paid add-on to the plans with the AI agent): when nobody at the clinic can pick up, Orli answers the call, finds a free time, books the appointment into the calendar and confirms it by text message. Anything else reaches the clinic's admin panel as a written request with the call's transcript. The clinic's staff answer as usual. To try it, call 03-376-9623.
 - Follow-up reminders by email ("every N months for treatment X", and step-by-step treatment sequences) with a one-click booking link.
 - A clinic admin panel: calendar, practitioners imported from Optima, working hours, services, widget colours, logo and font, email templates, users, notifications, analytics, and support from inside the panel.
 - Setup is self-service, in minutes: sign up, connect Optima, paste one line into the website. Launch offer: Orli is free, no commitment, no payment details.
 - Three plans by what sits on the clinic's site: Booking (online booking from the site), AI agent (the chat, answers and callbacks only) and AI Booking (both, and the agent books). Details on the packages page.
 
-Not offered today: payments, online intake forms, patient accounts, multi-location clinics. SMS and WhatsApp messages are coming soon. Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
+Not offered today: payments, online intake forms, patient accounts, multi-location clinics. Reminders by SMS and WhatsApp are coming soon. Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
 
 ## בעברית
 
@@ -25,12 +26,13 @@ Not offered today: payments, online intake forms, patient accounts, multi-locati
 - שינוי וביטול על ידי המטופל, מהקישור במייל האישור, בלי להתקשר למרפאה.
 - עובד גם כשאופטימה לא זמינה: התור נשמר ונרשם באופטימה ברגע שהיא חוזרת.
 - סוכן AI למרפאה (צ׳אטבוט באתר, בחבילות סוכן AI ו־AI Booking): עונה למטופלים רק מהמידע של המרפאה, לא ממציא מחיר, שעה או כתובת, ומעביר לצוות נושאים שהמרפאה סימנה. בחבילת AI Booking הוא גם מציע מועד פנוי וקובע תור בתוך השיחה.
+- סוכנת טלפונית (תוספת בתשלום לחבילות עם סוכן AI): כשאף אחד במרפאה לא יכול לענות, אורלי עונה לשיחה, מוצאת שעה פנויה, קובעת את הפגישה ביומן ושולחת אישור בהודעה. כל בקשה אחרת מגיעה למסך הניהול בכתב, עם תמליל השיחה. הצוות עונה כרגיל. כדי לנסות: 03-376-9623.
 - תזכורות לביקור הבא: מייל אוטומטי בנוסח של המרפאה, עם קישור לקביעת תור בלחיצה.
 - מסך ניהול למרפאה: יומן, מטפלים שמיובאים מאופטימה, שעות, טיפולים, עיצוב הווידג׳ט והמיילים, משתמשים, התראות לצוות ונתונים.
-- הקמה עצמית בכמה דקות: נרשמים, מחברים את אופטימה, ומדביקים שורה אחת באתר. מבצע השקה: אורלי בחינם, ללא התחייבות ובלי פרטי תשלום.
+- הקמה עצמית בכמה דקות: נרשמים, מתקינים את התוכנה שלנו על מחשב האופטימה, ומדביקים שורה אחת באתר. מבצע השקה: אורלי בחינם, ללא התחייבות ובלי פרטי תשלום.
 - שלוש חבילות, לפי מה שיושב באתר: Booking, סוכן AI, ו־AI Booking שמשלבת את שניהם.
 
-היום אורלי מתחברת לאופטימה. הודעות SMS ווואטסאפ יגיעו בקרוב. מרפאה שעובדת עם יומן או תוכנה אחרת יכולה לקבוע איתנו שיחה, ונבדוק איך לחבר גם אותם. אין כרגע תשלומים, טפסי קליטה, חשבונות מטופלים או ניהול כמה סניפים.
+היום אורלי מתחברת לאופטימה. תזכורות ב־SMS ובוואטסאפ יגיעו בקרוב. מרפאה שעובדת עם יומן או תוכנה אחרת יכולה לקבוע איתנו שיחה, ונבדוק איך לחבר גם אותם. אין כרגע תשלומים, טפסי קליטה, חשבונות מטופלים או ניהול כמה סניפים.
 
 ## Pages
 

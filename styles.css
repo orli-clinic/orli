@@ -1914,3 +1914,61 @@ main > .section:not(.alt):not([hidden]) + .cta-band--tail { padding-top: 0; }
   .wa-badge { transition: none; }
   .wa-badge:hover { scale: none; }
 }
+
+/* The phone agent on the home page: the number is the biggest thing in it. */
+.phone-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; }
+.phone-try { display: flex; justify-content: center; }
+.phone-dev { width: min(310px, 100%); padding: 14px 24px 22px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 40px; }
+.phone-dev-bar { width: 72px; height: 6px; margin: 0 auto 20px; border-radius: 999px; background: var(--line); }
+.phone-try-label { margin: 0; font-weight: 600; color: var(--teal-deep); }
+.phone-try-num { display: block; margin-top: 4px; font-size: clamp(1.8rem, 9.9vw, 2.35rem); font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.phone-call { position: relative; display: grid; place-items: center; width: 64px; height: 64px; margin: 16px auto 0; border-radius: 50%; background: var(--teal-deep); color: #fff; }
+.phone-call svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.phone-call::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--teal); opacity: 0; animation: phone-pulse 2.4s ease-out infinite; }
+@keyframes phone-pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(1.5); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .phone-call::after { animation: none; } }
+.phone-try-note { margin: 14px 0 0; font-size: .9rem; line-height: 1.5; color: var(--ink-soft); }
+@media (max-width: 920px) {
+  .phone-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .phone-dev { padding: 10px 18px 16px; border-radius: 28px; }
+  .phone-dev-bar { margin-bottom: 12px; }
+  .phone-call { width: 54px; height: 54px; margin-top: 10px; }
+  .phone-try-note { margin-top: 10px; }
+}
+.fv-call { color: var(--teal-deep); }
+.fv-call svg { width: 30px; height: 30px; animation: fv-ring 2.6s ease-in-out infinite; }
+@keyframes fv-ring { 0%, 60%, 100% { transform: rotate(0); } 66% { transform: rotate(-12deg); } 74% { transform: rotate(12deg); } 82% { transform: rotate(-8deg); } 90% { transform: rotate(8deg); } }
+.pt-addon { margin: 22px auto 0; text-align: center; }
+/* A short phone: the chat demo keeps the film and its heading. */
+@media (max-width: 920px) and (max-height: 740px) { #chat-demo .section-lead { display: none; } }
+/* The narrowest phones: the logo, the menu and the button share one row. */
+@media (max-width: 340px) {
+  .nav-pill { gap: 8px; }
+  .brand-logo { height: 26px; width: auto; }
+  .nav-cta .btn-dark { padding: 8px 10px; font-size: .8rem; }
+}
+/* Where the recording of a sample call goes. A placeholder until the file exists. */
+.rec { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding: 6px 12px 6px 6px; text-align: start; background: var(--cream-2); border: 1px solid var(--line); border-radius: 999px; }
+.rec--chapter { max-width: 400px; margin: 22px 0 0; }
+.rec-play { flex: none; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; color: #fff; background: var(--teal-deep); border: 0; border-radius: 50%; opacity: .55; cursor: default; }
+.rec-play svg { width: 13px; height: 13px; fill: currentColor; }
+.rec-bars { flex: 1; display: flex; align-items: center; gap: 2px; height: 20px; min-width: 0; overflow: hidden; }
+.rec-bars i { flex: 0 0 2px; height: 45%; border-radius: 2px; background: color-mix(in srgb, var(--ink-soft) 35%, transparent); }
+.rec-bars i:nth-child(2n) { height: 75%; }
+.rec-bars i:nth-child(3n) { height: 30%; }
+.rec-bars i:nth-child(5n) { height: 100%; }
+.rec-label { flex: none; font-size: .78rem; color: var(--ink-soft); white-space: nowrap; }
+/* Nine capability cards: three by three, each with its picture on top. */
+@media (min-width: 921px) {
+  .feat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1180px; }
+  .feat-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr; padding: 16px 22px; text-align: center; }
+  .feat-card h3 { align-self: start; }
+  .feat-card .fv { grid-row: auto; }
+  .feat-card .fv-remind, .feat-card .fv-link { width: min(100%, 240px); margin-inline: auto; }
+}
+/* Nine cards on one phone screen, and the picture's button on one line. */
+@media (max-width: 920px) {
+  .feat-grid { gap: 5px; }
+  .feat-card { padding: 5px 12px; }
+  .fv-swatch i { padding: 4px 3px; font-size: .56rem; white-space: nowrap; }
+}

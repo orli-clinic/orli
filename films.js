@@ -64,6 +64,39 @@
       };
     },
 
+    // A phone call: it rings with nobody free, Orli picks up, the clock runs
+    // and each side's words show one line at a time; the meeting is booked,
+    // the call ends and the text arrives.
+    call: function (root) {
+      var lines = Array.prototype.slice.call(root.querySelectorAll('.fp-line'));
+      var time = root.querySelector('.fp-time');
+      function clock(s) { time.textContent = '00:' + (s < 10 ? '0' : '') + s; }
+      function say(i) {
+        lines.forEach(function (l, n) { l.classList.toggle('is-in', n === i); });
+        root.classList.toggle('is-talking', i >= 0);
+        root.classList.toggle('is-caller', i >= 0 && lines[i].classList.contains('me'));
+      }
+      var beats = [
+        [300, function () { root.classList.add('is-ringing'); }],
+        [2800, function () { root.classList.remove('is-ringing'); root.classList.add('is-on'); }],
+        [3300, function () { say(0); }],
+        [7300, function () { say(1); }],
+        [10000, function () { say(2); }],
+        [13600, function () { say(3); }],
+        [15400, function () { say(-1); root.classList.add('is-booked'); }],
+        [16700, function () { root.classList.add('is-texted'); }]
+      ];
+      for (var s = 0; s <= 12; s++) {
+        (function (n) { beats.push([2800 + n * 1000, function () { clock(n); }]); })(s);
+      }
+      return {
+        beats: beats,
+        hold: 4500,
+        reset: function () { root.classList.remove('is-ringing', 'is-on', 'is-booked', 'is-texted'); say(-1); clock(0); },
+        settle: function () { root.classList.remove('is-ringing'); root.classList.add('is-on', 'is-booked', 'is-texted'); say(-1); clock(12); }
+      };
+    },
+
     // A visit ends, the months pass on the rail, the clinic's own email
     // arrives with one button, a tap, the booking panel with the treatment
     // already chosen, a time, booked.

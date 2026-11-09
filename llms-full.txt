@@ -34,6 +34,13 @@ Everything described here is live in production. Last reviewed: 2026-10-18.
 - Handoff to a person: it takes a name and a phone number or email, emails the clinic, and queues the callback in the admin with the conversation behind it.
 - A test tab in the admin lets the clinic chat with its own agent, as a patient would, after changing its settings.
 
+### Orli on the phone (paid add-on to the plans with the AI agent)
+
+- When nobody at the clinic can pick up, Orli answers the call. The staff answer as usual.
+- She finds a free time, books the appointment into the calendar and confirms it by text message.
+- Anything else reaches the clinic's admin panel as a written request, with the call's transcript.
+- To try it, call 03-376-9623.
+
 ### Follow-ups and reminders
 
 - Reminders such as "every 6 months for a cleaning" invite the patient back by email, with a one-click booking link.
@@ -86,7 +93,7 @@ The packages are by what sits on the clinic's site. Every package has unlimited 
 
 ### Not offered today
 
-Payments, online intake forms, patient accounts and multi-location clinics. SMS and WhatsApp messages are coming soon. Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
+Payments, online intake forms, patient accounts and multi-location clinics. Reminders by SMS and WhatsApp are coming soon. Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
 
 ### Getting in touch
 
@@ -120,6 +127,13 @@ Start free, book a call or send a message from https://orliclinic.com/#contact, 
 - מטופל ששואל על פגישה קיימת מאמת את האימייל, והסוכן מקריא לו את הפגישות הקרובות.
 - העברה לצוות: הסוכן לוקח שם וטלפון או אימייל, שולח מייל למרפאה, והפנייה מחכה במסך הניהול עם השיחה מאחוריה.
 
+### סוכנת טלפונית (תוספת בתשלום לחבילות עם סוכן AI)
+
+- כשאף אחד במרפאה לא יכול לענות, אורלי עונה לשיחה. הצוות עונה כרגיל.
+- היא מוצאת שעה פנויה, קובעת את הפגישה ביומן ושולחת אישור בהודעה.
+- כל בקשה אחרת מגיעה למסך הניהול בכתב, עם תמליל השיחה.
+- כדי לנסות: 03-376-9623.
+
 ### תזכורות לביקור הבא
 
 - תזכורת חוזרת, למשל "ניקוי אבנית כל 6 חודשים": מייל אוטומטי בנוסח של המרפאה, עם קישור לקביעת תור בלחיצה.
@@ -144,7 +158,7 @@ Start free, book a call or send a message from https://orliclinic.com/#contact, 
 
 ### הקמה
 
-- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מחברים את אופטימה (המטפלים מיובאים בלחיצה), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. מבצע השקה: אורלי בחינם, ללא התחייבות ובלי פרטי תשלום.
+- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. מבצע השקה: אורלי בחינם, ללא התחייבות ובלי פרטי תשלום.
 
 ### חבילות
 
@@ -156,7 +170,7 @@ Start free, book a call or send a message from https://orliclinic.com/#contact, 
 
 ### מה אין כרגע
 
-תשלומים, טפסי קליטה אונליין, חשבונות מטופלים וניהול כמה סניפים. הודעות SMS ווואטסאפ יגיעו בקרוב.
+תשלומים, טפסי קליטה אונליין, חשבונות מטופלים וניהול כמה סניפים. תזכורות ב־SMS ובוואטסאפ יגיעו בקרוב.
 
 ### יצירת קשר
 
