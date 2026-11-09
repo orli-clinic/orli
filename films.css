@@ -13,13 +13,17 @@
      stats   is-s1 / is-s2 / is-s3 pick the screen; is-b1 (tiles count)
              is-b2 (day bars) is-b3 (deltas, average) is-b4 (donut)
              is-b5 (treatment bars) is-b6 (hour bars) is-b7 (attendance)
+     call    is-ringing, is-on, is-talking, is-caller, is-booked, is-texted
      outage  is-b1 (down) is-b2 (booking queued) is-b3 (patient told)
              is-b4 (back up) is-b5 (written)
    =========================================================== */
 .film {
   position: relative; width: min(640px, 100%); min-height: 420px; margin-inline: auto;
   font-size: 1rem; color: var(--ink);
+  -webkit-user-select: none; user-select: none;
 }
+/* A clear layer over the picture: the film's words cannot be selected. */
+.film::after { content: ""; position: absolute; inset: 0; z-index: 5; }
 .film-frame {
   position: relative; display: flex; flex-direction: column; min-height: 420px;
   background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-sm);
@@ -46,13 +50,14 @@
 /* ---------- chat ---------- */
 .film-chat .film-frame { max-width: 420px; margin-inline: auto; }
 .fc-body {
-  flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 9px;
-  padding: 16px 16px 10px; min-height: 300px; max-height: 320px; overflow: hidden;
+  flex: none; display: flex; flex-direction: column; justify-content: flex-end; gap: 9px;
+  padding: 16px 16px 10px; height: 300px; overflow: hidden;
   font-size: .92rem; line-height: 1.45;
 }
 .fc-msg { max-width: 88%; padding: 9px 13px; border-radius: 14px; }
-.fc-msg.bot { background: var(--cream-2); border-start-start-radius: 4px; align-self: flex-start; }
-.fc-msg.me { background: var(--teal-deep); color: #fff; border-start-end-radius: 4px; align-self: flex-end; }
+/* As the admin draws a conversation: the patient on the right, Orli on the left. */
+.fc-msg.bot { background: var(--cream-2); border-start-end-radius: 4px; align-self: flex-end; }
+.fc-msg.me { background: var(--teal-deep); color: #fff; border-start-start-radius: 4px; align-self: flex-start; }
 /* Messages not yet said take no room, so the thread grows as it is written. */
 .fc-msg:not(.is-in) { display: none; }
 .fc-cardlet { margin-top: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: .86rem; }
@@ -61,7 +66,7 @@
 .fc-slots { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
 .fc-slots span { position: relative; border: 1px solid var(--line); border-radius: 999px; padding: 3px 11px; font-size: .84rem; font-weight: 600; background: var(--surface); font-variant-numeric: tabular-nums; transition: background .25s ease, color .25s ease, border-color .25s ease; }
 .film-chat.is-picked .fc-slots [data-pick] { background: var(--teal-deep); border-color: var(--teal-deep); color: #fff; }
-.fc-typing { display: none; align-self: flex-start; gap: 4px; padding: 10px 14px; background: var(--cream-2); border-radius: 14px; border-start-start-radius: 4px; }
+.fc-typing { display: none; align-self: flex-end; gap: 4px; padding: 10px 14px; background: var(--cream-2); border-radius: 14px; border-start-end-radius: 4px; }
 .film-chat.is-typing .fc-typing { display: flex; }
 .fc-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-soft); opacity: .4; animation: fc-dot 1.1s ease-in-out infinite; }
 .fc-typing span:nth-child(2) { animation-delay: .18s; } .fc-typing span:nth-child(3) { animation-delay: .36s; }
@@ -233,6 +238,59 @@ html[dir="rtl"] .fr-rail-pin { transform: translateX(-50%); }
 .fo-toast.late { display: none; }
 .film-outage.is-b5 .fo-toast.late { display: flex; opacity: 1; transform: none; }
 .film-outage.is-b5 .fo-toast.early { display: none; }
+
+/* ---------- call ---------- */
+.film-call .film-frame { max-width: 300px; margin-inline: auto; align-items: center; padding: 30px 20px 22px; border-radius: 38px; text-align: center; }
+.fp-status { display: grid; min-height: 1.4em; font-size: .86rem; font-weight: 600; color: var(--teal-deep); }
+.fp-status span { grid-area: 1 / 1; opacity: 0; transition: opacity .3s ease; }
+.fp-status .fp-s1, .film-call.is-on .fp-status .fp-s2, .film-call.is-booked .fp-status .fp-s3 { opacity: 1; }
+.film-call.is-on .fp-status .fp-s1, .film-call.is-booked .fp-status .fp-s2 { opacity: 0; }
+.fp-avatar { position: relative; display: grid; place-items: center; width: 116px; height: 116px; margin: 36px auto 12px; border-radius: 50%; background: var(--cream-2); }
+.fp-avatar img { width: 70px; height: 70px; border-radius: 50%; }
+.fp-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--teal); opacity: 0; }
+.film-call.is-ringing .fp-ring { animation: fp-ring 1.4s ease-out infinite; }
+.film-call.is-ringing .fp-ring + .fp-ring { animation-delay: .7s; }
+@keyframes fp-ring { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(1.6); opacity: 0; } }
+.fp-time { min-height: 1.5em; font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink-soft); opacity: 0; transition: opacity .3s ease; }
+.film-call.is-on .fp-time { opacity: 1; }
+.fp-stage { display: grid; flex: 1; width: 100%; margin-top: 10px; }
+.fp-talk, .fp-done { grid-area: 1 / 1; }
+.fp-talk { opacity: 0; transition: opacity .3s ease; }
+.film-call.is-on .fp-talk { opacity: 1; }
+.film-call.is-booked .fp-talk { opacity: 0; }
+.fp-wave { display: flex; align-items: center; justify-content: center; gap: 5px; height: 44px; }
+.fp-wave i { width: 5px; height: 100%; border-radius: 2px; background: var(--teal); transform: scaleY(.2); transition: background .2s ease; }
+.film-call.is-caller .fp-wave i { background: var(--ink-soft); }
+.film-call.is-talking .fp-wave i { animation: fp-wave .7s ease-in-out infinite alternate; }
+/* Each bar on its own clock, so they rise and fall apart like a sound meter. */
+.film-call.is-talking .fp-wave i:nth-child(1) { animation-duration: 0.74s; animation-delay: -0.1s; }
+.film-call.is-talking .fp-wave i:nth-child(2) { animation-duration: 0.52s; animation-delay: -0.42s; }
+.film-call.is-talking .fp-wave i:nth-child(3) { animation-duration: 0.91s; animation-delay: -0.2s; }
+.film-call.is-talking .fp-wave i:nth-child(4) { animation-duration: 0.63s; animation-delay: -0.66s; }
+.film-call.is-talking .fp-wave i:nth-child(5) { animation-duration: 0.48s; animation-delay: -0.33s; }
+.film-call.is-talking .fp-wave i:nth-child(6) { animation-duration: 0.83s; animation-delay: -0.05s; }
+.film-call.is-talking .fp-wave i:nth-child(7) { animation-duration: 0.57s; animation-delay: -0.51s; }
+.film-call.is-talking .fp-wave i:nth-child(8) { animation-duration: 0.96s; animation-delay: -0.28s; }
+.film-call.is-talking .fp-wave i:nth-child(9) { animation-duration: 0.69s; animation-delay: -0.6s; }
+@keyframes fp-wave { 0% { transform: scaleY(.2); } 30% { transform: scaleY(.85); } 55% { transform: scaleY(.4); } 80% { transform: scaleY(1); } 100% { transform: scaleY(.3); } }
+.fp-lines { position: relative; min-height: 104px; margin-top: 12px; }
+.fp-line { position: absolute; inset: 0; margin: 0; font-size: 1rem; line-height: 1.45; opacity: 0; transform: translateY(6px); transition: opacity .3s ease, transform .3s ease; }
+.fp-line b { display: block; margin-bottom: 3px; font-size: .8rem; color: var(--teal-deep); }
+.fp-line.me b { color: var(--ink-soft); }
+.fp-line.is-in { opacity: 1; transform: none; }
+.fp-done { opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease; }
+.film-call.is-booked .fp-done { opacity: 1; transform: none; }
+.fp-done b { display: block; font-size: 1.15rem; }
+.fp-done small { display: block; font-size: .92rem; color: var(--ink-soft); }
+.fp-sms { position: absolute; top: 12px; inset-inline: 10px; z-index: 2; padding: 8px 12px; font-size: .8rem; line-height: 1.35; text-align: start; background: var(--cream-2); border: 1px solid var(--line); border-radius: 14px; opacity: 0; transform: translateY(-10px); transition: opacity .4s ease, transform .4s ease; }
+.fp-sms b { display: block; }
+.film-call.is-texted .fp-sms { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .fp-status span, .fp-time, .fp-talk, .fp-line, .fp-done, .fp-sms, .fp-wave i { transition: none; }
+  .fp-ring, .fp-wave i { animation: none !important; }
+}
+html:not(.js) .fp-done, html:not(.js) .fp-sms, html:not(.js) .fp-status .fp-s3 { opacity: 1; transform: none; }
+html:not(.js) .fp-status .fp-s1 { opacity: 0; }
 
 /* No motion: every film rests on its finished frame (films.js adds .is-done
    with the final classes). Bars and rails have no travel to make. */

@@ -13,7 +13,7 @@ Seven pages, all sharing the same header/footer shell and `styles.css`:
 
 - **`index.html`** — the story: hero through CTA, written for the clinic owner/office
   manager deciding whether to adopt Orli. Kept short on purpose: the `#features`
-  section is eight cards, each a link (the whole card, no "more" link) to the page
+  section is nine cards, three by three on a computer, each a link (the whole card, no "more" link) to the page
   that explains the capability, and the depth lives there.
   Taken from petaron.ai (2026-10-18, an experiment, each piece its own commit):
   the cards open with a small CSS loop instead of an icon (`.fv-*`), a teal
@@ -21,11 +21,11 @@ Seven pages, all sharing the same header/footer shell and `styles.css`:
   it scrolls in (`.cta-box`), a reading line along the top of every page and
   blocks that settle out of a blur. All of it lives in `styles.css`
   and `script.js`.
-- **`features.html`** — one chapter per capability (booking, AI agent, automations,
+- **`features.html`** — one chapter per capability (booking, the phone agent, AI agent, automations,
   analytics, reliability, a pointer to the admin), each a short copy block beside a
   self-playing film in the style of the home page's journey film: the booking chapter
   reuses that film's markup (`[data-bridge]`, driven by `script.js`), the others are
-  `films.js` + `films.css` (`[data-film="chat|remind|stats|outage"]`). Labels in the
+  `films.js` + `films.css` (`[data-film="call|chat|remind|stats|outage"]`). Labels in the
   analytics and outage films are the admin's own (`orli-calendar/admin/src/i18n.ts`);
   the numbers are samples. A sticky row of chapter links sits under the title.
 - **`pricing.html`** — three monthly tiers (Booking / Growth / AI receptionist, the
@@ -115,7 +115,7 @@ browser.
 
 ## Architecture
 
-Five independent, self-contained scripts loaded by `index.html`, each owning one concern
+Six independent, self-contained scripts loaded by `index.html`, each owning one concern
 (`panel.html` loads `script.js` and its own `panel-rows.js` instead).
 They talk to the DOM, not to each other directly (with one exception: `scrolly.js`
 drives `widget.js` through a controller handle):
@@ -161,7 +161,7 @@ drives `widget.js` through a controller handle):
   noise, GLSL inline as JS strings) for the hero `<canvas id="heroGradient">`. Falls
   back to a static CSS gradient (`.hero--nogl` class) when WebGL is unavailable, and
   freezes on `prefers-reduced-motion`.
-- **`films.js` / `films.css`** — the four self-playing films on `features.html`
+- **`films.js` / `films.css`** — the self-playing films on `features.html`, and the short chat one on the home page
   (agent chat, reminder, analytics, outage). Each is one 640×420 frame that plays
   while mostly on screen, holds, replays, and clears when scrolled away; under
   reduced motion or the accessibility menu's motion off it shows its finished
@@ -192,7 +192,7 @@ drives `widget.js` through a controller handle):
 - Scripts wrap themselves in an IIFE (`(function () { 'use strict'; ... })()`) rather
   than using ES modules.
 - Every cache-busting query string (`styles.css?v=…`, `script.js?v=…`, the wordmark)
-  carries the **same** token on every page (`?v=20261029a` today). Bump them all
+  carries the **same** token on every page (`?v=20261109k` today). Bump them all
   together with one search-and-replace when any asset changes; a per-file counter
   drifted across pages and left stale copies in caches. The token is load-bearing:
   `_headers` caches every `.css` and `.js` for a year as `immutable`, so a CSS or
