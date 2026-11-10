@@ -28,39 +28,71 @@
   }
 
   var FILMS = {
-    // Orli says hello, the patient asks, Orli answers from the clinic's
-    // approved facts and offers the day's free times; a time is taken and
-    // the booking lands. Each of her lines waits behind typing dots about
-    // as long as the words would take to write.
+    // Orli says hello; the patient writes a question in the box and sends it;
+    // Orli answers from the clinic's approved facts behind typing dots and
+    // offers the day's free times; a time is tapped and the booking lands.
+    // The thread scrolls as it grows, like the real widget's.
     chat: function (root) {
+      var body = root.querySelector('.fc-body');
       var msgs = Array.prototype.slice.call(root.querySelectorAll('.fc-msg'));
+      var box = root.querySelector('.fc-input span');
+      var send = root.querySelector('.fc-input i');
+      var pick = root.querySelector('[data-pick]');
+      var hint = box.textContent;
       var beats = [];
-      // Paced for reading, not for typing speed: Orli's dots run about as
-      // long as her line takes to write, then the line stays up long enough
-      // to be read before the patient answers.
-      var t = 1200;
-      msgs.forEach(function (m, i) {
+      function down() {
+        if (body.scrollTo && !still.matches) body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+        else body.scrollTop = body.scrollHeight;
+      }
+      // The ring blooms again on every tap, so the class is taken off and put back.
+      function tap(el) { el.classList.remove('is-tapping'); void el.offsetWidth; el.classList.add('is-tapping'); }
+      // Paced for reading: Orli's dots run about as long as her line takes to
+      // write, then it stays up long enough to be read; the patient's line is
+      // typed into the box a letter at a time, then sent.
+      var t = 800;
+      msgs.forEach(function (m) {
         var bot = m.classList.contains('bot');
-        var words = m.textContent.trim().split(/\s+/).length;
+        var text = m.textContent.trim();
+        var words = text.split(/\s+/).length;
         if (bot) {
-          beats.push([t, function () { root.classList.add('is-typing'); }]);
-          t += Math.min(3600, 900 + words * 100);
-          beats.push([t, function () { root.classList.remove('is-typing'); m.classList.add('is-in'); }]);
+          beats.push([t, function () { root.classList.add('is-typing'); down(); }]);
+          t += Math.min(2800, 700 + words * 80);
+          beats.push([t, function () { root.classList.remove('is-typing'); m.classList.add('is-in'); down(); }]);
         } else {
-          t += 1400;
-          beats.push([t, function () { m.classList.add('is-in'); }]);
+          t += 500;
+          beats.push([t, function () { root.classList.add('is-writing'); }]);
+          for (var n = 1; n <= text.length; n++) {
+            (function (k) { beats.push([t + k * 55, function () { box.textContent = text.slice(0, k); }]); })(n);
+          }
+          t += text.length * 55 + 350;
+          beats.push([t, function () { tap(send); }]);
+          t += 250;
+          beats.push([t, function () { root.classList.remove('is-writing'); box.textContent = hint; m.classList.add('is-in'); down(); }]);
         }
         if (m.hasAttribute('data-pick-after')) {
-          t += 2200;
+          t += 1800;
+          beats.push([t, function () { tap(pick); }]);
+          t += 250;
           beats.push([t, function () { root.classList.add('is-picked'); }]);
         }
-        t += bot ? Math.min(3200, 800 + words * 110) : 600;
+        t += bot ? Math.min(2400, 600 + words * 80) : 300;
       });
       return {
         beats: beats,
-        hold: 5000,
-        reset: function () { root.classList.remove('is-typing', 'is-picked'); msgs.forEach(function (m) { m.classList.remove('is-in'); }); },
-        settle: function () { root.classList.remove('is-typing'); root.classList.add('is-picked'); msgs.forEach(function (m) { m.classList.add('is-in'); }); }
+        hold: 4500,
+        reset: function () {
+          root.classList.remove('is-typing', 'is-writing', 'is-picked');
+          box.textContent = hint;
+          send.classList.remove('is-tapping'); pick.classList.remove('is-tapping');
+          msgs.forEach(function (m) { m.classList.remove('is-in'); });
+          body.scrollTop = 0;
+        },
+        settle: function () {
+          root.classList.remove('is-typing', 'is-writing'); root.classList.add('is-picked');
+          box.textContent = hint;
+          msgs.forEach(function (m) { m.classList.add('is-in'); });
+          body.scrollTop = body.scrollHeight;
+        }
       };
     },
 

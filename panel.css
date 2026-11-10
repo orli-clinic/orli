@@ -158,12 +158,26 @@
 .opn-swap { display: inline-grid; }
 .opn-swap > i { grid-area: 1 / 1; font-style: normal; }
 
+/* The phone tab (AgentPhonePanel.vue): the list of calls, a call opened beside it,
+   read as a conversation: the caller on the right, Orli on the left. */
+.opn-rail .opn-row { margin: 8px 0 0; padding-inline: 8px; gap: 4px; font-size: .64rem; white-space: nowrap; }
+.opn-call { display: grid; gap: 6px; align-content: start; }
+.opn-call-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: .64rem; color: var(--ink-soft); }
+.opn-call-head b { color: var(--ink); }
+.opn-line { margin: 0; max-width: 90%; padding: 6px 10px; border-radius: 12px; font-size: .66rem; line-height: 1.4; background: var(--cream-2); border-start-end-radius: 4px; justify-self: end; }
+.opn-line.me { background: var(--teal-deep); color: #fff; border-start-end-radius: 12px; border-start-start-radius: 4px; justify-self: start; }
+
 /* ---------- narrow ---------- */
 @media (max-width: 920px) {
   .opn-cols, .opn-cols--rail { grid-template-columns: 1fr; }
   .opn-rail { display: flex; flex-wrap: wrap; gap: 4px; }
   .opn-rail .opn-field-label { width: 100%; margin: 4px 0 2px; }
+  .opn-rail .opn-row { width: 100%; }
   .opn-choices { grid-template-columns: 1fr; }
   .opn-choice small { display: none; }
   .opn-crumb { display: none; }
 }
+
+/* The page's own title and intro sit centred. */
+.page-head .wrap.narrow { text-align: center; }
+.page-head .section-lead--intro { margin-inline: auto; }

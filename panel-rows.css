@@ -42,7 +42,7 @@
 .prow--flip .prow-text { justify-self: end; }
 .prow--flip .prow-demo { order: -1; }
 
-.prow-step { display: block; margin-bottom: 12px; font-size: .8rem; font-weight: 700; letter-spacing: .06em; color: var(--teal-deep); font-variant-numeric: tabular-nums; }
+.prow-step { display: block; direction: ltr; text-align: right; margin-bottom: 12px; font-size: .8rem; font-weight: 700; letter-spacing: .06em; color: var(--teal-deep); font-variant-numeric: tabular-nums; }
 .prow-step b { font-weight: 600; color: color-mix(in srgb, var(--ink-soft) 70%, transparent); }
 .prow-title {
   margin: 0 0 18px; font-family: var(--serif); font-weight: 500; letter-spacing: -.01em; line-height: 1.15;
