@@ -20,18 +20,16 @@
   const FORM_ENDPOINT = '/api/demo';
 
   // ---------------------------------------------------------------------
-  // Sign-up: where "להתחיל בחינם" goes (pricing.html, every [data-start-cta]).
-  // Set it to the admin's sign-up page once that page is live, e.g.
-  // 'https://booking.orliclinic.com/admin/signup'. While it is empty the
-  // buttons stay demo CTAs: Cal's booking popup, or the contact form.
+  // Getting started: where "נסו בעצמכם" goes (every [data-start-cta]): the
+  // admin's own sign-up page, the self-onboarding. The pages carry the same
+  // address in their HTML, so a script that did not load changes nothing.
+  // "צרו קשר" (data-wa-cta) is a WhatsApp chat instead, written in the HTML.
   // ---------------------------------------------------------------------
   const SIGNUP_URL = 'https://booking.orliclinic.com/admin/signup';
-  if (SIGNUP_URL) {
-    document.querySelectorAll('[data-start-cta]').forEach((el) => {
-      el.setAttribute('href', SIGNUP_URL);
-      el.removeAttribute('data-demo-cta');
-    });
-  }
+  document.querySelectorAll('[data-start-cta]').forEach((el) => {
+    el.setAttribute('href', SIGNUP_URL);
+    el.removeAttribute('data-demo-cta');
+  });
 
   // ---------------------------------------------------------------------
   // Cal.com: the part of the booking URL after https://cal.com/. Empty it to

@@ -26,8 +26,8 @@
        sets Hebrew and Latin (spaces, digits) in it. -->
   <link rel="preload" href="assets/fonts/heebo-v28-hebrew.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/heebo-v28-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=20261109k" />
-  <link rel="stylesheet" href="a11y.css?v=20261109k" />
+  <link rel="stylesheet" href="styles.css?v=20261110a" />
+  <link rel="stylesheet" href="a11y.css?v=20261110a" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png" />
   <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
@@ -98,7 +98,7 @@
   </script>
   <!-- Accessibility menu. In the head so the visitor's saved settings are
        applied before the first paint, and before the scripts that animate. -->
-  <script src="a11y.js?v=20261109k"></script>
+  <script src="a11y.js?v=20261110a"></script>
 </head>
 <body>
   <span id="top" aria-hidden="true"></span>
@@ -108,7 +108,7 @@
     <div class="wrap">
       <div class="nav-pill">
         <a href="/#top" class="brand" aria-label="אורלי, לדף הבית">
-          <img class="brand-logo brand-logo--he" src="assets/brand/orli-wordmark-he.png?v=20261109k" width="480" height="151" alt="אורלי" />
+          <img class="brand-logo brand-logo--he" src="assets/brand/orli-wordmark-he.png?v=20261110a" width="480" height="151" alt="אורלי" />
         </a>
         <nav class="nav-links" id="navMenu" aria-label="ניווט ראשי">
           <a href="/">ראשי</a>
@@ -124,7 +124,7 @@
           <span class="nav-toggle-bar"></span>
         </button>
         <div class="nav-cta">
-          <a data-start-cta data-demo-cta href="/#contact" class="btn-dark">להתחיל בחינם</a>
+          <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-dark">נסו בעצמכם</a>
         </div>
       </div>
     </div>
@@ -155,7 +155,7 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>נתוני קביעת התורים: ביקוש, טיפולים, ביטולים והגעה</span></li>
             </ul>
             <hr class="pc-hr" />
-            <a data-start-cta data-demo-cta href="/#contact" class="pc-btn">להתחיל בחינם</a>
+            <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="pc-btn">נסו בעצמכם</a>
             <p class="pc-desc">למרפאה שרוצה שהמטופלים יקבעו תור בעצמם.</p>
           </article>
           <article class="pc-card pc-card--hi">
@@ -169,7 +169,7 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>כל הנתונים במקום אחד: קביעת התורים והסוכן</span></li>
             </ul>
             <hr class="pc-hr" />
-            <a data-start-cta data-demo-cta href="/#contact" class="pc-btn pc-btn--fill">להתחיל בחינם</a>
+            <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="pc-btn pc-btn--fill">נסו בעצמכם</a>
             <p class="pc-desc">למרפאה שרוצה שהמטופלים יקבעו בעצמם, וגם יקבלו מענה כשהיא סגורה.</p>
           </article>
           <article class="pc-card pc-card--c">
@@ -184,7 +184,7 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>מסך ניהול, עיצוב ומיילים בנוסח שלכם</span></li>
             </ul>
             <hr class="pc-hr" />
-            <a data-start-cta data-demo-cta href="/#contact" class="pc-btn">להתחיל בחינם</a>
+            <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="pc-btn">נסו בעצמכם</a>
             <p class="pc-desc">למרפאה שרוצה מענה למטופלים גם כשהיא סגורה.</p>
           </article>
         </div>
@@ -203,10 +203,86 @@
             <h2 class="display">מבצע השקה: <span class="ital">אורלי בחינם, ללא התחייבות</span></h2>
             <p class="cta-lead">בכל החבילות, כולל סוכן ה־AI. נרשמים לבד, מחברים את אופטימה, ומתחילים. בלי פרטי תשלום.</p>
             <div class="cta-actions">
-              <a data-start-cta data-demo-cta href="/#contact" class="btn-dark lg">להתחיל בחינם</a>
+              <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-dark lg">נסו בעצמכם</a>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- THE FOUR PILLARS (Ron, 2026-11-10): the widget, the chat, the phone,
+         and all of it together. PRICES (Ron, 2026-11-10): widget 290, AI on the website 390, AI on the phone 440;
+         all included is those three (1,120) less 20% = 896, shown as
+         "instead of 1,120" with no strike-through; the numbers are computed, not typed VAT not stated yet. The band above
+         still says the launch offer is free. -->
+    <section class="section pc-top pc-four" id="pillars" aria-labelledby="pillarsTitle">
+      <div class="wrap">
+        <div class="narrow center pc-four-head">
+          <h2 class="display" id="pillarsTitle">מה אורלי עושה בשבילכם? <span class="ital">אתם בוחרים.</span></h2>
+        </div>
+        <div class="pc-grid pc-grid--four" data-pc-grid>
+          <article class="pc-card">
+            <p class="pc-name">וידג׳ט קביעת פגישות</p>
+            <p class="pc-price"><b>290</b><span>₪ לחודש</span></p>
+            <ul class="pc-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>קביעת פגישות מהאתר, ישר לאופטימה</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>שינוי וביטול על ידי המטופל, עם אימות בקוד</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>תזכורות ורצפי טיפול</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>מסך ניהול: יומן, מטפלים, טיפולים ונתונים</span></li>
+            </ul>
+            <hr class="pc-hr" />
+            <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="pc-btn">להתחיל</a>
+            <p class="pc-desc">למרפאה שרוצה שהמטופלים יקבעו בעצמם.</p>
+          </article>
+          <article class="pc-card">
+            <p class="pc-name">AI באתר</p>
+            <p class="pc-price"><b>390</b><span>₪ לחודש</span></p>
+            <ul class="pc-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>AI באתר שעונה למטופלים מהמידע של המרפאה</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>אתם מוסיפים, מתקנים ומסתירים כל עובדה</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>בקשה לדבר עם הצוות מגיעה למסך הניהול</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>שיחות ללא הגבלה</span></li>
+            </ul>
+            <hr class="pc-hr" />
+            <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="pc-btn">להתחיל</a>
+            <p class="pc-desc">למרפאה שרוצה מענה למטופלים גם כשהיא סגורה.</p>
+          </article>
+          <article class="pc-card">
+            <p class="pc-name">AI בטלפון</p>
+            <p class="pc-price"><b>440</b><span>₪ לחודש</span></p>
+            <p class="pc-billed">מכסת דקות חודשית, אפשר להתאים אותה לצורכי המרפאה</p>
+            <ul class="pc-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>אורלי עונה לכל שיחות המרפאה, או רק כשאף אחד לא עונה</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>קובעת פגישות מסוגי הטיפולים שהמרפאה הגדירה</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>אישור הפגישה ב־SMS</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>בקשה לדבר עם הרופא מגיעה למסך הניהול</span></li>
+            </ul>
+            <hr class="pc-hr" />
+            <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="pc-btn">להתחיל</a>
+            <p class="pc-desc">למרפאה שלא רוצה לפספס אף שיחה.</p>
+          </article>
+          <article class="pc-card pc-card--hi pc-card--wide">
+            <span class="pc-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></svg><span>המומלץ ביותר</span></span>
+            <div class="pc-wide-price">
+              <p class="pc-name">הכול כלול</p>
+              <p class="pc-price"><b>896</b><span>₪ לחודש</span></p>
+              <p class="pc-billed pc-save">במקום 1,120 ₪ בקנייה נפרדת. חוסכים 224 ₪ בחודש</p>
+            </div>
+            <div class="pc-wide-list">
+              <p class="pc-note">כל מה שבשלושת המסלולים, וגם:</p>
+              <ul class="pc-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>הוידג׳ט, ה־AI באתר וה־AI בטלפון, כולם מחוברים לאותו יומן</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>ה־AI באתר קובע פגישות בתוך השיחה</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span>כל הנתונים במקום אחד, לפי ערוץ</span></li>
+              </ul>
+            </div>
+            <div class="pc-wide-cta">
+              <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="pc-btn pc-btn--fill">להתחיל</a>
+              <p class="pc-desc">למרפאה שרוצה שהמטופלים יקבעו בכל דרך: וידג׳ט, AI באתר או AI בטלפון.</p>
+            </div>
+          </article>
+        </div>
+        <p class="plans-foot">בכל מסלול, מטפלים ומשתמשים ללא הגבלה. בלי התחייבות ובלי פרטי תשלום.</p>
       </div>
     </section>
 
@@ -217,38 +293,37 @@
       <div class="wrap">
         <div class="section-head">
           <h2 class="display">מה כלול <span class="ital">בכל חבילה.</span></h2>
-          <p class="section-lead">בוחרים לפי מה שיושב באתר שלכם: קביעת פגישות אונליין, סוכן AI, או שניהם. עולים מדרגה מתי שרוצים.</p>
+          <p class="section-lead">בוחרים מה אורלי עושה בשבילכם: וידג׳ט באתר, AI באתר, AI בטלפון, או הכול ביחד. עולים מדרגה מתי שרוצים.</p>
         </div>
         <div class="pt-wrap">
-          <table class="pt">
+          <table class="pt pt--four">
             <caption class="sr-only">השוואת החבילות</caption>
             <thead>
               <tr>
                 <td class="pt-corner"></td>
-                <th scope="col"><span class="pt-name">Booking</span></th>
-                <th scope="col"><span class="pt-name">סוכן AI</span></th>
-                <th scope="col" class="is-hi"><span class="pt-name">AI Booking</span></th>
+                <th scope="col"><span class="pt-name"><span class="pt-full">וידג׳ט</span><span class="pt-short">וידג׳ט</span></span></th><th scope="col"><span class="pt-name"><span class="pt-full">AI באתר</span><span class="pt-short">AI באתר</span></span></th><th scope="col"><span class="pt-name"><span class="pt-full">AI בטלפון</span><span class="pt-short">AI בטלפון</span></span></th><th scope="col" class="is-hi"><span class="pt-name"><span class="pt-full">הכול כלול</span><span class="pt-short">הכול</span></span></th>
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">קביעת פגישות מהאתר, ישר לאופטימה</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">שינוי וביטול על ידי המטופל, עם אימות בקוד</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">סוכן AI שעונה למטופלים באתר</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">לומד מהאתר שלכם</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">פניות לצוות, עם השיחה מאחוריהן</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">שיחות עם מטופלים, ללא הגבלה</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">הסוכן מציע מועדים פנויים וקובע תור בתוך השיחה</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">מסך ניהול: יומן, מטפלים וטיפולים</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">עיצוב ומיילים בנוסח שלכם</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">תזכורות ורצפי טיפול</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">התראות לצוות ותמיכה מתוך המסך</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">עובד גם כשאופטימה לא זמינה</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">נתוני קביעת התורים: ביקוש, טיפולים, ביטולים והגעה</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
-              <tr><th scope="row">נתוני הסוכן: שיחות, נושאים ופניות</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">קביעת פגישות מהאתר, ישר לאופטימה</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">שינוי וביטול על ידי המטופל, עם אימות בקוד</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">AI שעונה למטופלים באתר, מהמידע של המרפאה</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">AI שעונה לשיחות הטלפון של המרפאה</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">לומד מהמידע של המרפאה, ואתם שולטים בו</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">בקשות לצוות, כולל בקשה לדבר עם הרופא, במסך הניהול</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">שיחות באתר ללא הגבלה</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">קובע פגישות בתוך השיחה</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">אישור הפגישה ב־SMS למי שקבע בטלפון</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">מכסת דקות חודשית, מותאמת לצורכי המרפאה</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">מסך ניהול: יומן, מטפלים וטיפולים</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">עיצוב ומיילים בנוסח שלכם</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">תזכורות ורצפי טיפול</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">התראות לצוות ותמיכה מתוך המסך</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">נתוני הפגישות: ביקוש, טיפולים, ביטולים והגעה</th><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
+              <tr><th scope="row">נתוני ה־AI: שיחות, נושאים ובקשות</th><td><span class="pt-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="7" y1="12" x2="17" y2="12"/></svg><span class="sr-only">לא כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td><td class="is-hi"><span class="pt-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span class="sr-only">כלול</span></span></td></tr>
             </tbody>
           </table>
         </div>
-        <p class="section-lead pt-addon">סוכנת טלפונית: תוספת בתשלום לחבילות עם סוכן AI. <a href="/#contact">דברו איתנו</a></p>
       </div>
     </section>
 
@@ -259,7 +334,7 @@
         <figure class="price-proof">
           <blockquote>״תוך יום אחד זה עבד אצלנו, ומאז זה פשוט עובד.<br class="pp-br" /> המטופלים קובעים תורים גם כשהמרפאה סגורה, <em>ובבוקר הם כבר מחכים ביומן.</em>״</blockquote>
           <figcaption>
-            <img src="assets/customers/ines-verner.webp?v=20261109k" width="48" height="48" loading="lazy" decoding="async" alt="" />
+            <img src="assets/customers/ines-verner.webp?v=20261110a" width="48" height="48" loading="lazy" decoding="async" alt="" />
             <span><b>ד״ר אינס ורנר</b>ורנר קליניק, קרית אונו</span>
           </figcaption>
         </figure>
@@ -278,7 +353,7 @@
           <li><h3>שורה אחת לאתר</h3><p>מדביקים אותה, והמטופלים מתחילים לקבוע.</p></li>
         </ol>
         <div class="steps-cta">
-          <a data-start-cta data-demo-cta href="/#contact" class="btn-teal lg">להתחיל בחינם</a>
+          <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-teal lg">נסו בעצמכם</a>
         </div>
       </div>
     </section>
@@ -289,7 +364,7 @@
     <div class="wrap footer-inner">
       <div class="footer-brand">
         <a href="/#top" class="brand" aria-label="אורלי, לדף הבית">
-          <img class="brand-logo brand-logo--he brand-logo--footer" loading="lazy" decoding="async" src="assets/brand/orli-wordmark-he.png?v=20261109k" width="480" height="151" alt="אורלי" />
+          <img class="brand-logo brand-logo--he brand-logo--footer" loading="lazy" decoding="async" src="assets/brand/orli-wordmark-he.png?v=20261110a" width="480" height="151" alt="אורלי" />
         </a>
         <p>קביעת פגישות אונליין קלה למרפאות שמריצות אופטימה. מהאתר שלכם, ישר ליומן.</p>
       </div>
@@ -316,7 +391,7 @@
         </div>
         <div class="footer-col">
           <h3 class="footer-col-h">בואו נתחיל</h3>
-          <a data-start-cta data-demo-cta href="/#contact">להתחיל בחינם</a>
+          <a data-start-cta href="https://booking.orliclinic.com/admin/signup">נסו בעצמכם</a>
           <a href="/pricing">חבילות</a>
           <a href="/#compare">למה אורלי</a>
         </div>
@@ -336,6 +411,6 @@
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </a>
 
-  <script src="script.js?v=20261109k"></script>
+  <script src="script.js?v=20261110a"></script>
 </body>
 </html>
