@@ -310,7 +310,7 @@ html[dir="rtl"] .fr-rail-pin { transform: translateX(-50%); }
    above the film's clear layer so it can be pressed. The frame keeps room
    for it under the words. */
 .film-call .film-frame { padding-bottom: 84px; }
-.fp-listen { position: absolute; bottom: 22px; left: 50%; translate: -50% 0; z-index: 6; display: flex; align-items: center; gap: 10px; padding: 8px 18px 8px 10px; border: 0; border-radius: 999px; background: var(--teal-deep); color: #fff; font: inherit; text-align: start; cursor: pointer; transition: scale .4s ease; white-space: nowrap; }
+.fp-listen { position: absolute; bottom: 22px; left: 50%; translate: -50% 0; z-index: 6; display: flex; align-items: center; gap: 10px; padding-block: 8px; padding-inline: 8px 20px; border: 0; border-radius: 999px; background: var(--teal-deep); color: #fff; font: inherit; text-align: start; cursor: pointer; transition: scale .4s ease; white-space: nowrap; }
 .fp-listen:hover { scale: 1.05; }
 @media (hover: none) { .fp-listen:hover { scale: none; } }
 .fp-listen:focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 3px; }
