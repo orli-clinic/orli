@@ -39,7 +39,6 @@ Everything described here is live in production. Last reviewed: 2026-10-18.
 - When nobody at the clinic can pick up, Orli answers the call. The staff answer as usual.
 - She finds a free time, books the appointment into the calendar and confirms it by text message.
 - Anything else reaches the clinic's admin panel as a written request, with the call's transcript.
-- To try it, call 03-376-9623.
 
 ### Follow-ups and reminders
 
@@ -133,7 +132,6 @@ Start free, book a call or send a message from https://orliclinic.com/#contact, 
 - היא מוצאת שעה פנויה, קובעת את הפגישה ביומן ושולחת אישור בהודעה.
 - אורלי קובעת פגישות מסוגי הטיפולים שהמרפאה הגדירה.
 - בקשה לדבר עם הרופא מגיעה למסך הניהול.
-- כדי לנסות: 03-376-9623.
 
 ### תזכורות לביקור הבא
 

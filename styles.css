@@ -1950,6 +1950,21 @@ main > .section:not(.alt):not([hidden]) + .cta-band--tail { padding-top: 0; }
 .phone-call::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--teal); opacity: 0; animation: phone-pulse 2.4s ease-out infinite; }
 @keyframes phone-pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(1.5); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .phone-call::after { animation: none; } }
+/* The home phone as a player (films.js [data-call-play]): the round button
+   plays the sample call, the clock counts it, the pulse rests while it
+   plays. Without JS the native player shows instead of the button. */
+.phone-play { border: 0; cursor: pointer; }
+.phone-play svg { fill: currentColor; stroke: none; }
+.phone-play .phone-ic-pause, .phone-dev.is-playing .phone-ic-play { display: none; }
+.phone-dev.is-playing .phone-ic-pause { display: block; }
+.phone-dev.is-playing .phone-call::after { animation: none; }
+.phone-play:focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 4px; }
+.phone-audio { display: block; width: 100%; margin-top: 14px; }
+/* The pulse grows 50% past the button, so the button keeps the same room
+   for the ring, sitting a little nearer the clock than the note. */
+.phone-play { margin-top: 18px; }
+.phone-dev.is-ready .phone-try-note { margin-top: 32px; }
+.phone-dev.is-ready .phone-audio { display: none; }
 .phone-try-note { margin: 14px 0 0; font-size: .9rem; line-height: 1.5; color: var(--ink-soft); }
 @media (max-width: 920px) {
   .phone-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
@@ -1957,6 +1972,8 @@ main > .section:not(.alt):not([hidden]) + .cta-band--tail { padding-top: 0; }
   .phone-dev-bar { margin-bottom: 12px; }
   .phone-call { width: 54px; height: 54px; margin-top: 10px; }
   .phone-try-note { margin-top: 10px; }
+  .phone-play { margin-top: 14px; }
+  .phone-dev.is-ready .phone-try-note { margin-top: 24px; }
 }
 .fv-call { color: var(--teal-deep); }
 .fv-call svg { width: 30px; height: 30px; animation: fv-ring 2.6s ease-in-out infinite; }

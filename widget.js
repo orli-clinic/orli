@@ -133,7 +133,7 @@
   // summaries. The marketing demo is not the place to put a number on a visit.
   var CARDS = [
     {
-      practitioner: { id: 'demo-prac-1', he: 'ד"ר כהן', en: 'Dr. Cohen' },
+      practitioner: { id: 'demo-prac-1', he: 'ד"ר שגיא', en: 'Dr. Sagi' },
       treatments: [
         {
           id: 'demo-apt-1', he: 'ייעוץ', en: 'Consultation',
@@ -215,7 +215,7 @@
   var DEMO_CHAT = {
     opening: ['שלום! אני העוזר הדיגיטלי של המרפאה. איך אפשר לעזור?', "Hi! I'm the clinic's virtual assistant. How can I help?"],
     replies: [
-      ['ייעוץ ראשוני נמשך כ-30 דקות ואפשר לקבוע אותו אונליין. רוצים שאבדוק מתי ד"ר כהן פנוי/ה?', 'An initial consultation takes about 30 minutes and can be booked online. Shall I check when Dr. Cohen is free?'],
+      ['ייעוץ ראשוני נמשך כ-30 דקות ואפשר לקבוע אותו אונליין. רוצים שאבדוק מתי ד"ר שגיא פנוי/ה?', 'An initial consultation takes about 30 minutes and can be booked online. Shall I check when Dr. Sagi is free?'],
       ['יש תור פנוי ב-{time}. אפשר לקבוע אותו כאן:', 'There is a free time at {time}. You can book it here:'],
     ],
   };
