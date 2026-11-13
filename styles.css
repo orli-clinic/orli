@@ -1960,6 +1960,10 @@ main > .section:not(.alt):not([hidden]) + .cta-band--tail { padding-top: 0; }
 .phone-dev.is-playing .phone-call::after { animation: none; }
 .phone-play:focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 4px; }
 .phone-audio { display: block; width: 100%; margin-top: 14px; }
+/* The pulse grows 50% past the button, so the button keeps the same room
+   above and below it for the ring: centred between the clock and the note. */
+.phone-play { margin-top: 28px; }
+.phone-dev.is-ready .phone-try-note { margin-top: 28px; }
 .phone-dev.is-ready .phone-audio { display: none; }
 .phone-try-note { margin: 14px 0 0; font-size: .9rem; line-height: 1.5; color: var(--ink-soft); }
 @media (max-width: 920px) {
@@ -1968,6 +1972,7 @@ main > .section:not(.alt):not([hidden]) + .cta-band--tail { padding-top: 0; }
   .phone-dev-bar { margin-bottom: 12px; }
   .phone-call { width: 54px; height: 54px; margin-top: 10px; }
   .phone-try-note { margin-top: 10px; }
+  .phone-play, .phone-dev.is-ready .phone-try-note { margin-top: 22px; }
 }
 .fv-call { color: var(--teal-deep); }
 .fv-call svg { width: 30px; height: 30px; animation: fv-ring 2.6s ease-in-out infinite; }
