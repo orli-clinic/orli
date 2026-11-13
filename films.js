@@ -107,8 +107,8 @@
     call: function (root) {
       var lines = Array.prototype.slice.call(root.querySelectorAll('.fp-line'));
       var time = root.querySelector('.fp-time');
-      var PICK = 2.5, TEXT = 29.7, BOOK = 32.4, END = 33.0;
-      var STARTS = [2.5, 8.99, 12.73, 20.11, 21.7, 23.49, 24.49, 27.84, 29.01];
+      var PICK = 2.5, TEXT = 29.2, BOOK = 31.9, END = 32.5;
+      var STARTS = [2.5, 8.49, 12.23, 19.61, 21.2, 22.99, 23.99, 27.34, 28.51];
       function at(t) {
         var on = t >= PICK, booked = t >= BOOK, i = -1;
         if (on && !booked) STARTS.forEach(function (s, n) { if (t >= s) i = n; });
