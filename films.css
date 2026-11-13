@@ -316,7 +316,6 @@ html[dir="rtl"] .fr-rail-pin { transform: translateX(-50%); }
 .fp-listen:focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 3px; }
 .fp-listen svg { flex: none; width: 30px; height: 30px; padding: 7px; border-radius: 50%; background: color-mix(in srgb, #fff 18%, transparent); }
 .fp-listen span { font-size: .92rem; font-weight: 600; line-height: 1.2; }
-.fp-listen small { display: block; font-size: .72rem; font-weight: 400; opacity: .85; }
 .fp-listen .fp-ic-pause, .film-call.is-listening .fp-ic-play { display: none; }
 .film-call.is-listening .fp-ic-pause { display: block; }
 @media (prefers-reduced-motion: reduce) {

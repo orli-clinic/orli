@@ -170,7 +170,7 @@ drives `widget.js` through a controller handle):
   all in `films.css`. Without JS the frames show the full conversation / tiles.
   The call film (`features.html#phone`) also plays a sample call aloud from its own button:
   `assets/audio/sample-call.mp3`, a scripted reenactment voiced by Telnyx Ultra text to speech
-  (Orli in "Talia", the phone agent's own voice; the caller "Gil"), the button saying it is AI.
+  (Orli in "Talia", the phone agent's own voice; the caller "Gil"),.
   The film's `PICK` / `STARTS` / `TEXT` / `BOOK` are the line start times of that recording, so
   a new recording comes with new times and the film's lines rewritten to its words. The home page's
   phone (`[data-call-play]`) plays the same file. Names in it stay neutral (no Cohen, no Mizrahi).
@@ -198,7 +198,7 @@ drives `widget.js` through a controller handle):
 - Scripts wrap themselves in an IIFE (`(function () { 'use strict'; ... })()`) rather
   than using ES modules.
 - Every cache-busting query string (`styles.css?v=…`, `script.js?v=…`, the wordmark)
-  carries the **same** token on every page (`?v=20261113g` today). Bump them all
+  carries the **same** token on every page (`?v=20261113h` today). Bump them all
   together with one search-and-replace when any asset changes; a per-file counter
   drifted across pages and left stale copies in caches. The token is load-bearing:
   `_headers` caches every `.css` and `.js` for a year as `immutable`, so a CSS or
