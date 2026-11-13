@@ -99,33 +99,39 @@
     // A phone call: it rings with nobody free, Orli picks up, the clock runs
     // and each side's words show one line at a time; the meeting is booked,
     // the call ends and the text arrives.
+    //
+    // One timeline, in seconds of assets/audio/sample-call.mp3: `at(t)` draws
+    // the picture at any moment of the call, so the silent loop and the call
+    // played aloud (the film's button) show the same thing. The times are
+    // where each line starts in the recording; remake them with the audio.
     call: function (root) {
       var lines = Array.prototype.slice.call(root.querySelectorAll('.fp-line'));
       var time = root.querySelector('.fp-time');
-      function clock(s) { time.textContent = '00:' + (s < 10 ? '0' : '') + s; }
-      function say(i) {
+      var PICK = 2.5, TEXT = 29.7, BOOK = 32.4, END = 33.0;
+      var STARTS = [2.5, 8.99, 12.73, 20.11, 21.7, 23.49, 24.49, 27.84, 29.01];
+      function at(t) {
+        var on = t >= PICK, booked = t >= BOOK, i = -1;
+        if (on && !booked) STARTS.forEach(function (s, n) { if (t >= s) i = n; });
+        root.classList.toggle('is-ringing', t > 0.05 && !on);
+        root.classList.toggle('is-on', on);
+        root.classList.toggle('is-booked', booked);
+        root.classList.toggle('is-texted', t >= TEXT);
         lines.forEach(function (l, n) { l.classList.toggle('is-in', n === i); });
         root.classList.toggle('is-talking', i >= 0);
         root.classList.toggle('is-caller', i >= 0 && lines[i].classList.contains('me'));
+        var s = on ? Math.floor(t - PICK) : 0;
+        time.textContent = '00:' + (s < 10 ? '0' : '') + s;
       }
-      var beats = [
-        [300, function () { root.classList.add('is-ringing'); }],
-        [2800, function () { root.classList.remove('is-ringing'); root.classList.add('is-on'); }],
-        [3300, function () { say(0); }],
-        [7300, function () { say(1); }],
-        [10000, function () { say(2); }],
-        [13600, function () { say(3); }],
-        [15400, function () { say(-1); root.classList.add('is-booked'); }],
-        [16700, function () { root.classList.add('is-texted'); }]
-      ];
-      for (var s = 0; s <= 12; s++) {
-        (function (n) { beats.push([2800 + n * 1000, function () { clock(n); }]); })(s);
-      }
+      var marks = [0.3, PICK, TEXT, BOOK].concat(STARTS);
+      for (var s = 1; PICK + s < BOOK; s++) marks.push(PICK + s);
       return {
-        beats: beats,
+        beats: marks.map(function (m) { return [Math.round(m * 1000), function () { at(m); }]; }),
         hold: 4500,
-        reset: function () { root.classList.remove('is-ringing', 'is-on', 'is-booked', 'is-texted'); say(-1); clock(0); },
-        settle: function () { root.classList.remove('is-ringing'); root.classList.add('is-on', 'is-booked', 'is-texted'); say(-1); clock(12); }
+        at: at,
+        audio: root.querySelector('.fp-audio'),
+        button: root.querySelector('.fp-listen'),
+        reset: function () { at(0); },
+        settle: function () { at(END); }
       };
     },
 
@@ -221,10 +227,16 @@
     var timers = [];
     var visible = false;
     var playing = false;
+    var listening = false;
     var after = function (ms, fn) { timers.push(setTimeout(fn, ms)); };
-    function stop() { timers.forEach(clearTimeout); timers = []; playing = false; film.reset(); }
+    function clear() { timers.forEach(clearTimeout); timers = []; playing = false; }
+    function stop() {
+      clear();
+      if (listening) { listening = false; film.audio.pause(); }
+      film.reset();
+    }
     function play() {
-      if (playing) return;
+      if (playing || listening) return;
       playing = true;
       var last = 0;
       film.beats.forEach(function (b) { after(b[0], b[1]); last = Math.max(last, b[0]); });
@@ -234,17 +246,56 @@
         if (visible) after(700, play);
       });
     }
-    function settle() { stop(); film.settle(); root.classList.add('is-done'); }
+    function settle() { if (listening) return; stop(); film.settle(); root.classList.add('is-done'); }
+    function isStill() { return still.matches || document.documentElement.classList.contains('a11y-still'); }
+
+    // A film with a recording (the call) has a button that plays it aloud:
+    // the loop stops, and the picture follows the sound frame by frame.
+    // At the end it rests on the finished picture, then the loop resumes.
+    if (film.audio && film.button) {
+      var audio = film.audio, button = film.button;
+      var idle = 'השמעת השיחה בקול';
+      button.hidden = false;
+      button.setAttribute('aria-label', idle);
+      var follow = function () {
+        if (!listening || audio.paused) return;
+        film.at(audio.currentTime);
+        requestAnimationFrame(follow);
+      };
+      button.addEventListener('click', function () {
+        if (listening && !audio.paused) { audio.pause(); return; }
+        if (!listening) {
+          clear();
+          root.classList.remove('is-done');
+          listening = true;
+          audio.currentTime = 0;
+          film.reset();
+        }
+        audio.play().catch(function () { listening = false; root.classList.remove('is-listening'); });
+      });
+      audio.addEventListener('play', function () {
+        root.classList.add('is-listening'); button.setAttribute('aria-label', 'עצירת השיחה'); follow();
+      });
+      audio.addEventListener('pause', function () {
+        root.classList.remove('is-listening'); button.setAttribute('aria-label', idle);
+      });
+      audio.addEventListener('ended', function () {
+        listening = false;
+        film.settle();
+        if (isStill()) { root.classList.add('is-done'); return; }
+        after(film.hold, function () { if (!listening && visible) { film.reset(); play(); } });
+      });
+    }
 
     window.addEventListener('orli:motion-still', settle);
     window.addEventListener('orli:motion-go', function () {
-      if (still.matches) return;
+      if (still.matches || listening) return;
       root.classList.remove('is-done');
       stop();
       if (visible) play();
     });
 
-    if (still.matches || document.documentElement.classList.contains('a11y-still')) {
+    if (isStill()) {
       settle();
     } else if ('IntersectionObserver' in window) {
       var need = Math.min(0.6, Math.max(0.2, (window.innerHeight * 0.7) / Math.max(1, root.offsetHeight)));
@@ -265,6 +316,28 @@
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-film]'), mount);
+
+  // The home page's phone: the same sample call as the call film, played
+  // from the round button, its clock counting the call. The native player
+  // stays for a page without JS.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-call-play]'), function (root) {
+    var audio = root.querySelector('.phone-audio');
+    var button = root.querySelector('.phone-play');
+    var clock = root.querySelector('.phone-clock');
+    var idle = clock.textContent;
+    function show(s) { s = Math.floor(s); clock.textContent = '00:' + (s < 10 ? '0' : '') + s; }
+    audio.controls = false;
+    button.hidden = false;
+    root.classList.add('is-ready');
+    button.addEventListener('click', function () {
+      if (audio.paused) audio.play(); else audio.pause();
+    });
+    audio.addEventListener('play', function () { root.classList.add('is-playing'); button.setAttribute('aria-label', 'עצירת השיחה'); });
+    audio.addEventListener('pause', function () { root.classList.remove('is-playing'); button.setAttribute('aria-label', 'השמעת שיחה לדוגמה'); });
+    audio.addEventListener('timeupdate', function () { show(audio.currentTime); });
+    audio.addEventListener('ended', function () { audio.currentTime = 0; clock.textContent = idle; });
+  });
+
 
   // The chapter links under the title: the word of the chapter on screen
   // is marked, and one teal line slides under it from word to word, so the

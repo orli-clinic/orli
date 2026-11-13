@@ -38,5 +38,8 @@
   Cache-Control: public, max-age=604800
 /assets/customers/*
   Cache-Control: public, max-age=604800
+# The sample call on features.html, linked without the token: a week.
+/assets/audio/*
+  Cache-Control: public, max-age=604800
 /favicon.ico
   Cache-Control: public, max-age=604800
