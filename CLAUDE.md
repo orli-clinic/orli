@@ -28,10 +28,19 @@ Seven pages, all sharing the same header/footer shell and `styles.css`:
   `films.js` + `films.css` (`[data-film="call|chat|remind|stats|outage"]`). Labels in the
   analytics and outage films are the admin's own (`orli-calendar/admin/src/i18n.ts`);
   the numbers are samples. A sticky row of chapter links sits under the title.
-- **`pricing.html`** — three monthly tiers (Booking / Growth / AI receptionist, the
-  prices Ron set on 2026-10-13), what every tier includes, how onboarding goes, and
-  three price questions. Wording follows Israeli SaaS pricing pages: `₪X לחודש + מע״מ`
-  with the VAT footnote, `כל מה שב-X, וגם:` for the tier delta.
+- **`pricing.html`** — four offerings with monthly prices (booking widget 550, AI on
+  the website 750, AI on the phone 950, all included 2,100 — 2026-11-14), what each
+  includes, and how onboarding goes. Prices are written `X ₪ לחודש` with **no
+  מע״מ**: clinics pay through Paddle, the merchant of record, which adds no Israeli
+  VAT, so the figure shown is the figure charged. The same four numbers are
+  `LIST_PRICES_ILS` in `orli-calendar/api/packages/booking/billing.py` and the prices
+  in Paddle; change all three together. `כל מה שב-X, וגם:` for the tier delta.
+- **`terms.html`** and **`refund.html`** — the terms, and the refund policy Paddle's
+  domain review requires (a full refund within 14 days of any charge, requested at
+  paddle.net or from us). Both name Paddle as reseller and Merchant of Record with
+  Paddle's own English sentence; keep it word for word. The seller is named "אורלי" /
+  Orli; when the company is registered, its exact legal name (and, in `privacy.html`,
+  its registered address) must match the Paddle account.
 - **`integration.html`** — customization (branding presets, email content, all done
   through the clinic's own admin panel, no code) plus the embed snippet and
   scope/security/Optima-sync facts. Linked from primary nav (`התאמה אישית`) since the
@@ -198,7 +207,7 @@ drives `widget.js` through a controller handle):
 - Scripts wrap themselves in an IIFE (`(function () { 'use strict'; ... })()`) rather
   than using ES modules.
 - Every cache-busting query string (`styles.css?v=…`, `script.js?v=…`, the wordmark)
-  carries the **same** token on every page (`?v=20261113k` today). Bump them all
+  carries the **same** token on every page (`?v=20261114b` today). Bump them all
   together with one search-and-replace when any asset changes; a per-file counter
   drifted across pages and left stale copies in caches. The token is load-bearing:
   `_headers` caches every `.css` and `.js` for a year as `immutable`, so a CSS or
