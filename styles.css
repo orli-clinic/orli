@@ -1738,6 +1738,10 @@ main > .testimonial[data-lock-stop] { min-height: 0; max-height: none; justify-c
 @media (max-width: 920px) {
   .pc-grid--four { grid-template-columns: 1fr; }
   .pc-card--wide { grid-template-columns: 1fr; padding: 34px 22px 24px; }
+  /* The bundle stays last, as on a desktop: "instead of 2,250" only reads
+     after the three prices it adds up. (.pc-card--hi's order: -1 is for the
+     three-package cards, where the recommended one leads.) */
+  .pc-grid--four .pc-card--hi { order: 0; }
 }
 @media (max-width: 920px) { .pc-grid--four { grid-template-columns: 1fr; } }
 /* Narrow desktops keep the three in one row (two columns left the third
