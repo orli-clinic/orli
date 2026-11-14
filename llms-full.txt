@@ -77,12 +77,14 @@ Everything described here is live in production. Last reviewed: 2026-10-18.
 
 ### Setup
 
-- Self-service, in minutes: sign up with the clinic name and an email, connect Optima (practitioners import in one click), set working hours and services in the admin, paste one line into the website. Launch offer: Orli is free, no commitment, no payment details.
+- Self-service, in minutes: sign up with the clinic name and an email, connect Optima (practitioners import in one click), set working hours and services in the admin, paste one line into the website. Try Orli with no commitment: no payment details to sign up.
 - On the AI package: give the website address, let Orli read it, check the facts, set the tone and handoff topics, try it in the test tab.
 
 ### Packages
 
 The packages are by what sits on the clinic's site. Every package has unlimited practitioners and users, the admin panel, branding and emails, reminders and treatment sequences without limit, staff notifications and in-panel support.
+
+Prices, a month, no VAT added (clinics pay through Paddle, the merchant of record, which adds no Israeli VAT): the booking widget ₪550, AI on the website ₪750, AI on the phone ₪950, or all included ₪2,100 instead of ₪2,250. A monthly subscription with no commitment, cancelled at the end of any month; refunds within 14 days of a charge (https://orliclinic.com/refund).
 
 - Booking: online booking from the clinic's site, straight into Optima, patient rescheduling and cancelling with code verification, working through Optima outages, and the booking figures in analytics.
 - AI agent (סוכן AI): the chat on the site. The agent answers only from the clinic's own information, learns from the clinic's website, hands callbacks to the staff with the conversation behind them, unlimited conversations, and the agent's figures in analytics. No online booking on the site, and the agent does not book.
@@ -96,7 +98,7 @@ Payments, online intake forms, patient accounts and multi-location clinics. Remi
 
 ### Getting in touch
 
-Start free, book a call or send a message from https://orliclinic.com/#contact, or write to ron@orliclinic.com or daniel@orliclinic.com.
+Sign up, book a call or send a message from https://orliclinic.com/#contact, or write to ron@orliclinic.com or daniel@orliclinic.com.
 
 ## עברית
 
@@ -157,11 +159,13 @@ Start free, book a call or send a message from https://orliclinic.com/#contact, 
 
 ### הקמה
 
-- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. מבצע השקה: אורלי בחינם, ללא התחייבות ובלי פרטי תשלום.
+- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. נסו את אורלי ללא התחייבות: בלי פרטי תשלום בהרשמה.
 
 ### חבילות
 
 החבילות הן לפי מה שיושב באתר המרפאה. בכל חבילה: מטפלים ומשתמשים ללא הגבלה, מסך ניהול, עיצוב ומיילים, תזכורות ורצפי טיפול ללא הגבלה, התראות ותמיכה.
+
+מחירים לחודש, בלי מע״מ (התשלום דרך Paddle, שלא מוסיפה מע״מ ישראלי): וידג׳ט קביעת פגישות 550 ₪, AI באתר 750 ₪, AI בטלפון 950 ₪, או הכול כלול ב־2,100 ₪ במקום 2,250 ₪. מנוי חודשי בלי התחייבות שאפשר להפסיק בסוף כל חודש, והחזר כספי בתוך 14 יום מכל חיוב (https://orliclinic.com/refund).
 
 - Booking: קביעת תורים אונליין מהאתר, ישר לאופטימה, שינוי וביטול על ידי המטופל עם אימות בקוד, עובד גם כשאופטימה לא זמינה, ונתוני קביעת התורים.
 - סוכן AI (AI agent): סוכן AI באתר שעונה רק מהמידע של המרפאה, לומד מהאתר שלכם, מעביר פניות לצוות עם השיחה מאחוריהן, שיחות ללא הגבלה, ונתוני הסוכן. בלי קביעת תורים אונליין מהאתר, והסוכן לא קובע.

@@ -13,8 +13,8 @@ What a clinic gets (all live in production):
 - A phone agent (paid add-on to the plans with the AI agent): when nobody at the clinic can pick up, Orli answers the call, finds a free time, books the appointment into the calendar and confirms it by text message. Anything else reaches the clinic's admin panel as a written request with the call's transcript. The clinic's staff answer as usual.
 - Follow-up reminders by email ("every N months for treatment X", and step-by-step treatment sequences) with a one-click booking link.
 - A clinic admin panel: calendar, practitioners imported from Optima, working hours, services, widget colours, logo and font, email templates, users, notifications, analytics, and support from inside the panel.
-- Setup is self-service, in minutes: sign up, connect Optima, paste one line into the website. Launch offer: Orli is free, no commitment, no payment details.
-- Three plans by what sits on the clinic's site: Booking (online booking from the site), AI agent (the chat, answers and callbacks only) and AI Booking (both, and the agent books). Details on the packages page.
+- Setup is self-service, in minutes: sign up, connect Optima, paste one line into the website. Try Orli with no commitment: no payment details to sign up.
+- Prices, a month, no VAT added: the booking widget ₪550, AI on the website ₪750, AI on the phone ₪950, or all included ₪2,100 (instead of ₪2,250). Billed monthly through Paddle, the merchant of record; cancel at the end of any month. Details on the packages page.
 
 Not offered today: payments, online intake forms, patient accounts, multi-location clinics. Reminders by SMS and WhatsApp are coming soon. Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
 
@@ -29,8 +29,8 @@ Not offered today: payments, online intake forms, patient accounts, multi-locati
 - סוכנת טלפונית (תוספת בתשלום לחבילות עם סוכן AI): כשאף אחד במרפאה לא יכול לענות, אורלי עונה לשיחה, מוצאת שעה פנויה, קובעת את הפגישה ביומן ושולחת אישור בהודעה. היא קובעת פגישות מסוגי הטיפולים שהמרפאה הגדירה, ובקשה לדבר עם הרופא מגיעה למסך הניהול. אפשר שתענה לכל שיחות המרפאה, או רק כשאף אחד לא עונה.
 - תזכורות לביקור הבא: מייל אוטומטי בנוסח של המרפאה, עם קישור לקביעת תור בלחיצה.
 - מסך ניהול למרפאה: יומן, מטפלים שמיובאים מאופטימה, שעות, טיפולים, עיצוב הווידג׳ט והמיילים, משתמשים, התראות לצוות ונתונים.
-- הקמה עצמית בכמה דקות: נרשמים, מתקינים את התוכנה שלנו על מחשב האופטימה, ומדביקים שורה אחת באתר. מבצע השקה: אורלי בחינם, ללא התחייבות ובלי פרטי תשלום.
-- שלוש חבילות, לפי מה שיושב באתר: Booking, סוכן AI, ו־AI Booking שמשלבת את שניהם.
+- הקמה עצמית בכמה דקות: נרשמים, מתקינים את התוכנה שלנו על מחשב האופטימה, ומדביקים שורה אחת באתר. נסו את אורלי ללא התחייבות: בלי פרטי תשלום בהרשמה.
+- מחירים לחודש, בלי מע״מ: וידג׳ט קביעת פגישות 550 ₪, AI באתר 750 ₪, AI בטלפון 950 ₪, או הכול כלול ב־2,100 ₪ (במקום 2,250 ₪). מנוי חודשי דרך Paddle, אפשר להפסיק בסוף כל חודש.
 
 היום אורלי מתחברת לאופטימה. תזכורות ב־SMS ובוואטסאפ יגיעו בקרוב. מרפאה שעובדת עם יומן או תוכנה אחרת יכולה לקבוע איתנו שיחה, ונבדוק איך לחבר גם אותם. אין כרגע תשלומים, טפסי קליטה, חשבונות מטופלים או ניהול כמה סניפים.
 
@@ -39,7 +39,7 @@ Not offered today: payments, online intake forms, patient accounts, multi-locati
 - [Home / ראשי](https://orliclinic.com/): what Orli is, the booking flow step by step with a live demo of the widget, a comparison of the clinic with and without Orli, and the FAQ.
 - [Features / היכולות](https://orliclinic.com/features): every capability: online booking, the AI receptionist, follow-up reminders, analytics, working through Optima outages, and the admin.
 - [Admin panel / מסך הניהול](https://orliclinic.com/panel): a screen-by-screen tour of the clinic's admin panel: calendar, AI agent, analytics, practitioners and services, automations, widget design, email templates, settings, support.
-- [Packages / חבילות](https://orliclinic.com/pricing): the packages (Booking, AI agent, AI Booking), what each includes, the launch offer, and how setup goes.
+- [Packages / חבילות](https://orliclinic.com/pricing): the four offerings and their monthly prices (booking widget, AI on the website, AI on the phone, all included), what each includes, and how setup goes.
 - [Embedding and customisation / מדריך טכני להטמעה](https://orliclinic.com/integration): branding without code, the one-line embed snippet, what the widget touches on the clinic's site, patient data handling, and how bookings reach Optima.
 - [About / אודות](https://orliclinic.com/about): why Orli was built and the principles behind it.
 

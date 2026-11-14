@@ -1740,10 +1740,15 @@ main > .testimonial[data-lock-stop] { min-height: 0; max-height: none; justify-c
   .pc-card--wide { grid-template-columns: 1fr; padding: 34px 22px 24px; }
 }
 @media (max-width: 920px) { .pc-grid--four { grid-template-columns: 1fr; } }
+/* Narrow desktops keep the three in one row (two columns left the third
+   card alone with an empty cell beside it): tighter cards and a smaller
+   figure instead. */
 @media (min-width: 921px) and (max-width: 1180px) {
-  .pc-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .pc-grid--four .pc-card { margin-top: 0; }
+  .pc-grid--four .pc-card { margin-top: 0; padding-inline: 16px; }
   .pc-grid--four .pc-card--hi { transform: none; }
+  .pc-grid--four .pc-price b { font-size: 2.5rem; }
+  .pc-grid--four .pc-list li { font-size: .86rem; }
+  .pc-card--wide { gap: 12px 22px; padding-inline: 22px; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
