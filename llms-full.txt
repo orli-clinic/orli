@@ -2,7 +2,7 @@
 
 > Orli is an online booking add-on for clinics that run the Optima (אופטימה) scheduling system. Patients book, reschedule and cancel appointments on the clinic's own website, every booking is written straight into the clinic's Optima calendar in real time, and an optional AI receptionist answers patients from the clinic's own information and books in the chat. Website: https://orliclinic.com. The English section comes first; the Hebrew section below it carries the same facts.
 
-Everything described here is live in production. Last reviewed: 2026-10-18.
+Everything described here is live in production. Last reviewed: 2026-11-15.
 
 ## English
 
@@ -77,7 +77,7 @@ Everything described here is live in production. Last reviewed: 2026-10-18.
 
 ### Setup
 
-- Self-service, in minutes: sign up with the clinic name and an email, connect Optima (practitioners import in one click), set working hours and services in the admin, paste one line into the website. Try Orli with no commitment: no payment details to sign up.
+- Self-service, in minutes: sign up with the clinic name and an email, connect Optima (practitioners import in one click), set working hours and services in the admin, paste one line into the website. A 14-day trial, counted from the day the clinic finishes setup with its calendar connected: no payment details needed, and nothing is charged when it ends.
 - On the AI package: give the website address, let Orli read it, check the facts, set the tone and handoff topics, try it in the test tab.
 
 ### Packages
@@ -159,7 +159,7 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 ### הקמה
 
-- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. נסו את אורלי ללא התחייבות: בלי פרטי תשלום בהרשמה.
+- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. תקופת ניסיון של 14 יום, מהיום שבו המרפאה מסיימת את ההקמה והיומן שלה מחובר: בלי פרטי תשלום, ובסוף הניסיון לא גובים כלום.
 
 ### חבילות
 

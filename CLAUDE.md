@@ -35,6 +35,12 @@ Seven pages, all sharing the same header/footer shell and `styles.css`:
   VAT, so the figure shown is the figure charged. The same four numbers are
   `LIST_PRICES_ILS` in `orli-calendar/api/packages/booking/billing.py` and the prices
   in Paddle; change all three together. `כל מה שב-X, וגם:` for the tier delta.
+  The offer is a 14-day trial from the day the clinic finishes setup with its
+  calendar connected, with no payment details and nothing charged when it ends
+  (`TRIAL_DAYS` in the same `billing.py`). The copy calls it
+  `תקופת ניסיון של 14 יום`, with no `בחינם`, and names that day as it is, never
+  `עולה לאוויר`. `terms.html` states its rules, and the app's `TERMS_VERSION`
+  (`booking/terms.py`) names that page's version line.
 - **`terms.html`** and **`refund.html`** — the terms, and the refund policy Paddle's
   domain review requires (a full refund within 14 days of any charge, requested at
   paddle.net or from us). Both name Paddle as reseller and Merchant of Record with
