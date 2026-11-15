@@ -77,7 +77,7 @@ Everything described here is live in production. Last reviewed: 2026-10-18.
 
 ### Setup
 
-- Self-service, in minutes: sign up with the clinic name and an email, connect Optima (practitioners import in one click), set working hours and services in the admin, paste one line into the website. Try Orli with no commitment: no payment details to sign up.
+- Self-service, in minutes: sign up with the clinic name and an email, connect Optima (practitioners import in one click), set working hours and services in the admin, paste one line into the website. Try Orli free for 14 days, counted from the day the clinic goes live: no payment details needed, and nothing is charged when the trial ends.
 - On the AI package: give the website address, let Orli read it, check the facts, set the tone and handoff topics, try it in the test tab.
 
 ### Packages
@@ -159,7 +159,7 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 ### הקמה
 
-- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. נסו את אורלי ללא התחייבות: בלי פרטי תשלום בהרשמה.
+- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. נסו את אורלי 14 יום בחינם, מהיום שהמרפאה עולה לאוויר: בלי פרטי תשלום, ובסוף הניסיון לא גובים כלום מעצמו.
 
 ### חבילות
 
