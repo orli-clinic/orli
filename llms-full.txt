@@ -2,7 +2,7 @@
 
 > Orli is an online booking add-on for clinics that run the Optima (אופטימה) scheduling system. Patients book, reschedule and cancel appointments on the clinic's own website, every booking is written straight into the clinic's Optima calendar in real time, and an optional AI receptionist answers patients from the clinic's own information and books in the chat. Website: https://orliclinic.com. The English section comes first; the Hebrew section below it carries the same facts.
 
-Everything described here is live in production. Last reviewed: 2026-10-18.
+Everything described here is live in production. Last reviewed: 2026-11-15.
 
 ## English
 
@@ -159,7 +159,7 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 ### הקמה
 
-- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. נסו את אורלי 14 יום בחינם, מהיום שהמרפאה עולה לאוויר: בלי פרטי תשלום, ובסוף הניסיון לא גובים כלום מעצמו.
+- עצמית, בכמה דקות: נרשמים עם שם המרפאה ואימייל, מתקינים את התוכנה שלנו על מחשב האופטימה (המטפלים מיובאים לבד), מגדירים שעות וטיפולים במסך הניהול, ומדביקים שורה אחת באתר. נסו את אורלי 14 יום בחינם, מהיום שהמרפאה עולה לאוויר: בלי פרטי תשלום, ובסוף הניסיון לא גובים כלום.
 
 ### חבילות
 
