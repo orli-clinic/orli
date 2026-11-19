@@ -378,8 +378,8 @@
             (LANG === 'he' ? 'Switch to English' : 'החלף לעברית') + '">' +
             globeSvg + '<span>' + (LANG === 'he' ? 'עב' : 'EN') + '</span></button>' +
           (showProgress
-            ? '<div class="obw-progress" role="progressbar" aria-valuemin="0" aria-valuemax="' + STEP_ORDER.length + '"' +
-              ' aria-valuenow="' + idx + '" aria-valuetext="' + esc(labelText) + '">' +
+            ? '<div class="obw-progress" role="progressbar" aria-valuemin="1" aria-valuemax="' + STEP_ORDER.length + '"' +
+              ' aria-valuenow="' + (idx + 1) + '" aria-valuetext="' + esc(labelText) + '">' +
               segs + '<span class="obw-visually-hidden">' + esc(labelText) + '</span></div>'
             : '') +
         '</div>';
