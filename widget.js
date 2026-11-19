@@ -87,7 +87,7 @@
       'אין זמנים פנויים בטווח התאריכים הזמין לקביעה.',
       'No available times in the bookable date range.',
     ],
-    showNextMonth: ['הצג את החודש הבא', 'Show next month'],
+    showNextMonth: ['הצגת החודש הבא', 'Show next month'],
     otpSentTo: ['שלחנו קוד אימות לאימייל {email}', 'We sent a verification code to {email}'],
     otpCode: ['קוד אימות', 'Verification code'],
     sendOtp: ['שלח קוד לאימות', 'Send code to my email'],
