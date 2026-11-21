@@ -59,9 +59,6 @@
     chooseDate: ['בחרו תאריך', 'Choose a date'],
     chooseTime: ['בחרו שעה', 'Choose a time'],
     yourDetails: ['הפרטים שלכם', 'Your details'],
-    // DELIBERATE DIVERGENCE: i18n.ts still says "התור" here; the site's word
-    // for a booking is "פגישה" everywhere, so the demo follows the site until
-    // the real widget's strings catch up.
     confirmTitle: ['אישור הפגישה', 'Confirm appointment'],
     bookedTitle: ['הפגישה נקבעה!', 'Appointment booked!'],
     firstName: ['שם פרטי', 'First name'],
@@ -79,7 +76,6 @@
     back: ['חזרה', 'Back'],
     continue: ['המשך', 'Continue'],
     confirm: ['אישור הזמנה', 'Confirm booking'],
-    // Same divergence as confirmTitle: the site says פגישה, never תור.
     booking: ['קובע פגישה…', 'Booking…'],
     nextMonth: ['חודש הבא', 'Next month'],
     prevMonth: ['חודש קודם', 'Previous month'],
@@ -87,7 +83,7 @@
       'אין זמנים פנויים בטווח התאריכים הזמין לקביעה.',
       'No available times in the bookable date range.',
     ],
-    showNextMonth: ['הצג את החודש הבא', 'Show next month'],
+    showNextMonth: ['הצגת החודש הבא', 'Show next month'],
     otpSentTo: ['שלחנו קוד אימות לאימייל {email}', 'We sent a verification code to {email}'],
     otpCode: ['קוד אימות', 'Verification code'],
     sendOtp: ['שלח קוד לאימות', 'Send code to my email'],
@@ -98,12 +94,12 @@
     otpDemoHint: ['לצורך ההדגמה: כל 6 ספרות יתקבלו', 'Demo: any 6-digit code works'],
     // SOURCE: i18n.ts — the clinic agent's chat panel (orli-calendar #279).
     askClinic: ['שאל/י את המרפאה', 'Ask the clinic'],
-    askClinicHint: ['שאלות על טיפולים, שעות ומחירים — ותורים פנויים', 'Treatments, hours and prices — and free times'],
+    askClinicHint: ['שאלות על טיפולים, שעות ומחירים — ופגישות פנויות', 'Treatments, hours and prices — and free times'],
     chatTitle: ['שיחה עם המרפאה', 'Chat with the clinic'],
     chatPlaceholder: ['כתבו הודעה…', 'Write a message…'],
     chatSend: ['שליחה', 'Send'],
     chatTyping: ['מקליד/ה…', 'Typing…'],
-    chatBookThisTime: ['לקביעת התור הזה', 'Book this time'],
+    chatBookThisTime: ['לקביעת הפגישה הזו', 'Book this time'],
     // DEMO-ONLY: the real SuccessStep.vue ends the flow with no controls,
     // because there the patient is finished and closes the widget. On a
     // marketing page the success scene is a dead end instead, so the demo
@@ -216,7 +212,7 @@
     opening: ['שלום! אני העוזר הדיגיטלי של המרפאה. איך אפשר לעזור?', "Hi! I'm the clinic's virtual assistant. How can I help?"],
     replies: [
       ['ייעוץ ראשוני נמשך כ-30 דקות ואפשר לקבוע אותו אונליין. רוצים שאבדוק מתי ד"ר שגיא פנוי/ה?', 'An initial consultation takes about 30 minutes and can be booked online. Shall I check when Dr. Sagi is free?'],
-      ['יש תור פנוי ב-{time}. אפשר לקבוע אותו כאן:', 'There is a free time at {time}. You can book it here:'],
+      ['יש פגישה פנויה ב-{time}. אפשר לקבוע אותה כאן:', 'There is a free time at {time}. You can book it here:'],
     ],
   };
 
@@ -378,8 +374,8 @@
             (LANG === 'he' ? 'Switch to English' : 'החלף לעברית') + '">' +
             globeSvg + '<span>' + (LANG === 'he' ? 'עב' : 'EN') + '</span></button>' +
           (showProgress
-            ? '<div class="obw-progress" role="progressbar" aria-valuemin="0" aria-valuemax="' + STEP_ORDER.length + '"' +
-              ' aria-valuenow="' + idx + '" aria-valuetext="' + esc(labelText) + '">' +
+            ? '<div class="obw-progress" role="progressbar" aria-valuemin="1" aria-valuemax="' + STEP_ORDER.length + '"' +
+              ' aria-valuenow="' + (idx + 1) + '" aria-valuetext="' + esc(labelText) + '">' +
               segs + '<span class="obw-visually-hidden">' + esc(labelText) + '</span></div>'
             : '') +
         '</div>';
