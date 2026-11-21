@@ -2,7 +2,7 @@
 
 > Orli is an online booking add-on for clinics that run the Optima (אופטימה) scheduling system. Patients book, reschedule and cancel appointments on the clinic's own website, every booking is written straight into the clinic's Optima calendar in real time, and an optional AI receptionist answers patients from the clinic's own information and books in the chat. Website: https://orliclinic.com. The English section comes first; the Hebrew section below it carries the same facts.
 
-Everything described here is live in production. Last reviewed: 2026-11-17.
+Everything described here is live in production. Last reviewed: 2026-11-21.
 
 ## English
 
@@ -42,10 +42,11 @@ Everything described here is live in production. Last reviewed: 2026-11-17.
 
 ### Follow-ups and reminders
 
-- Reminders such as "every 6 months for a cleaning" invite the patient back by email, with a one-click booking link.
+- Reminders such as "every 6 months for a cleaning" invite the patient back by SMS to a mobile when the clinic can text, else by email, with a one-click booking link.
 - Treatment sequences: invite to the next step of a course after a set time, step by step.
-- Pre-visit health statement on WhatsApp: before a visit, the patient gets a message on WhatsApp from the clinic's own WhatsApp Business number, with a link to a health statement (הצהרת בריאות) they fill in and sign on a page Orli hosts. The message holds only the clinic's name, the visit's date and time and a link, never health information; if WhatsApp cannot deliver it, an email is sent instead. The answers and signature are stored encrypted for the clinic and readable only by the clinic's own accounts. A patient who replies "הסר" stops receiving automated WhatsApp messages from that clinic. The clinic confirms its patients agreed to hear from it on WhatsApp.
-- Sent only to patients who agreed, with a one-click opt-out page.
+- Forms before or after a visit: the clinic builds its own forms (a health statement, הצהרת בריאות, is the common case; a survey or an aftercare check works too), and the patient gets a link to fill the form in, and sign it when it asks for a signature, on a page Orli hosts. A form before the visit goes on WhatsApp from the clinic's own WhatsApp Business number, else by SMS from the clinic's own number or name, else by email; a form after the visit goes by SMS, else by email. The message holds the patient's first name, the clinic's name, the visit's date and time and the link, never the answers. The answers and signature are stored encrypted, readable by the clinic's accounts that reach that practitioner and by Orli staff for support, every view logged. A patient who replies "הסר" on WhatsApp stops receiving automated WhatsApp messages from that clinic. The clinic confirms its patients agreed to hear from it on WhatsApp.
+- Appointment reminders: a set number of hours before every visit in the clinic's calendar (48 by default), by SMS, else by email, with a link to change the visit when it was booked through Orli.
+- Invitations to come back go only to patients who agreed, with a one-click opt-out page.
 
 ### The clinic's admin panel
 
@@ -63,7 +64,7 @@ Everything described here is live in production. Last reviewed: 2026-11-17.
 
 - Appointments are created, moved and cancelled in the clinic's real Optima calendar, in real time, not by a nightly sync. Existing patient records in Optima are reused, never duplicated.
 - If Optima is unreachable, booking keeps working: free time comes from Orli's own hourly and nightly copy of the calendar, the booking is kept, and it is written into Optima once Optima is back. If the time was taken meanwhile, the clinic is told.
-- Each clinic's Optima credentials are encrypted at rest; every screen and route is scoped to the clinic.
+- Orli keeps no Optima login: the clinic installs Orli Connect on its Optima computer, which sends Orli the calendar and writes the bookings into it. Every screen and route is scoped to the clinic.
 
 ### Embedding and patient data
 
@@ -95,7 +96,7 @@ Prices, a month, no VAT added: the booking widget ₪550, AI on the website ₪7
 
 ### Not offered today
 
-Payments, general intake forms (the pre-visit health statement is offered, see above), patient accounts and multi-location clinics. SMS is not a channel for reminders or health statements (the phone agent still confirms a phone booking by text message). Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
+Payments, patient accounts and multi-location clinics. Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
 
 ### Getting in touch
 
@@ -138,10 +139,11 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 ### תזכורות לביקור הבא
 
-- תזכורת חוזרת, למשל "ניקוי אבנית כל 6 חודשים": מייל אוטומטי בנוסח של המרפאה, עם קישור לקביעת פגישה בלחיצה.
+- חזרה לטיפול, למשל "ניקוי אבנית כל 6 חודשים": SMS לנייד כשהמרפאה יכולה לשלוח, ואחרת מייל, בנוסח של המרפאה, עם קישור לקביעת פגישה בלחיצה.
 - רצף טיפולים: הזמנה לשלב הבא, לפי סדר.
-- הצהרת בריאות לפני פגישה, בוואטסאפ: לפני הביקור המטופל מקבל הודעה בוואטסאפ ממספר הוואטסאפ העסקי של המרפאה עצמה, עם קישור להצהרת בריאות שהוא ממלא וחותם עליה בעמוד שאורלי מארחת. ההודעה כוללת רק את שם המרפאה, את מועד הפגישה ואת הקישור, ולא מידע על בריאות. אם וואטסאפ לא מצליח למסור אותה, נשלח אימייל במקומה. התשובות והחתימה נשמרות מוצפנות בשביל המרפאה, ורק החשבונות של המרפאה עצמה יכולים לקרוא אותן. מטופל שעונה ״הסר״ מפסיק לקבל הודעות וואטסאפ אוטומטיות מהמרפאה הזו. המרפאה מאשרת שהמטופלים שלה הסכימו לקבל ממנה הודעות בוואטסאפ.
-- רק למי שהסכים, עם הסרה בלחיצה אחת.
+- טפסים לפני פגישה או אחריה: המרפאה בונה טפסים משלה (בדרך כלל הצהרת בריאות, אבל גם סקר או מעקב אחרי טיפול), והמטופל מקבל קישור למלא את הטופס, ולחתום כשהטופס מבקש חתימה, בעמוד שאורלי מארחת. טופס לפני הפגישה נשלח בוואטסאפ ממספר הוואטסאפ העסקי של המרפאה, ואם אי אפשר, ב־SMS מהמספר או מהשם של המרפאה, ואם גם זה לא, באימייל. טופס אחרי הפגישה נשלח ב־SMS, ואם אי אפשר, באימייל. ההודעה כוללת את השם הפרטי של המטופל, את שם המרפאה, את מועד הפגישה ואת הקישור, ולא את התשובות. התשובות והחתימה נשמרות מוצפנות. רק החשבונות במרפאה שיש להם גישה למטפל, וצוות אורלי לצורך תמיכה, יכולים לקרוא אותן, וכל צפייה נרשמת. מטופל שעונה ״הסר״ בוואטסאפ מפסיק לקבל הודעות וואטסאפ אוטומטיות מהמרפאה הזו. המרפאה מאשרת שהמטופלים שלה הסכימו לקבל ממנה הודעות בוואטסאפ.
+- תזכורת לפגישה: כמה שעות לפני כל פגישה ביומן המרפאה (48 כברירת מחדל), ב־SMS, ואם אי אפשר, באימייל, עם קישור לשינוי הפגישה כשהיא נקבעה דרך אורלי.
+- הזמנות לחזור לטיפול נשלחות רק למי שהסכים, עם הסרה בלחיצה אחת.
 
 ### מסך הניהול
 
@@ -175,7 +177,7 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 ### מה אין כרגע
 
-תשלומים, טפסי קליטה כלליים (הצהרת הבריאות לפני פגישה, שתוארה למעלה, כן קיימת), חשבונות מטופלים וניהול כמה סניפים. SMS אינו ערוץ לתזכורות ולהצהרות בריאות (הסוכנת הטלפונית עדיין מאשרת פגישה שנקבעה בטלפון בהודעה).
+תשלומים, חשבונות מטופלים וניהול כמה סניפים.
 
 ### יצירת קשר
 
