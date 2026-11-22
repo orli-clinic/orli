@@ -2,7 +2,7 @@
 
 > Orli is an online booking add-on for clinics that run the Optima (אופטימה) scheduling system. Patients book, reschedule and cancel appointments on the clinic's own website, every booking is written straight into the clinic's Optima calendar in real time, and an optional AI receptionist answers patients from the clinic's own information and books in the chat. Website: https://orliclinic.com. The English section comes first; the Hebrew section below it carries the same facts.
 
-Everything described here is live in production. Last reviewed: 2026-11-15.
+Everything described here is live in production. Last reviewed: 2026-11-21.
 
 ## English
 
@@ -42,9 +42,11 @@ Everything described here is live in production. Last reviewed: 2026-11-15.
 
 ### Follow-ups and reminders
 
-- Reminders such as "every 6 months for a cleaning" invite the patient back by email, with a one-click booking link.
+- Reminders such as "every 6 months for a cleaning" invite the patient back by SMS to a mobile when the clinic can text, else by email, with a one-click booking link.
 - Treatment sequences: invite to the next step of a course after a set time, step by step.
-- Sent only to patients who agreed, with a one-click opt-out page.
+- Forms before or after a visit: the clinic builds its own forms (a health statement, הצהרת בריאות, is the common case; a survey or an aftercare check works too), and the patient gets a link to fill the form in, and sign it when it asks for a signature, on a page Orli hosts. A form before the visit goes on WhatsApp from the clinic's own WhatsApp Business number, else by SMS from the clinic's own number or name, else by email; a form after the visit goes by SMS, else by email. The message holds the patient's first name, the clinic's name, the visit's date and time and the link, never the answers. The answers and signature are stored encrypted, readable by the clinic's accounts that reach that practitioner and by Orli staff for support, every view logged. A patient who replies "הסר" on WhatsApp stops receiving automated WhatsApp messages from that clinic. The clinic confirms its patients agreed to hear from it on WhatsApp.
+- Appointment reminders: a set number of hours before every visit in the clinic's calendar (48 by default), by SMS, else by email, with a link to change the visit when it was booked through Orli.
+- Invitations to come back go only to patients who agreed, with a one-click opt-out page.
 
 ### The clinic's admin panel
 
@@ -62,7 +64,7 @@ Everything described here is live in production. Last reviewed: 2026-11-15.
 
 - Appointments are created, moved and cancelled in the clinic's real Optima calendar, in real time, not by a nightly sync. Existing patient records in Optima are reused, never duplicated.
 - If Optima is unreachable, booking keeps working: free time comes from Orli's own hourly and nightly copy of the calendar, the booking is kept, and it is written into Optima once Optima is back. If the time was taken meanwhile, the clinic is told.
-- Each clinic's Optima credentials are encrypted at rest; every screen and route is scoped to the clinic.
+- Orli keeps no Optima login: the clinic installs Orli Connect on its Optima computer, which sends Orli the calendar and writes the bookings into it. Every screen and route is scoped to the clinic.
 
 ### Embedding and patient data
 
@@ -94,7 +96,7 @@ Prices, a month, no VAT added: the booking widget ₪550, AI on the website ₪7
 
 ### Not offered today
 
-Payments, online intake forms, patient accounts and multi-location clinics. Reminders by SMS and WhatsApp are coming soon. Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
+Payments, patient accounts and multi-location clinics. Orli connects to Optima today; a clinic on another calendar or software can book a call to talk about connecting it.
 
 ### Getting in touch
 
@@ -104,12 +106,12 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 ### מה זה אורלי
 
-- אורלי היא תוסף לקביעת תורים אונליין למרפאות שעובדות עם אופטימה. היא לא מחליפה את אופטימה: אופטימה ממשיכה לנהל את המרפאה ואת היומן, ואורלי פותחת את אותו יומן גם למטופלים, באתר של המרפאה, כערוץ נוסף לקביעת פגישות.
+- אורלי היא תוסף לקביעת פגישות אונליין למרפאות שעובדות עם אופטימה. היא לא מחליפה את אופטימה: אופטימה ממשיכה לנהל את המרפאה ואת היומן, ואורלי פותחת את אותו יומן גם למטופלים, באתר של המרפאה, כערוץ נוסף לקביעת פגישות.
 - היום אורלי מתחברת לאופטימה. מרפאה שעובדת עם יומן או תוכנה אחרת יכולה לקבוע איתנו שיחה, ונבדוק איך לחבר גם אותם.
-- למי זה מתאים: בעלי מרפאות ומנהלות משרד במרפאות בישראל שעובדות עם אופטימה, ורוצות שהמטופלים יקבעו תור באתר בכל שעה, בלי טלפונים, בלי המתנה למזכירה ובלי הקלדה ידנית של כל פגישה.
+- למי זה מתאים: בעלי מרפאות ומנהלות משרד במרפאות בישראל שעובדות עם אופטימה, ורוצות שהמטופלים יקבעו פגישה באתר בכל שעה, בלי טלפונים, בלי המתנה למזכירה ובלי הקלדה ידנית של כל פגישה.
 - לצוות לא משתנה כלום: פגישה שנקבעת באתר נכנסת לאופטימה כמו פגישה שנקבעה בטלפון, והמזכירה ממשיכה לעבוד באופטימה כרגיל.
 
-### זימון תורים מהאתר
+### זימון פגישות מהאתר
 
 - מוסיפים שורת קוד אחת לאתר המרפאה. כפתור בפינת המסך פותח את חלון קביעת הפגישה.
 - המטופל בוחר מטפל, טיפול, יום ושעה, ממלא שם, טלפון ואימייל פעם אחת, ומאשר בקוד חד־פעמי שנשלח לאימייל. אין חשבון לפתוח ואין סיסמה לזכור.
@@ -120,11 +122,11 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 ### סוכן AI למרפאה (חבילת סוכן AI)
 
-- צ׳אט באתר המרפאה, לצד כפתור קביעת התור: שיחה אמיתית, לא תפריטים.
+- צ׳אט באתר המרפאה, לצד כפתור קביעת הפגישה: שיחה אמיתית, לא תפריטים.
 - הסוכן לומד מהאתר של המרפאה, וכל עובדה מחכה לאישור של המרפאה לפני שהוא משתמש בה. אפשר גם להוסיף מידע ידנית.
 - הוא עונה רק מהמידע של המרפאה, ולא ממציא מחיר, שעה, טלפון או כתובת.
 - המרפאה קובעת את הטון, השפות וההנחיות, ואת הנושאים שתמיד עוברים לאדם מהצוות.
-- הוא מציע מועד פנוי מהיומן וקובע את התור בתוך השיחה, עם אותו אימות בקוד לאימייל.
+- הוא מציע מועד פנוי מהיומן וקובע את הפגישה בתוך השיחה, עם אותו אימות בקוד לאימייל.
 - מטופל ששואל על פגישה קיימת מאמת את האימייל, והסוכן מקריא לו את הפגישות הקרובות.
 - העברה לצוות: הסוכן לוקח שם וטלפון או אימייל, שולח מייל למרפאה, והפנייה מחכה במסך הניהול עם השיחה מאחוריה.
 
@@ -137,9 +139,11 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 ### תזכורות לביקור הבא
 
-- תזכורת חוזרת, למשל "ניקוי אבנית כל 6 חודשים": מייל אוטומטי בנוסח של המרפאה, עם קישור לקביעת תור בלחיצה.
+- חזרה לטיפול, למשל "ניקוי אבנית כל 6 חודשים": SMS לנייד כשהמרפאה יכולה לשלוח, ואחרת מייל, בנוסח של המרפאה, עם קישור לקביעת פגישה בלחיצה.
 - רצף טיפולים: הזמנה לשלב הבא, לפי סדר.
-- רק למי שהסכים, עם הסרה בלחיצה אחת.
+- טפסים לפני פגישה או אחריה: המרפאה בונה טפסים משלה (בדרך כלל הצהרת בריאות, אבל גם סקר או מעקב אחרי טיפול), והמטופל מקבל קישור למלא את הטופס, ולחתום כשהטופס מבקש חתימה, בעמוד שאורלי מארחת. טופס לפני הפגישה נשלח בוואטסאפ ממספר הוואטסאפ העסקי של המרפאה, ואם אי אפשר, ב־SMS מהמספר או מהשם של המרפאה, ואם גם זה לא, באימייל. טופס אחרי הפגישה נשלח ב־SMS, ואם אי אפשר, באימייל. ההודעה כוללת את השם הפרטי של המטופל, את שם המרפאה, את מועד הפגישה ואת הקישור, ולא את התשובות. התשובות והחתימה נשמרות מוצפנות. רק החשבונות במרפאה שיש להם גישה למטפל, וצוות אורלי לצורך תמיכה, יכולים לקרוא אותן, וכל צפייה נרשמת. מטופל שעונה ״הסר״ בוואטסאפ מפסיק לקבל הודעות וואטסאפ אוטומטיות מהמרפאה הזו. המרפאה מאשרת שהמטופלים שלה הסכימו לקבל ממנה הודעות בוואטסאפ.
+- תזכורת לפגישה: כמה שעות לפני כל פגישה ביומן המרפאה (48 כברירת מחדל), ב־SMS, ואם אי אפשר, באימייל, עם קישור לשינוי הפגישה כשהיא נקבעה דרך אורלי.
+- הזמנות לחזור לטיפול נשלחות רק למי שהסכים, עם הסרה בלחיצה אחת.
 
 ### מסך הניהול
 
@@ -148,14 +152,14 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 - טיפולים לכל מטפל: משך, מחיר, תיאור וצבע.
 - עיצוב: צבעים מוכנים או צבעי המותג, גופן, לוגו ומיקום הכפתור, עם תצוגה מקדימה. השינויים חלים מיד, וקטע ההטמעה לא משתנה.
 - תבניות אימייל עם תצוגה מקדימה: אישור, שינוי, ביטול, קוד האימות, תזכורת לביקור הבא והודעות למרפאה.
-- התראות לצוות: פעמון ומייל על כל תור חדש, ביטול, שינוי ופנייה.
-- נתונים ותובנות: תורים, ביטולים, הגעה, ביקוש לפי יום ושעה, טיפולים ומטפלים מבוקשים, ומאיפה הגיעו התורים (האתר, הצ׳אט או הצוות), מול התקופה הקודמת.
+- התראות לצוות: פעמון ומייל על כל פגישה חדשה, ביטול, שינוי ופנייה.
+- נתונים ותובנות: פגישות, ביטולים, הגעה, ביקוש לפי יום ושעה, טיפולים ומטפלים מבוקשים, ומאיפה הגיעו הפגישות (האתר, הצ׳אט או הצוות), מול התקופה הקודמת.
 - משתמשים עם הרשאות, ותמיכה מתוך המסך.
 
 ### אמינות והחיבור לאופטימה
 
 - פגישות נקבעות, זזות ומתבטלות ביומן האופטימה האמיתי, בזמן אמת ולא בסנכרון לילי, בלי כפילויות של כרטיסי מטופלים.
-- כשאופטימה לא זמינה, הזימון ממשיך לעבוד: השעות מוצגות מעותק של היומן, התור נשמר ונרשם באופטימה ברגע שהיא חוזרת, ואם השעה נתפסה בינתיים המרפאה מקבלת הודעה.
+- כשאופטימה לא זמינה, הזימון ממשיך לעבוד: השעות מוצגות מעותק של היומן, הפגישה נשמרת ונרשמת באופטימה ברגע שהיא חוזרת, ואם השעה נתפסה בינתיים המרפאה מקבלת הודעה.
 
 ### הקמה
 
@@ -165,15 +169,15 @@ Sign up, book a call or send a message from https://orliclinic.com/#contact, or 
 
 החבילות הן לפי מה שיושב באתר המרפאה. בכל חבילה: מטפלים ומשתמשים ללא הגבלה, מסך ניהול, עיצוב ומיילים, תזכורות ורצפי טיפול ללא הגבלה, התראות ותמיכה.
 
-מחירים לחודש, בלי מע״מ: וידג׳ט קביעת פגישות 550 ₪, AI באתר 750 ₪, AI בטלפון 950 ₪, או הכול כלול ב־2,100 ₪ במקום 2,250 ₪. מנוי חודשי בלי התחייבות שאפשר להפסיק בסוף כל חודש, והחזר כספי בתוך 14 יום מכל חיוב (https://orliclinic.com/refund).
+מחירים לחודש, בלי מע״מ: וידג׳ט קביעת פגישות 550 ₪, AI באתר 750 ₪, AI בטלפון 950 ₪, או הכל כלול ב־2,100 ₪ במקום 2,250 ₪. מנוי חודשי בלי התחייבות שאפשר להפסיק בסוף כל חודש, והחזר כספי בתוך 14 יום מכל חיוב (https://orliclinic.com/refund).
 
-- Booking: קביעת תורים אונליין מהאתר, ישר לאופטימה, שינוי וביטול על ידי המטופל עם אימות בקוד, עובד גם כשאופטימה לא זמינה, ונתוני קביעת התורים.
-- סוכן AI (AI agent): סוכן AI באתר שעונה רק מהמידע של המרפאה, לומד מהאתר שלכם, מעביר פניות לצוות עם השיחה מאחוריהן, שיחות ללא הגבלה, ונתוני הסוכן. בלי קביעת תורים אונליין מהאתר, והסוכן לא קובע.
-- AI Booking: שניהם באתר, והסוכן גם מציע מועדים פנויים וקובע תור בתוך השיחה. כל הנתונים במקום אחד.
+- Booking: קביעת פגישות אונליין מהאתר, ישר לאופטימה, שינוי וביטול על ידי המטופל עם אימות בקוד, עובד גם כשאופטימה לא זמינה, ונתוני קביעת הפגישות.
+- סוכן AI (AI agent): סוכן AI באתר שעונה רק מהמידע של המרפאה, לומד מהאתר שלכם, מעביר פניות לצוות עם השיחה מאחוריהן, שיחות ללא הגבלה, ונתוני הסוכן. בלי קביעת פגישות אונליין מהאתר, והסוכן לא קובע.
+- AI Booking: שניהם באתר, והסוכן גם מציע מועדים פנויים וקובע פגישה בתוך השיחה. כל הנתונים במקום אחד.
 
 ### מה אין כרגע
 
-תשלומים, טפסי קליטה אונליין, חשבונות מטופלים וניהול כמה סניפים. תזכורות ב־SMS ובוואטסאפ יגיעו בקרוב.
+תשלומים, חשבונות מטופלים וניהול כמה סניפים.
 
 ### יצירת קשר
 
