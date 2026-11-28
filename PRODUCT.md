@@ -27,28 +27,37 @@ the persuasion story, it's a follow-up once the decision-maker is already sold.
 
 ## Product Purpose
 
-This site is the marketing front door for **Orli**, an online-booking add-on
-for clinics running Optima. It has to do two jobs: explain what Orli does and
-why it's safe to adopt (nothing to replace, nothing new for staff to learn),
-and convert a decision-maker into a booked demo. The CTA band (`#contact`)
-offers two ways in: a Cal.com booking slot, and a contact dialog (name, email,
-message) for whoever would rather write first.
+This site is the marketing front door for **Orli**: ready-made solutions that
+plug into a clinic's existing Optima calendar and take the manual work around it
+off the staff. Since 2026-11-27 the site leads with the whole set, not with
+booking alone (Ron: booking is one of many solutions; the main message is that
+Orli fits whatever the clinic needs and already offers plug-and-play solutions
+that sit on Optima). Four solutions, each sold on its own or together
+(`pricing.html`): **AI בטלפון** (answers the clinic's calls and books),
+**AI באתר** (answers patients from the clinic's own information),
+**קביעת פגישות** (online booking straight into Optima) and **הודעות וטפסים**
+(forms and health statements signed on the phone, SMS reminders, follow-ups).
+Each is priced by the number of doctors in the clinic (2026-11-28). Around them, in every
+plan: the admin, which works on a phone as well as a computer, so the calendar
+is seen and changed from anywhere. Orli is growing into the system a clinic
+is run from (more is planned, e.g. prescriptions), but the site says only what
+is shipped.
 
-Success is a clinic owner or office manager understanding the mechanism (their
-existing Optima calendar, opened up to patients) well enough to book a demo.
-**The booked slot is the conversion the site is judged by; a sent message
-counts, but as the fallback** (confirmed 2026-09-07). The two buttons are
-equal weight today; giving booking more visual weight is a design decision
-still open, not a product fact.
+The site has two jobs: make the value felt (the clinic answers every call,
+fills the calendar after hours, has patients arrive with forms signed and come
+back on time) and convert a decision-maker into a signup or a conversation.
+The CTA band (`#contact`) offers two ways in: starting the trial, and WhatsApp
+for whoever would rather talk first.
 
-## Positioning
+### How the home page sells (2026-11-27)
 
-Same mechanism as the product itself: Orli sits on top of a clinic's existing
-Optima calendar rather than asking the clinic to replace it. The page's own
-comparison section (`#compare`, "without Orli" vs. "with Orli") is the
-positioning argument made concrete — every difference traces back to one fact,
-that Orli reads and writes the calendar staff already use, so nothing about
-the clinic's existing workflow has to change.
+Borrowed from Hormozi's sales pages (acquisition.com), adapted to clinics:
+the reader's own symptoms first, then the turn ("not six problems: one kind of
+manual work"); a countable mechanism ("four solutions, one calendar"); the
+trial's terms right under the hero button and again as the offer (nothing charged at the end, monthly, a full refund within 14 days of
+any charge); proof after the offer; the price after the value; one CTA,
+repeated. Not borrowed: invented numbers, testimonials or scarcity. Orli has
+none to show, and the rule below stands.
 
 ## Operating Context
 
@@ -158,9 +167,10 @@ something is signed.
 
 ## Product Principles
 
-1. **The pitch is the mechanism, not a feature list.** Every section should
-   trace back to "your Optima calendar, opened to patients" — that's the one
-   claim a competing generic scheduling SaaS can't truthfully make.
+1. **The pitch is the set on one calendar.** Every section should trace back to
+   "ready-made solutions that plug into the Optima calendar you already run":
+   the one claim a generic scheduling or AI-receptionist SaaS can't truthfully
+   make. Each solution is sold by its outcome, not its feature list.
 2. **Nothing changes for staff.** The recurring reassurance across hero, FAQ,
    and comparison ("nothing to replace," "the secretary keeps working in
    Optima exactly as today") is the primary objection this page exists to

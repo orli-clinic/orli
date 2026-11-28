@@ -4,37 +4,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A marketing site for **Orli**, an online-booking add-on for clinics running the legacy
-**Optima** scheduling system. Plain static HTML/CSS/JS — no build step, no package
+A marketing site for **Orli**, ready-made AI and clinic-management solutions for
+clinics running the legacy **Optima** scheduling system (AI on the phone, AI on the
+website, online booking, messages and forms, and the admin around them). Plain static HTML/CSS/JS — no build step, no package
 manager, no dependencies, no tests — plus one small Cloudflare Worker (`worker.js`)
 for the demo form and Cal.com webhook.
 
-Seven pages, all sharing the same header/footer shell and `styles.css`:
+Ten pages, all sharing the same header/footer shell and `styles.css`:
 
-- **`index.html`** — the story: hero through CTA, written for the clinic owner/office
-  manager deciding whether to adopt Orli. Kept short on purpose: the `#features`
-  section is nine cards, three by three on a computer, each a link (the whole card, no "more" link) to the page
-  that explains the capability, and the depth lives there.
-  Taken from petaron.ai (2026-10-18, an experiment, each piece its own commit):
-  the cards open with a small CSS loop instead of an icon (`.fv-*`), a teal
-  statement plate before the FAQ, the closing band growing out of a small tile as
-  it scrolls in (`.cta-box`), a reading line along the top of every page and
-  blocks that settle out of a blur. All of it lives in `styles.css`
-  and `script.js`.
-- **`features.html`** — one chapter per capability (booking, the phone agent, AI agent, automations,
-  analytics, reliability, a pointer to the admin), each a short copy block beside a
-  self-playing film in the style of the home page's journey film: the booking chapter
-  reuses that film's markup (`[data-bridge]`, driven by `script.js`), the others are
-  `films.js` + `films.css` (`[data-film="call|chat|remind|stats|outage"]`). Labels in the
-  analytics and outage films are the admin's own (`orli-calendar/admin/src/i18n.ts`);
-  the numbers are samples. A sticky row of chapter links sits under the title.
-- **`pricing.html`** — four offerings with monthly prices (booking widget 550, AI on
-  the website 750, AI on the phone 950, all included 2,100 — 2026-11-14), what each
-  includes, and how onboarding goes. Prices are written `X ₪ לחודש` with **no
-  מע״מ**: clinics pay through Paddle, the merchant of record, which adds no Israeli
-  VAT, so the figure shown is the figure charged. The same four numbers are
-  `LIST_PRICES_ILS` in `orli-calendar/api/packages/booking/billing.py` and the prices
-  in Paddle; change all three together. `כל מה שב-X, וגם:` for the tier delta.
+- **`index.html`** — the story, written for the clinic owner/office manager
+  deciding whether to adopt Orli. Since 2026-11-27 it leads with Orli as a set
+  of solutions on one Optima calendar, not with booking alone, and borrows its
+  order from Hormozi's sales pages (acquisition.com), with few words and the
+  pictures doing the telling (2026-11-28: "too literal, too much text"): hero
+  (a short line, the trial's terms under the button, and a reel: one card
+  plays the chat, the booking widget, a call and a form, folding each into
+  its tile, and ends on one calendar day; `hero-reel.js`), everything in one calendar view
+  (`#one-calendar`: call, chat, website and form streaming into one day of the
+  calendar), one sentence on the teal plate (`#pain`), the four
+  solutions (`#solutions`: AI בטלפון leads in the dark with
+  the sample call, then AI באתר, קביעת פגישות, הודעות וטפסים, each a card
+  linking to its page; old `/features#phone|agent|booking|automations` links
+  land on these cards), the admin from anywhere (`#anywhere`: a doctor on a
+  sales call was most taken by seeing and changing her calendar from anywhere;
+  a phone that works, `phone.js`: lock screen, home screen with Orli among
+  the phone's apps, the admin inside with its real phone bar and appointment
+  actions, the patient's texts, and a call Orli answers that plays the sample
+  call and lands in the calendar; labels from the admin's `i18n.ts` and
+  `shellNav.ts`, made-up numbers only under "דוגמה"),
+  three steps onto Optima (`#how`), the testimonial, the offer
+  (`#offer`: the risk off the table, priced by the number of doctors), the FAQ and the
+  closing band. Prices wait for the offer; no invented numbers, no scarcity.
+  The FAQ and its JSON-LD were generated from one list; keep them word for word.
+- **The solution pages** — `phone.html` (AI בטלפון, the call film and its
+  sample call), `chat.html` (AI באתר, the chat film), `booking.html` (קביעת
+  פגישות: the home page's booking hero, journey film and six-step demo as
+  they were until 2026-11-27, one screen each, kept as one flow on purpose; then the six-step demo with the live widget, the embed,
+  the outage film; it loads `widget.css`, `widget.js` and `scrolly.js`) and
+  `forms.html` (הודעות וטפסים: a form a patient signs and the reminder SMS,
+  both drawn from the product's own strings, and the follow-up film). Each is a
+  head with the price line (the lowest step, "מ־X ₪ לחודש לפי מספר הרופאים"), the film(s), what changes at the clinic, the other
+  three solutions, and the closing band. The films are `films.js` +
+  `films.css` (`[data-film="call|chat|remind|outage"]`); the booking film is
+  `[data-bridge]`, driven by `script.js`. They replaced `features.html`, which
+  `_redirects` (and the LAN preview's Caddyfile) send to `/`.
+- **`pricing.html`** — the four solutions and all four together, priced by the
+  number of doctors in the clinic (2026-11-28): a tab bar (רופא אחד, 2–3, 4–6,
+  7 ומעלה, with a counter past six) switches every card's price, and a price
+  list under the cards gives every step without script. Booking 450 / 800 /
+  1,300 and +200 a doctor beyond six; Messaging 350 / 600 / 1,000 / +150 with
+  400 / 1,100 / 2,200 / +370 texts; AI on the website 400 / 500 / 600 / +100; Phone
+  600 / 1,000 / 1,600 / +250 with 300 / 700 / 1,400 / +225 minutes; all four
+  1,560 / 2,440 / 3,760 and a custom quote beyond six (never computed). The
+  cards, the list and the comparison are generated together; `script.js`
+  "price by doctors" holds the rule. Prices are written `X ₪ לחודש` with **no
+  מע״מ**: clinics pay through Paddle, the merchant of record, which adds no
+  Israeli VAT, so the figure shown is the figure charged. The same figures must
+  be in `orli-calendar/api/packages/booking/billing.py` (`LIST_PRICES_ILS`,
+  still the old flat 550/750/950/2,100 on 2026-11-28) and in Paddle.
+  `כל ארבעת הפתרונות, וגם:` for the bundle delta.
   The offer is a 14-day trial from the day the clinic finishes setup with its
   calendar connected, with no payment details and nothing charged when it ends
   (`TRIAL_DAYS` in the same `billing.py`). The copy calls it
@@ -55,8 +83,9 @@ Seven pages, all sharing the same header/footer shell and `styles.css`:
   aspirational — see `PRODUCT.md` for why this page exists and what it must not claim.
 - **`panel.html`** — a walkthrough of the clinic admin, answering the objection an
   owner actually holds: opening the calendar to patients does not mean losing control
-  of it. Eleven rows, one per admin screen, ordered most impressive first (סוכן
-  AI, יומן, אוטומציות, נתונים, התראות, then the rest). Each row is a text column
+  of it. Ten rows, one per admin screen, ordered most impressive first (סוכן
+  AI, טלפון, יומן, אוטומציות, נתונים, התראות, then the rest; clinic settings and
+  in-app support were taken off on 2026-11-28 as not worth a row). Each row is a text column
   (step number, title, two bullets) beside a **static mock** of `orli-calendar/admin`
   drawn inside the admin's own shell (topbar with bell and account circle, the
   sidebar in its two groups with its icons, the open screen marked); text and mock
@@ -92,10 +121,12 @@ Seven pages, all sharing the same header/footer shell and `styles.css`:
   URL in it is root-absolute; a relative `styles.css` would resolve against a
   directory that doesn't exist. Linked from nowhere, `noindex`.
 
-All seven pages are footer-linked to each other. Primary nav: `ראשי` (index.html),
-`היכולות` (features.html), `מסך הניהול` (panel.html), `מחירים` (pricing.html) and
-`אודות` (about.html) plus the demo CTA, which opens the Cal.com popup. The integration reference, the
-comparison and the FAQ are reached from the page flow and the footer, not the nav.
+All the pages are footer-linked to each other (the footer's פתרונות column
+lists the four solutions). Primary nav: `ראשי`, `הפתרונות` (a menu of the four
+solution pages: opens on hover or focus on a computer, sits indented in the
+phone menu), `מסך הניהול` (panel.html), `חבילות` (pricing.html) and `אודות`
+(about.html), plus the CTA. The integration reference and the FAQ are reached
+from the page flow and the footer, not the nav.
 
 ## Related project
 
@@ -130,8 +161,15 @@ browser.
 
 ## Architecture
 
-Six independent, self-contained scripts loaded by `index.html`, each owning one concern
-(`panel.html` loads `script.js` and its own `panel-rows.js` instead).
+Independent, self-contained scripts, each owning one concern. `index.html`
+loads `script.js`, `hero-gradient.js`, `films.js` (for the sample call),
+`hero-reel.js` and `phone.js`. `hero-gradient.js` lifts its canvas to a fixed
+background behind the whole page (`html.bg-flow`) that drifts with scrolling.
+Page switches are cross-document view transitions plus speculation-rules
+prerender; never give the fixed background a `view-transition-name`: named
+layers paint above the page, so the switch showed only the background.
+`booking.html` adds `widget.js` and `scrolly.js` for the demo; `panel.html`
+loads `script.js` and its own `panel-rows.js`.
 They talk to the DOM, not to each other directly (with one exception: `scrolly.js`
 drives `widget.js` through a controller handle):
 
@@ -176,19 +214,19 @@ drives `widget.js` through a controller handle):
   noise, GLSL inline as JS strings) for the hero `<canvas id="heroGradient">`. Falls
   back to a static CSS gradient (`.hero--nogl` class) when WebGL is unavailable, and
   freezes on `prefers-reduced-motion`.
-- **`films.js` / `films.css`** — the self-playing films on `features.html`, and the short chat one on the home page
+- **`films.js` / `films.css`** — the self-playing films on the solution pages
   (agent chat, reminder, analytics, outage). Each is one 640×420 frame that plays
   while mostly on screen, holds, replays, and clears when scrolled away; under
   reduced motion or the accessibility menu's motion off it shows its finished
   frame once (`orli:motion-still` / `orli:motion-go`, like the journey film in
   `script.js`). A film is a list of timed beats that only add classes; the look is
   all in `films.css`. Without JS the frames show the full conversation / tiles.
-  The call film (`features.html#phone`) also plays a sample call aloud from its own button:
+  The call film (`phone.html`) also plays a sample call aloud from its own button:
   `assets/audio/sample-call.mp3`, a scripted reenactment voiced by Telnyx Ultra text to speech
   (Orli in "Talia", the phone agent's own voice; the caller "Gil"),.
   The film's `PICK` / `STARTS` / `TEXT` / `BOOK` are the line start times of that recording, so
   a new recording comes with new times and the film's lines rewritten to its words. The home page's
-  phone (`[data-call-play]`) plays the same file. Names in it stay neutral (no Cohen, no Mizrahi).
+  phone card (`[data-call-play]`) plays the same file. Names in it stay neutral (no Cohen, no Mizrahi).
 - **`a11y.js` / `a11y.css`** — the accessibility menu every page carries: a
   floating button opening a panel with text size and spacing, three colour
   modes (light, dark, greyscale), highlighted links and headings, a plain
@@ -213,7 +251,7 @@ drives `widget.js` through a controller handle):
 - Scripts wrap themselves in an IIFE (`(function () { 'use strict'; ... })()`) rather
   than using ES modules.
 - Every cache-busting query string (`styles.css?v=…`, `script.js?v=…`, the wordmark)
-  carries the **same** token on every page (`?v=20261117a` today). Bump them all
+  carries the **same** token on every page (`?v=20261127a` today). Bump them all
   together with one search-and-replace when any asset changes; a per-file counter
   drifted across pages and left stale copies in caches. The token is load-bearing:
   `_headers` caches every `.css` and `.js` for a year as `immutable`, so a CSS or
@@ -232,10 +270,9 @@ drives `widget.js` through a controller handle):
   where the pinned widget vanished in a single frame. The demo's own steps are
   scroll distance on a phone, not stops. Every home section is sized to fit one
   phone screen (the
-  "One screen per section" block in `styles.css`): the hero's widget picture
+  "One screen per section" block in `styles.css`): the hero's feed card
   scales to the room under the copy (script.js; below 60% it steps aside), the
-  capability cards sit in two compact columns (their lead steps aside),
-  the FAQ rows drop their topic tags,
+  FAQ rows drop their topic tags,
   the footer's links sit in two columns, and a short-phone tier (≤740px tall)
   tightens type, shrinks the bridge film and drops the comparison's cell labels.
   The hero's buttons are hidden on phones; the nav CTA covers them.
@@ -250,8 +287,8 @@ drives `widget.js` through a controller handle):
 - `assets/brand/` holds logo/wordmark source + exported PNGs (including a Hebrew
   wordmark variant). Deploys go through `wrangler.jsonc`: Cloudflare Workers with
   static assets, `worker.js` as the fallthrough for paths with no file behind them.
-- Cloudflare serves every page without its extension: `/features.html` answers
-  with a 307 to `/features`, and only `/features` returns a 200. Canonicals,
+- Cloudflare serves every page without its extension: `/panel.html` answers
+  with a 307 to `/panel`, and only `/panel` returns a 200. Canonicals,
   `og:url`, `sitemap.xml`, `llms.txt` and the JSON-LD all use the extensionless
   address (the home page is `/`); internal links may keep `.html`.
 - Search and answer engines read `robots.txt` (allows every crawler, AI ones

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <script>
+    document.documentElement.classList.add('js');
+    // styles.css hides every reveal target behind this class, and only
+    // script.js ever unhides them. If that file does not arrive — a 404, a
+    // dropped connection, a blocked request — the class would leave each
+    // page's headlines, leads and lists at opacity 0 with nothing coming to
+    // reveal them. script.js sets data-reveal-ready the moment it takes over;
+    // if it hasn't, give up the effect and show the page as plain text.
+    setTimeout(function () {
+      var d = document.documentElement;
+      if (!d.hasAttribute('data-reveal-ready')) d.classList.remove('js');
+    }, 3000);
+  </script>
+  <meta name="description" content="מטופלים קובעים פגישה באתר של המרפאה בכל שעה, רק בשעות שבאמת פנויות, והפגישה נכתבת ישר ליומן האופטימה. משנים ומבטלים לבד, בלי להתקשר." />
+  <title>קביעת פגישות אונליין למרפאות אופטימה | אורלי</title>
+
+  <!-- Heebo, self-hosted (styles.css @font-face). Both subsets: every page
+       sets Hebrew and Latin (spaces, digits) in it. -->
+  <link rel="preload" href="assets/fonts/heebo-v28-hebrew.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/heebo-v28-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css?v=20261127a" />
+  <link rel="stylesheet" href="a11y.css?v=20261127a" />
+  <link rel="stylesheet" href="widget.css?v=20261127a" />
+  <link rel="stylesheet" href="films.css?v=20261127a" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
+
+  <link rel="canonical" href="https://orliclinic.com/booking" />
+  <meta name="theme-color" content="#0f8a86" />
+
+  <!-- Link previews. PRODUCT.md's second audience reaches this site because
+       the decision-maker sends them a link, so a bare URL in WhatsApp or
+       email is a lost handoff. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="אורלי" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:url" content="https://orliclinic.com/booking" />
+  <meta property="og:title" content="קביעת פגישות אונליין למרפאות אופטימה | אורלי" />
+  <meta property="og:description" content="מטופלים קובעים פגישה באתר של המרפאה בכל שעה, רק בשעות שבאמת פנויות, והפגישה נכתבת ישר ליומן האופטימה. משנים ומבטלים לבד, בלי להתקשר." />
+  <meta property="og:image" content="https://orliclinic.com/assets/brand/orli-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="אורלי · קביעת פגישות למרפאות שעובדות עם אופטימה" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="קביעת פגישות אונליין למרפאות אופטימה | אורלי" />
+  <meta name="twitter:description" content="מטופלים קובעים פגישה באתר של המרפאה בכל שעה, רק בשעות שבאמת פנויות, והפגישה נכתבת ישר ליומן האופטימה. משנים ומבטלים לבד, בלי להתקשר." />
+  <meta name="twitter:image" content="https://orliclinic.com/assets/brand/orli-og.png" />
+  <!-- Structured data for search and answer engines. Every fact here is
+       on this page or on the site; keep it in step with the copy (the
+       FAQ text must match the visible FAQ word for word). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://orliclinic.com/booking#webpage",
+        "url": "https://orliclinic.com/booking",
+        "name": "קביעת פגישות אונליין למרפאות אופטימה | אורלי",
+        "description": "מטופלים קובעים פגישה באתר של המרפאה בכל שעה, רק בשעות שבאמת פנויות, והפגישה נכתבת ישר ליומן האופטימה. משנים ומבטלים לבד, בלי להתקשר.",
+        "inLanguage": "he",
+        "isPartOf": {
+          "@id": "https://orliclinic.com/#website"
+        },
+        "about": {
+          "@id": "https://orliclinic.com/#software"
+        },
+        "breadcrumb": {
+          "@id": "https://orliclinic.com/booking#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://orliclinic.com/booking#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "ראשי",
+            "item": "https://orliclinic.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "קביעת פגישות",
+            "item": "https://orliclinic.com/booking"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <!-- Accessibility menu. In the head so the visitor's saved settings are
+       applied before the first paint, and before the scripts that animate. -->
+  <script src="a11y.js?v=20261127a"></script>
+  <!-- Page switches: the next page is prerendered once a link is hovered
+       or pressed, so it is ready before the click (Chromium; elsewhere
+       ignored). /api/ is the Worker's, never a page. -->
+  <script type="speculationrules">
+  {"prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"href_matches": "/api/*"}}]}, "eagerness": "moderate"}]}
+  </script>
+</head>
+<body>
+  <span id="top" aria-hidden="true"></span>
+  <!-- TOP NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <div class="nav-pill">
+        <a href="/#top" class="brand" aria-label="אורלי, לדף הבית">
+          <img class="brand-logo brand-logo--he" src="assets/brand/orli-wordmark-he.png?v=20261127a" width="480" height="151" alt="אורלי" />
+        </a>
+        <nav class="nav-links" id="navMenu" aria-label="ניווט ראשי">
+          <a href="/">ראשי</a>
+          <div class="nav-drop">
+            <a class="nav-drop-top" href="/#solutions" aria-current="true">הפתרונות</a>
+            <div class="nav-drop-menu">
+              <a href="/phone">AI בטלפון</a>
+              <a href="/chat">AI באתר</a>
+              <a href="/booking" aria-current="page">קביעת פגישות</a>
+              <a href="/forms">הודעות וטפסים</a>
+            </div>
+          </div>
+          <a href="/panel">מסך הניהול</a>
+          <a href="/pricing">חבילות</a>
+          <a href="/about">אודות</a>
+        </nav>
+        <button class="nav-toggle" type="button" id="navToggle"
+                aria-expanded="false" aria-controls="navMenu" aria-label="תפריט">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <div class="nav-cta">
+          <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-dark">נסו בעצמכם</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: the home page's booking hero until 2026-11-27, kept as it was
+         (Ron, 2026-11-28: the hero, the journey film and the six-step demo
+         tell booking best as one flow, one screen each). Only the price
+         line under the buttons is new. -->
+    <section class="hero" data-lock-stop="start">
+      <canvas class="hero-canvas" id="heroGradient" aria-hidden="true"></canvas>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 class="display">קביעת פגישה באתר, <span class="ital">בלחיצת כפתור.</span></h1>
+          <p class="lead">בלי טלפונים, בלי המתנה למזכירה. המטופל בוחר שעה פנויה באתר שלכם, ואורלי קובעת את הפגישה ישר באופטימה.</p>
+          <div class="hero-actions">
+            <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-dark lg">נסו בעצמכם</a>
+            <a href="#demo" class="hero-link">צפו איך זה עובד</a>
+          </div>
+          <p class="hero-terms">מ־450 ₪ לחודש, לפי מספר הרופאים <i aria-hidden="true">·</i> תקופת ניסיון של 14 יום</p>
+        </div>
+
+        <!-- Widget mockup in browser chrome -->
+        <!-- inert as well as aria-hidden: the frozen confirm step below has a
+             real <button>, and aria-hidden alone left it in the tab order —
+             a keyboard visitor landed on a control nothing announced. -->
+        <div class="hero-visual" aria-hidden="true" inert>
+          <div class="browser">
+            <div class="browser-bar"></div>
+            <div class="widget-body widget-body--hero orli-live" dir="rtl">
+              <!-- A frozen copy of the real widget's confirm step (markup and
+                   classes from orli-calendar's ConfirmStep.vue), styled by
+                   widget.css. Decorative: aria-hidden, nothing here is live. -->
+              <div class="obw-controls">
+                <button class="obw-lang-btn" type="button" disabled>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>עב</span>
+                </button>
+                <div class="obw-progress">
+                  <span class="obw-progress-seg is-on"></span>
+                  <span class="obw-progress-seg is-on"></span>
+                  <span class="obw-progress-seg is-on"></span>
+                  <span class="obw-progress-seg is-on"></span>
+                  <span class="obw-progress-seg is-on"></span>
+                  <span class="obw-progress-seg"></span>
+                </div>
+              </div>
+              <div class="obw-step-header">
+                <p class="obw-title"><span class="obw-bi"><span>אישור הפגישה</span></span></p>
+                <span class="obw-back-btn">‹ <span class="obw-bi"><span>חזרה</span></span></span>
+              </div>
+              <dl class="obw-summary">
+                <dt>טיפול</dt>
+                <dd>ייעוץ</dd>
+                <dt>מטפל/ת</dt>
+                <dd>ד"ר שגיא</dd>
+                <dt>תאריך ושעה</dt>
+                <dd>יום ראשון, 6 בספטמבר · <span class="obw-tabular">10:30</span></dd>
+                <dt>שם מלא</dt>
+                <dd>ישראל ישראלי</dd>
+                <dt>מספר טלפון</dt>
+                <dd>050-123-4567</dd>
+                <dt>אימייל</dt>
+                <dd>demo@orliclinic.com</dd>
+              </dl>
+              <button class="obw-primary-btn obw-primary-btn--compact" type="button">שלח קוד לאימות</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE JOURNEY: the patient's path as one film (script.js "journey"). -->
+    <section class="section section--bridge" data-lock-stop="start">
+      <div class="wrap narrow">
+        <div class="section-head section-head--tight">
+          <h2 class="display">מהאתר של המרפאה, <span class="ital">ישר ליומן.</span></h2>
+          <p class="section-lead section-lead--close">הווידג׳ט יושב באתר המרפאה, בפינה, כמו כפתור צ׳אט. המטופל לוחץ, בוחר שעה, ואצלכם זה פשוט מופיע באופטימה.</p>
+        </div>
+        <!-- The patient's journey as a short film in one frame (script.js,
+             "journey"): the clinic's site with the widget's launcher in the
+             corner, a tap, the panel opening, a slot chosen, the widget's own
+             confirmation, and then the Optima day view rising over the page
+             with the booking settling into its row.
+             Held for a beat, then it plays again while the block is on
+             screen. Under prefers-reduced-motion it shows the finished
+             picture once. -->
+        <div class="bridge" data-bridge>
+          <div class="bridge-movie" role="img" aria-label="המסע של המטופל: מהכפתור באתר המרפאה ועד הפגישה ביומן האופטימה">
+            <div class="bridge-site bm-site " dir="rtl">
+              <div class="bs-bar" aria-hidden="true"><span></span><span></span><span></span><i>clinic.co.il · 22:40</i></div>
+              <div class="bs-page">
+                <div class="bs-skel bs-skel--h" aria-hidden="true"></div>
+                <div class="bs-skel" aria-hidden="true"></div>
+                <div class="bs-skel bs-skel--short" aria-hidden="true"></div>
+                <div class="bs-hero" aria-hidden="true"></div>
+                <div class="bs-skel" aria-hidden="true"></div>
+                <div class="bs-skel bs-skel--short" aria-hidden="true"></div>
+                <div class="bs-skel" aria-hidden="true"></div>
+                <div class="bs-backdrop" aria-hidden="true"></div>
+                <div class="bridge-widget">
+                  <div class="bw-pick">
+                    <div class="bw-title">בחרו שעה</div>
+                    <div class="bw-date">יום ראשון, 6 בספטמבר</div>
+                    <div class="bw-slots">
+                      <span>09:30</span>
+                      <span class="bw-target" data-bridge-from="movie">10:30<i class="bw-tap" aria-hidden="true"></i></span>
+                      <span>12:00</span>
+                      <span>14:00</span>
+                    </div>
+                    <div class="bw-btn">אישור הזמנה</div>
+                  </div>
+                  <!-- The widget's own success screen, as SuccessStep.vue draws it. -->
+                  <div class="bw-confirm" aria-hidden="true">
+                    <div class="bw-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="bw-confirm-title">הפגישה נקבעה!</div>
+                    <dl class="bw-summary">
+                      <dt>טיפול</dt><dd>ייעוץ · ד"ר שגיא</dd>
+                      <dt>מועד</dt><dd>יום ראשון, 6 בספטמבר · 10:30</dd>
+                    </dl>
+                    <div class="bw-mailed"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>אישור נשלח לאימייל</div>
+                  </div>
+                </div>
+                <div class="bs-launcher bs-launcher--pill" dir="ltr">
+                  <span class="bs-launcher-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+                  <span class="bs-launcher-label"><span class="bs-launcher-he">לקביעת פגישה</span><span class="bs-launcher-en">Book an appointment</span></span>
+                  <i class="bw-tap" aria-hidden="true"></i>
+                </div>
+                <div class="bs-launcher bs-launcher--open" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+              </div>
+            </div>
+            <div class="bm-shade" aria-hidden="true"></div>
+            <div class="bridge-cal bm-cal" dir="rtl">
+              <div class="bc-head"><strong>היומן באופטימה</strong><span>יום ראשון 6.9 · ד"ר שגיא</span></div>
+              <div class="bc-row"><span class="bc-time">09:00</span><span class="bc-appt is-existing">ניקוי שיניים · רונית לוי</span></div>
+              <div class="bc-row"><span class="bc-time">09:30</span></div>
+              <div class="bc-row"><span class="bc-time">10:00</span><span class="bc-appt is-existing">ייעוץ · יוסי מזרחי</span></div>
+              <div class="bc-row"><span class="bc-time">10:30</span><span class="bc-appt bc-appt--site" data-bridge-to="movie"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>ייעוץ · ישראל ישראלי</span></div>
+              <div class="bc-row"><span class="bc-time">11:00</span><span class="bc-appt is-existing">ביקורת · דנה אורן</span></div>
+              <div class="bc-row"><span class="bc-time">11:30</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- LIVE DEMO, scroll-pinned (Vectrix-style scrollytelling) -->
+    <section class="section scrolly" id="demo" data-lock-stop="start">
+      <div class="wrap">
+        <div class="section-divider" aria-hidden="true"></div>
+        <div class="section-head">
+          <h2 class="display">צפו בפגישה נקבעת <span class="ital">תוך שניות.</span></h2>
+          <p class="section-lead">נסו את התוסף בעצמכם. בדיוק כמו שהמטופלים שלכם היו עושים.</p>
+        </div>
+      </div>
+      <div class="wrap scrolly-grid">
+        <div class="scrolly-steps">
+          <article class="scrolly-step" data-lock-stop="center" data-scene="0">
+            <span class="scrolly-idx">01 · בחירה</span>
+            <h3>בחירת מטפל וטיפול</h3>
+            <p>המטופל נכנס לאתר שלכם, בוחר מטפל ואז טיפול, מתוך מה שפתחתם לקביעה.</p>
+          </article>
+          <article class="scrolly-step" data-lock-stop="center" data-scene="1">
+            <span class="scrolly-idx">02 · תאריך</span>
+            <h3>בחירת יום</h3>
+            <p>אורלי מציגה רק ימים עם זמינות אמיתית, לפי השעות והימים החופשיים של כל רופא, כך שזו אף פעם לא שעה שאינה באמת פנויה.</p>
+          </article>
+          <article class="scrolly-step" data-lock-stop="center" data-scene="2">
+            <span class="scrolly-idx">03 · שעה</span>
+            <h3>בחירת שעה</h3>
+            <p>השעות הפנויות לאותו יום מופיעות מיד, ישירות מהיומן המעודכן.</p>
+          </article>
+          <article class="scrolly-step" data-lock-stop="center" data-scene="3">
+            <span class="scrolly-idx">04 · פרטים</span>
+            <h3>מי קובע את הפגישה</h3>
+            <p>שם, טלפון ואימייל, פעם אחת. אין חשבון לפתוח ואין מה לזכור, והאימייל משמש לאימות מהיר ולשליחת האישור.</p>
+          </article>
+          <article class="scrolly-step" data-lock-stop="center" data-scene="4">
+            <span class="scrolly-idx">05 · אימות</span>
+            <h3>אימות בקוד</h3>
+            <p>קוד מהיר מאמת את המטופל ממש לפני שאורלי קובעת משהו. זה חוסם ספאם וזה המקום שבו נאספת ההסכמה.</p>
+          </article>
+          <article class="scrolly-step" data-lock-stop="center" data-scene="5">
+            <span class="scrolly-idx">06 · נקבע</span>
+            <h3>נכתב לאופטימה</h3>
+            <p>הפגישה נוחתת ביומן האמיתי שלכם והמטופל מקבל אישור. בלי הקלדה מחדש, בלי טלפונים חוזרים. זהו.</p>
+          </article>
+        </div>
+
+        <div class="scrolly-sticky">
+          <!-- Phones only (styles.css): all six steps as one short list above
+               the widget, built by scrolly.js from the step list below. The
+               current step is open with its text, passed steps are ticked,
+               and tapping a step jumps to it. On wide screens the step list
+               itself is beside the widget and this stays empty and hidden. -->
+          <div class="scrolly-caption" data-scrolly-caption></div>
+          <div class="browser demo-browser demo-browser--bare">
+            <!-- Mounted by widget.js, driven by scrolly.js through el.__orli.
+                 This was an <iframe> to booking.orliclinic.com/?demo=true; it
+                 is a local static replica now so the page still works when
+                 that service is down. See widget.js's header for how to
+                 refresh it against the real widget. -->
+            <div data-orli-widget></div>
+          </div>
+          <div class="scrolly-tabs" role="group" aria-label="שלבי קביעת הפגישה">
+            <button type="button" class="scrolly-tab is-active" data-scene="0" aria-current="step" aria-label="שלב 1: בחירת מטפל וטיפול">01</button>
+            <button type="button" class="scrolly-tab" data-scene="1" aria-label="שלב 2: בחירת יום">02</button>
+            <button type="button" class="scrolly-tab" data-scene="2" aria-label="שלב 3: בחירת שעה">03</button>
+            <button type="button" class="scrolly-tab" data-scene="3" aria-label="שלב 4: מי קובע את הפגישה">04</button>
+            <button type="button" class="scrolly-tab" data-scene="4" aria-label="שלב 5: אימות בקוד">05</button>
+            <button type="button" class="scrolly-tab" data-scene="5" aria-label="שלב 6: נכתב לאופטימה">06</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- EMBED SNIPPET -->
+    <section class="section alt embed">
+      <div class="wrap narrow center">
+        <div class="section-divider" aria-hidden="true"></div>
+        <h2 class="display">באתר שלכם <span class="ital">תוך דקות.</span></h2>
+        <p class="section-lead">מוסיפים שורה אחת לאתר, וזהו. מכאן אורלי מתעדכנת לבד, בלי תחזוקה ובלי לגעת בזה שוב.</p>
+        <ul class="check-list check-list--center">
+          <li>עובד עם כל אתר מרפאה</li>
+          <li>לא משנה את המראה של שאר האתר</li>
+          <li>נעול למרפאה שלכם, מוגן משימוש לרעה</li>
+        </ul>
+      </div>
+    </section>
+    <!-- RELIABILITY. Optima goes down, a booking waits with its mark, the
+         patient is told only "booked", Optima is back and it is written.
+         SOURCE: CalendarView.vue ("אין חיבור לאופטימה", "פגישות אופטימה
+         מוצגות מעותק מ־", "טרם נרשם ביומן אופטימה"), features.md §11. -->
+    <section class="section chapter chapter--flip" id="reliability">
+      <div class="wrap chapter-grid">
+        <div>
+          <h2 class="display display--sub">עובד גם כשאופטימה <span class="ital">לא.</span></h2>
+          <p class="section-lead">אופטימה לפעמים לא זמינה. המטופלים שלכם לא צריכים לדעת את זה: השעות מוצגות מעותק של היומן, הפגישה נשמרת, ונרשמת באופטימה ברגע שהיא חוזרת.</p>
+          <ul class="check-list">
+            <li>עותק של היומן כל שעה וכל לילה</li>
+            <li>פגישה שמחכה מסומנת ביומן ובפעמון, עד שתירשם</li>
+          </ul>
+        </div>
+        <div class="film film-outage" data-film="outage" role="img" aria-label="היומן של אורלי: החיבור לאופטימה נופל, פגישה חדשה מחכה עם סימון, המטופל מקבל אישור כרגיל, אופטימה חוזרת והפגישה נרשמה">
+          <div class="film-frame">
+            <div class="fo-head"><b>יומן · שני 7.9</b><span class="fo-status"><span class="up">מחובר לאופטימה</span><span class="down">אין חיבור לאופטימה</span></span></div>
+            <div class="fo-note">פגישות אופטימה מוצגות מעותק מ־12:00</div>
+            <div class="fo-cal" aria-hidden="true">
+              <div class="t">09:00</div><div><span class="fo-ev">ניקוי · רונית לוי</span></div>
+              <div class="t">10:00</div><div><span class="fo-ev new"><span class="mark">⚠</span><span class="ok">✓</span>ייעוץ · טל שדה</span></div>
+              <div class="t">11:00</div><div><span class="fo-ev">הלבנה · מאיה רז</span></div>
+              <div class="t">12:00</div><div></div>
+              <div class="t">13:00</div><div><span class="fo-ev">ביקורת · דנה אורן</span></div>
+            </div>
+            <div class="fo-toast early" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>למטופל: הפגישה נקבעה! אישור נשלח לאימייל.</div>
+            <div class="fo-toast late" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>אופטימה חזרה. הפגישה נרשמה ביומן.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- The other solutions, on the same calendar. -->
+    <section class="section alt sol-others">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="display display--sub">עוד פתרונות, <span class="ital">על אותו יומן.</span></h2>
+        </div>
+        <div class="others-row">
+          <a class="other" href="/phone"><span class="other-name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>AI בטלפון</span><span class="other-out">אף שיחה לא נשארת בלי מענה.</span></a>
+          <a class="other" href="/chat"><span class="other-name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>AI באתר</span><span class="other-out">שאלה בעשר בלילה, תשובה מיד.</span></a>
+          <a class="other" href="/forms"><span class="other-name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>הודעות וטפסים</span><span class="other-out">מגיעים בזמן, חתומים מראש, וחוזרים.</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band cta-band--tail">
+      <div class="wrap">
+        <div class="cta-box" data-cta-box>
+          <div class="cta-bg" aria-hidden="true"></div>
+          <div class="cta-inner narrow center">
+            <p class="cta-lead cta-lead--tail">רוצים לראות את זה על היומן שלכם?</p>
+            <div class="cta-actions">
+              <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-dark lg">נסו בעצמכם</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a href="/#top" class="brand" aria-label="אורלי, לדף הבית">
+          <img class="brand-logo brand-logo--he brand-logo--footer" loading="lazy" decoding="async" src="assets/brand/orli-wordmark-he.png?v=20261127a" width="480" height="151" alt="אורלי" />
+        </a>
+        <p>פתרונות AI וניהול למרפאות שעובדות עם אופטימה. עולים על היומן שכבר יש לכם, בלי להחליף כלום.</p>
+      </div>
+      <nav class="footer-cols" aria-label="ניווט תחתון">
+        <div class="footer-col">
+          <h3 class="footer-col-h">פתרונות</h3>
+          <a href="/phone">AI בטלפון</a>
+          <a href="/chat">AI באתר</a>
+          <a href="/booking">קביעת פגישות</a>
+          <a href="/forms">הודעות וטפסים</a>
+          <a href="/panel">מסך הניהול</a>
+          <a href="/integration">מדריך טכני להטמעה</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-h">אמון</h3>
+          <a href="/#faq">שאלות נפוצות</a>
+          <a href="/privacy">מדיניות פרטיות</a>
+          <a href="/terms">תנאי שימוש</a>
+          <a href="/refund">מדיניות החזרים</a>
+          <a href="https://wa.me/972542275773?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%90%D7%95%D7%A8%D7%9C%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener">צרו קשר בוואטסאפ</a>
+          <a href="tel:+972542275773">טלפון <span dir="ltr">054-227-5773</span></a>
+          <a href="mailto:ron@orliclinic.com" class="footer-mail" dir="ltr">ron@orliclinic.com</a>
+          <a href="mailto:daniel@orliclinic.com" class="footer-mail" dir="ltr">daniel@orliclinic.com</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-h">חברה</h3>
+          <a href="/about">אודות</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-h">בואו נתחיל</h3>
+          <a data-start-cta href="https://booking.orliclinic.com/admin/signup">נסו בעצמכם</a>
+          <a href="/pricing">חבילות</a>
+          <a href="/#pain">למה אורלי</a>
+        </div>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© <span id="year"></span> אורלי.</span>
+      <span>נבנה למרפאות בישראל · מגשרים על הישן, בעדינות.</span>
+    </div>
+  </footer>
+
+  <!-- The sales line on WhatsApp: one fixed badge at the page's start corner
+       (the right, on this RTL page). The accessibility button holds the end
+       corner (a11y.js), so the two never meet. Styled in styles.css (.wa-badge);
+       the glyph is inline so no icon library is loaded. -->
+  <a class="wa-badge" href="https://wa.me/972542275773?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%90%D7%95%D7%A8%D7%9C%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener" aria-label="לשיחה בוואטסאפ" title="לשיחה בוואטסאפ">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="script.js?v=20261127a"></script>
+  <script src="hero-gradient.js?v=20261127a"></script>
+  <script src="widget.js?v=20261127a"></script>
+  <script src="scrolly.js?v=20261127a"></script>
+  <script src="films.js?v=20261127a"></script>
+</body>
+</html>

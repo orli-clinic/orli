@@ -1,0 +1,6 @@
+# The capabilities page became one page per solution (2026-11-27). Its
+# address keeps working: it lands on the home page, and an old deep link's
+# #phone / #agent / #booking / #automations finds that solution's card
+# there (the browser carries a fragment across a redirect that names none).
+/features       /   301
+/features.html  /   301

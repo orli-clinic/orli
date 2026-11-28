@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <script>
+    document.documentElement.classList.add('js');
+    // styles.css hides every reveal target behind this class, and only
+    // script.js ever unhides them. If that file does not arrive — a 404, a
+    // dropped connection, a blocked request — the class would leave each
+    // page's headlines, leads and lists at opacity 0 with nothing coming to
+    // reveal them. script.js sets data-reveal-ready the moment it takes over;
+    // if it hasn't, give up the effect and show the page as plain text.
+    setTimeout(function () {
+      var d = document.documentElement;
+      if (!d.hasAttribute('data-reveal-ready')) d.classList.remove('js');
+    }, 3000);
+  </script>
+  <meta name="description" content="AI שעונה לשיחות הטלפון של המרפאה, מוצא שעה פנויה ביומן האופטימה, קובע את הפגישה ושולח אישור ב־SMS. לכל השיחות, או רק כשאין מי שיענה." />
+  <title>AI בטלפון למרפאות: עונה לכל שיחה וקובע פגישות | אורלי</title>
+
+  <!-- Heebo, self-hosted (styles.css @font-face). Both subsets: every page
+       sets Hebrew and Latin (spaces, digits) in it. -->
+  <link rel="preload" href="assets/fonts/heebo-v28-hebrew.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/heebo-v28-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css?v=20261127a" />
+  <link rel="stylesheet" href="a11y.css?v=20261127a" />
+  <link rel="stylesheet" href="films.css?v=20261127a" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png" />
+
+  <link rel="canonical" href="https://orliclinic.com/phone" />
+  <meta name="theme-color" content="#0f8a86" />
+
+  <!-- Link previews. PRODUCT.md's second audience reaches this site because
+       the decision-maker sends them a link, so a bare URL in WhatsApp or
+       email is a lost handoff. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="אורלי" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:url" content="https://orliclinic.com/phone" />
+  <meta property="og:title" content="AI בטלפון למרפאות: עונה לכל שיחה וקובע פגישות | אורלי" />
+  <meta property="og:description" content="AI שעונה לשיחות הטלפון של המרפאה, מוצא שעה פנויה ביומן האופטימה, קובע את הפגישה ושולח אישור ב־SMS. לכל השיחות, או רק כשאין מי שיענה." />
+  <meta property="og:image" content="https://orliclinic.com/assets/brand/orli-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="אורלי · AI בטלפון למרפאות שעובדות עם אופטימה" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI בטלפון למרפאות: עונה לכל שיחה וקובע פגישות | אורלי" />
+  <meta name="twitter:description" content="AI שעונה לשיחות הטלפון של המרפאה, מוצא שעה פנויה ביומן האופטימה, קובע את הפגישה ושולח אישור ב־SMS. לכל השיחות, או רק כשאין מי שיענה." />
+  <meta name="twitter:image" content="https://orliclinic.com/assets/brand/orli-og.png" />
+  <!-- Structured data for search and answer engines. Every fact here is
+       on this page or on the site; keep it in step with the copy (the
+       FAQ text must match the visible FAQ word for word). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://orliclinic.com/phone#webpage",
+        "url": "https://orliclinic.com/phone",
+        "name": "AI בטלפון למרפאות: עונה לכל שיחה וקובע פגישות | אורלי",
+        "description": "AI שעונה לשיחות הטלפון של המרפאה, מוצא שעה פנויה ביומן האופטימה, קובע את הפגישה ושולח אישור ב־SMS. לכל השיחות, או רק כשאין מי שיענה.",
+        "inLanguage": "he",
+        "isPartOf": {
+          "@id": "https://orliclinic.com/#website"
+        },
+        "about": {
+          "@id": "https://orliclinic.com/#software"
+        },
+        "breadcrumb": {
+          "@id": "https://orliclinic.com/phone#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://orliclinic.com/phone#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "ראשי",
+            "item": "https://orliclinic.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "AI בטלפון",
+            "item": "https://orliclinic.com/phone"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <!-- Accessibility menu. In the head so the visitor's saved settings are
+       applied before the first paint, and before the scripts that animate. -->
+  <script src="a11y.js?v=20261127a"></script>
+  <!-- Page switches: the next page is prerendered once a link is hovered
+       or pressed, so it is ready before the click (Chromium; elsewhere
+       ignored). /api/ is the Worker's, never a page. -->
+  <script type="speculationrules">
+  {"prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"href_matches": "/api/*"}}]}, "eagerness": "moderate"}]}
+  </script>
+</head>
+<body>
+  <span id="top" aria-hidden="true"></span>
+  <!-- TOP NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <div class="nav-pill">
+        <a href="/#top" class="brand" aria-label="אורלי, לדף הבית">
+          <img class="brand-logo brand-logo--he" src="assets/brand/orli-wordmark-he.png?v=20261127a" width="480" height="151" alt="אורלי" />
+        </a>
+        <nav class="nav-links" id="navMenu" aria-label="ניווט ראשי">
+          <a href="/">ראשי</a>
+          <div class="nav-drop">
+            <a class="nav-drop-top" href="/#solutions" aria-current="true">הפתרונות</a>
+            <div class="nav-drop-menu">
+              <a href="/phone" aria-current="page">AI בטלפון</a>
+              <a href="/chat">AI באתר</a>
+              <a href="/booking">קביעת פגישות</a>
+              <a href="/forms">הודעות וטפסים</a>
+            </div>
+          </div>
+          <a href="/panel">מסך הניהול</a>
+          <a href="/pricing">חבילות</a>
+          <a href="/about">אודות</a>
+        </nav>
+        <button class="nav-toggle" type="button" id="navToggle"
+                aria-expanded="false" aria-controls="navMenu" aria-label="תפריט">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <div class="nav-cta">
+          <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-dark">נסו בעצמכם</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section page-head sol-head">
+      <div class="wrap narrow center">
+        <h1 class="display display--page">AI בטלפון. <span class="ital">המרפאה עונה, תמיד.</span></h1>
+        <p class="section-lead section-lead--intro center">כשהצוות עסוק, בהפסקה או אחרי שעות הפתיחה, השיחה מגיעה לאורלי. היא עונה, מוצאת שעה פנויה ביומן, קובעת את הפגישה ושולחת אישור ב־SMS. כמו מזכירה שלא יוצאת להפסקה.</p>
+        <div class="page-actions sol-head-actions">
+          <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-dark lg">נסו בעצמכם</a>
+          <a href="/pricing" class="hero-link">המחירים</a>
+        </div>
+        <p class="sol-price">מ־600 ₪ לחודש לפי מספר הרופאים, עם דקות שיחה כלולות <i aria-hidden="true">·</i> תקופת ניסיון של 14 יום</p>
+      </div>
+    </section>
+    <!-- PHONE. A call that plays itself out (films.js "call").
+         SOURCE: orli-calendar voice_tools.py. Names no language and nothing
+         about how it is built. The film's button plays the same call aloud
+         (assets/audio/sample-call.mp3) and the film follows the sound; the
+         silent loop runs on the same timeline. The call is a scripted
+         sample, both voices text to speech. -->
+    <section class="section alt chapter chapter--flip" id="phone">
+      <div class="wrap chapter-grid">
+        <div>
+          <h2 class="display display--sub">שיחה אחת. <span class="ital">מהצלצול ועד היומן.</span></h2>
+          <p class="section-lead">המטופל מתקשר, אורלי עונה, מבינה מה הוא צריך, מציעה שעות פנויות מהיומן וקובעת. כשהשיחה נגמרת, הפגישה כבר באופטימה.</p>
+          <ul class="check-list">
+            <li>אורלי עונה לכל שיחות המרפאה, או רק כשאף אחד לא עונה. אתם בוחרים</li>
+            <li>המטופל מקבל אישור בהודעה עם פרטי הפגישה</li>
+            <li>אורלי קובעת פגישות מסוגי הטיפולים שהמרפאה הגדירה</li>
+            <li>בקשה לדבר עם הרופא מגיעה למסך הניהול</li>
+          </ul>
+        </div>
+        <div class="film film-call" data-film="call">
+          <div class="film-frame" role="img" aria-label="שיחת טלפון למרפאה: אף אחד לא פנוי, אורלי עונה, מוצאת שעה פנויה, הפגישה נקבעת והמטופל מקבל הודעה">
+            <div class="fp-sms"><b>מרפאת סמיילי</b>הפגישה נקבעה ליום רביעי בשעה 10:30</div>
+            <div class="fp-status"><span class="fp-s1">שיחה נכנסת למרפאה</span><span class="fp-s2">אורלי עונה</span><span class="fp-s3">השיחה הסתיימה</span></div>
+            <div class="fp-avatar"><i class="fp-ring"></i><i class="fp-ring"></i><img src="assets/brand/favicon-64.png" alt="" width="64" height="64" /></div>
+            <div class="fp-time" dir="ltr">00:00</div>
+            <div class="fp-stage">
+              <div class="fp-talk">
+                <div class="fp-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="fp-lines">
+                  <p class="fp-line"><b>אורלי</b>שלום, הגעתם למרפאת סמיילי. אני אורלי, העוזרת הדיגיטלית של המרפאה. איך אפשר לעזור?</p>
+                  <p class="fp-line me"><b>מטופל</b>היי, רציתי לקבוע ניקוי שיניים, אם יש משהו השבוע.</p>
+                  <p class="fp-line"><b>אורלי</b>רגע, אני בודקת ביומן. יש ביום רביעי בעשר וחצי בבוקר, או ביום חמישי בארבע אחרי הצהריים. מה מתאים לך?</p>
+                  <p class="fp-line me"><b>מטופל</b>רביעי בעשר וחצי.</p>
+                  <p class="fp-line"><b>אורלי</b>מעולה. מה השם המלא?</p>
+                  <p class="fp-line me"><b>מטופל</b>עומר אלון.</p>
+                  <p class="fp-line"><b>אורלי</b>אז עומר אלון, ביום רביעי בעשר וחצי. נכון?</p>
+                  <p class="fp-line me"><b>מטופל</b>כן, תודה.</p>
+                  <p class="fp-line"><b>אורלי</b>קבעתי. שלחתי לך הודעה עם הפרטים. יום טוב!</p>
+                </div>
+              </div>
+              <div class="fp-done">
+                <span class="f-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span>
+                <b>הפגישה נקבעה</b>
+                <small>ניקוי שיניים · ד"ר שגיא</small>
+                <small>יום רביעי · 10:30</small>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="fp-listen" hidden>
+            <svg class="fp-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+            <svg class="fp-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+            <span>האזינו לשיחה</span>
+          </button>
+          <audio class="fp-audio" preload="none" src="assets/audio/sample-call.mp3?v=20261127a"></audio>
+        </div>
+      </div>
+    </section>
+    <!-- What changes at the clinic: outcomes, in the owner's terms. -->
+    <section class="section sol-gains">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="display display--sub">מה משתנה <span class="ital">במרפאה.</span></h2>
+        </div>
+        <ul class="gain-list">
+          <li><h3>אף מטופל לא נשאר על הקו.</h3><p>שיחה שלא נענית היא פגישה שלא נקבעה. אורלי עונה מיד, גם כשכל הצוות עסוק.</p></li>
+          <li><h3>הצוות מתפנה למי שבמרפאה.</h3><p>פחות טלפונים באמצע טיפול, ופחות שיחות חוזרות בסוף היום.</p></li>
+          <li><h3>שום פנייה לא הולכת לאיבוד.</h3><p>כל שיחה כתובה במסך הניהול, ובקשה לדבר עם הרופא מחכה לצוות עם פרטי המטופל.</p></li>
+          <li><h3>אתם בוחרים מתי.</h3><p>כל שיחות המרפאה, או רק אלה שאין מי שיענה להן.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- The other solutions, on the same calendar. -->
+    <section class="section alt sol-others">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="display display--sub">עוד פתרונות, <span class="ital">על אותו יומן.</span></h2>
+        </div>
+        <div class="others-row">
+          <a class="other" href="/chat"><span class="other-name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>AI באתר</span><span class="other-out">שאלה בעשר בלילה, תשובה מיד.</span></a>
+          <a class="other" href="/booking"><span class="other-name"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>קביעת פגישות</span><span class="other-out">היומן מתמלא גם כשהמרפאה סגורה.</span></a>
+          <a class="other" href="/forms"><span class="other-name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>הודעות וטפסים</span><span class="other-out">מגיעים בזמן, חתומים מראש, וחוזרים.</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band cta-band--tail">
+      <div class="wrap">
+        <div class="cta-box" data-cta-box>
+          <div class="cta-bg" aria-hidden="true"></div>
+          <div class="cta-inner narrow center">
+            <p class="cta-lead cta-lead--tail">רוצים שהמרפאה תענה לכל שיחה?</p>
+            <div class="cta-actions">
+              <a data-start-cta href="https://booking.orliclinic.com/admin/signup" class="btn-dark lg">נסו בעצמכם</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a href="/#top" class="brand" aria-label="אורלי, לדף הבית">
+          <img class="brand-logo brand-logo--he brand-logo--footer" loading="lazy" decoding="async" src="assets/brand/orli-wordmark-he.png?v=20261127a" width="480" height="151" alt="אורלי" />
+        </a>
+        <p>פתרונות AI וניהול למרפאות שעובדות עם אופטימה. עולים על היומן שכבר יש לכם, בלי להחליף כלום.</p>
+      </div>
+      <nav class="footer-cols" aria-label="ניווט תחתון">
+        <div class="footer-col">
+          <h3 class="footer-col-h">פתרונות</h3>
+          <a href="/phone">AI בטלפון</a>
+          <a href="/chat">AI באתר</a>
+          <a href="/booking">קביעת פגישות</a>
+          <a href="/forms">הודעות וטפסים</a>
+          <a href="/panel">מסך הניהול</a>
+          <a href="/integration">מדריך טכני להטמעה</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-h">אמון</h3>
+          <a href="/#faq">שאלות נפוצות</a>
+          <a href="/privacy">מדיניות פרטיות</a>
+          <a href="/terms">תנאי שימוש</a>
+          <a href="/refund">מדיניות החזרים</a>
+          <a href="https://wa.me/972542275773?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%90%D7%95%D7%A8%D7%9C%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener">צרו קשר בוואטסאפ</a>
+          <a href="tel:+972542275773">טלפון <span dir="ltr">054-227-5773</span></a>
+          <a href="mailto:ron@orliclinic.com" class="footer-mail" dir="ltr">ron@orliclinic.com</a>
+          <a href="mailto:daniel@orliclinic.com" class="footer-mail" dir="ltr">daniel@orliclinic.com</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-h">חברה</h3>
+          <a href="/about">אודות</a>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col-h">בואו נתחיל</h3>
+          <a data-start-cta href="https://booking.orliclinic.com/admin/signup">נסו בעצמכם</a>
+          <a href="/pricing">חבילות</a>
+          <a href="/#pain">למה אורלי</a>
+        </div>
+      </nav>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© <span id="year"></span> אורלי.</span>
+      <span>נבנה למרפאות בישראל · מגשרים על הישן, בעדינות.</span>
+    </div>
+  </footer>
+
+  <!-- The sales line on WhatsApp: one fixed badge at the page's start corner
+       (the right, on this RTL page). The accessibility button holds the end
+       corner (a11y.js), so the two never meet. Styled in styles.css (.wa-badge);
+       the glyph is inline so no icon library is loaded. -->
+  <a class="wa-badge" href="https://wa.me/972542275773?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%90%D7%95%D7%A8%D7%9C%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener" aria-label="לשיחה בוואטסאפ" title="לשיחה בוואטסאפ">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="script.js?v=20261127a"></script>
+  <script src="films.js?v=20261127a"></script>
+</body>
+</html>

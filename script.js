@@ -160,6 +160,83 @@
     once.observe(el);
   });
 
+  // Price by doctors (pricing.html [data-doctors]): a tab for each step of
+  // the price list (one doctor, 2-3, 4-6, 7 and up) and, past six, a
+  // counter for the exact number, since each doctor beyond six adds to the
+  // price. Each card carries its four steps in data-price (one doctor, 2-3,
+  // 4-6, each doctor beyond six) and, for texts and minutes, the same four
+  // in data-quota. All four together has no price beyond six: a custom
+  // quote. Without this script the tabs stay hidden and the cards show the
+  // one-doctor price, with the full list in the table under them.
+  const doctors = document.querySelector('[data-doctors]');
+  if (doctors) {
+    const MAX = 30;
+    const tabs = doctors.querySelectorAll('[data-doc]');
+    const more = doctors.querySelector('[data-more]');
+    const countEl = doctors.querySelector('[data-count]');
+    const cards = document.querySelectorAll('.pc-card[data-price]');
+    const steps = (str) => str.split(',').map(Number);
+    const tier = (n) => (n <= 1 ? 0 : n <= 3 ? 1 : n <= 6 ? 2 : 3);
+    const at = (s, n) => (n <= 6 ? s[tier(n)] : s[2] + (n - 6) * s[3]);
+    const who = ['לרופא אחד', 'ל־2–3 רופאים', 'ל־4–6 רופאים'];
+    const nis = (x) => x.toLocaleString('en-US');
+    let n = 1;
+    const render = () => {
+      const t = tier(n);
+      tabs.forEach((tab, i) => {
+        tab.setAttribute('aria-checked', String(i === t));
+        tab.tabIndex = i === t ? 0 : -1;
+      });
+      more.hidden = t < 3;
+      countEl.textContent = String(n);
+      more.querySelector('[data-step="-1"]').disabled = n <= 7;
+      more.querySelector('[data-step="1"]').disabled = n >= MAX;
+      cards.forEach((card) => {
+        const amount = card.querySelector('[data-amount]');
+        const billed = card.querySelector('[data-billed]');
+        const per = card.querySelector('[data-per]');
+        const p = steps(card.dataset.price);
+        if (card.dataset.separate) {
+          const quote = t === 3;
+          card.classList.toggle('is-quote', quote);
+          amount.textContent = quote ? 'הצעת מחיר' : nis(p[t]);
+          if (per) per.hidden = quote;
+          const sep = card.dataset.separate.split(';').reduce((sum, s) => sum + at(steps(s), n), 0);
+          billed.textContent = quote ? 'מעל 6 רופאים, המחיר נקבע יחד איתכם' : 'במקום ' + nis(sep) + ' ₪ בקנייה נפרדת';
+          return;
+        }
+        amount.textContent = nis(at(p, n));
+        if (card.dataset.quota) {
+          billed.textContent = 'כולל ' + nis(at(steps(card.dataset.quota), n)) + ' ' + card.dataset.unit + ' בחודש';
+        } else if (p[3] > 0) {
+          billed.textContent = t < 3 ? who[t] : 'ל־' + n + ' רופאים';
+        }
+      });
+    };
+    const pick = (i) => { n = Number(tabs[i].dataset.doc); render(); };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => pick(i));
+      // Arrow keys move along the tabs, as in any radio group. In RTL the
+      // next tab sits to the left.
+      tab.addEventListener('keydown', (e) => {
+        const d = { ArrowLeft: 1, ArrowDown: 1, ArrowRight: -1, ArrowUp: -1 }[e.key];
+        if (!d) return;
+        e.preventDefault();
+        const j = (i + d + tabs.length) % tabs.length;
+        pick(j);
+        tabs[j].focus();
+      });
+    });
+    more.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-step]');
+      if (!b) return;
+      n = Math.min(MAX, Math.max(7, n + Number(b.dataset.step)));
+      render();
+    });
+    doctors.hidden = false;
+    render();
+  }
+
   // Contact form. Lives in a <dialog> on index.html (#contactDialog), opened
   // by any [data-contact-open]. Since the band's and the footer's "צרו קשר"
   // became WhatsApp links no control carries that attribute, so the dialog
@@ -398,7 +475,7 @@
   (function () {
     const hero = document.querySelector('.hero');
     const visual = hero && hero.querySelector('.hero-visual');
-    const card = visual && visual.querySelector('.browser');
+    const card = visual && visual.querySelector('.browser, .hero-reel');
     if (!card) return;
     const phone = window.matchMedia('(max-width: 920px)');
     let fittedWidth = 0;
@@ -409,10 +486,12 @@
       const padBottom = parseFloat(getComputedStyle(hero).paddingBottom) || 0;
       const room = hero.getBoundingClientRect().bottom - padBottom - visual.getBoundingClientRect().top;
       const natural = card.offsetHeight;
-      if (!natural || room >= natural) return;
+      // The flow stage is wider than a phone, so it fits the width as well.
+      const across = visual.clientWidth / (card.offsetWidth || 1);
+      if (!natural || (room >= natural && across >= 1)) return;
       // Never full size on a phone: the picture is the supporting act to
       // the copy, and a little air under it keeps it clear of the fold.
-      const scale = Math.min(room / natural, 0.85);
+      const scale = Math.min(room / natural, across, 0.85);
       if (scale < 0.6) hero.classList.add('hero--bare');
       else card.style.zoom = String(scale);
     }

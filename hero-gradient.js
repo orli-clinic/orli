@@ -9,6 +9,16 @@
 
    Falls back to a static CSS gradient (class on the section) when
    WebGL is unavailable, and freezes for prefers-reduced-motion.
+
+   One background, the whole page (2026-11-28): once WebGL is up the canvas
+   moves out of the hero to sit fixed behind every section (html.bg-flow,
+   styles.css), so nothing crops it between sections. Scrolling moves
+   through it: the field drifts up slower than the page, the stripes slide,
+   and the flow quickens while the page moves and settles after. Past the
+   hero it washes toward cream (u_calm) so text over it keeps its contrast:
+   at the calmest, the deepest stripe still holds --ink-soft at 4.5:1.
+   Its clock is the wall clock, so the next page's field picks up where
+   this one's was and a page switch shows no seam (view transitions).
    ============================================================ */
 (function () {
   'use strict';
@@ -44,6 +54,7 @@
     'uniform float u_time; uniform vec2 u_res;',
     'uniform vec3 u_c1; uniform vec3 u_c2; uniform vec3 u_c3;',
     'uniform float u_speed; uniform float u_scale; uniform float u_noise;',
+    'uniform float u_scroll; uniform float u_calm;',
     // Ashima simplex noise 2D
     'vec3 mod289(vec3 x){return x - floor(x*(1.0/289.0))*289.0;}',
     'vec2 mod289(vec2 x){return x - floor(x*(1.0/289.0))*289.0;}',
@@ -68,17 +79,18 @@
     'void main(){',
     '  vec2 uv = gl_FragCoord.xy / u_res.xy;',
     '  float aspect = u_res.x / u_res.y;',
-    '  vec2 p = vec2(uv.x*aspect, uv.y) * u_scale;',
+    '  vec2 p = vec2(uv.x*aspect, uv.y - u_scroll*0.45) * u_scale;',
     '  float t = u_time * u_speed;',
     '  float n1 = snoise(p*1.2 + vec2(t*0.35, t*0.18));',
     '  float n2 = snoise(p*2.3 + vec2(-t*0.22, t*0.27));',
     '  float flow = 0.6*n1 + 0.4*n2;',
     // stripe banding driven by position + flowing noise
-    '  float band = sin((uv.x*2.2 + uv.y*0.6 + flow*1.4 + t*0.6) * 3.14159265);',
+    '  float band = sin((uv.x*2.2 + (uv.y - u_scroll*0.3)*0.6 + flow*1.4 + t*0.6) * 3.14159265);',
     '  float v = clamp(0.5 + 0.5*band + 0.15*flow, 0.0, 1.0);',
     '  vec3 col = mix(u_c1, u_c2, smoothstep(0.0, 0.55, v));',
     '  col = mix(col, u_c3, smoothstep(0.5, 1.0, v));',
-    '  col += (rand(gl_FragCoord.xy + t) - 0.5) * u_noise;', // grain
+    '  col = mix(col, u_c1, u_calm);',
+    '  col += (rand(gl_FragCoord.xy + t) - 0.5) * u_noise * (1.0 - 0.6*u_calm);', // grain
     '  gl_FragColor = vec4(col, 1.0);',
     '}',
   ].join('\n');
@@ -121,6 +133,8 @@
     speed: gl.getUniformLocation(prog, 'u_speed'),
     scale: gl.getUniformLocation(prog, 'u_scale'),
     noise: gl.getUniformLocation(prog, 'u_noise'),
+    scroll: gl.getUniformLocation(prog, 'u_scroll'),
+    calm: gl.getUniformLocation(prog, 'u_calm'),
   };
   function rgb(c) { return [c[0] / 255, c[1] / 255, c[2] / 255]; }
   gl.uniform3fv(U.c1, rgb(CONFIG.color1));
@@ -130,8 +144,15 @@
   gl.uniform1f(U.scale, CONFIG.scale);
   gl.uniform1f(U.noise, CONFIG.noise);
 
+  // The whole page's background from here on.
+  var hero = canvas.closest('.hero');
+  document.body.insertBefore(canvas, document.body.firstChild);
+  document.documentElement.classList.add('bg-flow');
+
   function resize() {
-    var dpr = Math.min(window.devicePixelRatio || 1, 1.5); // cap for perf
+    // Fixed behind the page it is always on screen, so it draws at a little
+    // over half the pixels: a soft field loses nothing by it.
+    var dpr = Math.min(window.devicePixelRatio || 1, 1) * 0.6;
     var w = Math.floor(canvas.clientWidth * dpr);
     var h = Math.floor(canvas.clientHeight * dpr);
     if (canvas.width !== w || canvas.height !== h) {
@@ -151,47 +172,65 @@
   });
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var start = performance.now();
+  var stilled = document.documentElement.classList.contains('a11y-still');
   var running = false;
-  var elapsed = 0;
 
-  function frame(now) {
-    gl.uniform1f(U.time, (now - start) / 1000);
+  // Scroll, eased: the field follows the page with a little inertia, and
+  // every pixel moved stirs it (boost), which then settles.
+  var scrollNow = window.scrollY;
+  var scrollEased = scrollNow;
+  var boost = 0;
+  var stir = 0;
+  var last = 0;
+
+  function calmAt(y) {
+    var vh = window.innerHeight;
+    var heroH = hero ? hero.offsetHeight : vh;
+    var into = Math.min(Math.max((y - heroH * 0.25) / (heroH * 0.6), 0), 1);
+    var end = document.documentElement.scrollHeight - vh;
+    var out = end > vh ? Math.min(Math.max((y - (end - vh * 0.8)) / (vh * 0.8), 0), 1) : 0;
+    return 0.84 * into * (1 - 0.35 * out);
+  }
+  function clock() { return (Date.now() / 1000) % 3600; }
+
+  function draw(now) {
+    var dt = last ? Math.min((now - last) / 1000, 0.1) : 0;
+    last = now;
+    if (!reduce && !stilled) {
+      scrollEased += (scrollNow - scrollEased) * Math.min(dt * 5, 1);
+      boost *= Math.pow(0.12, dt);
+      stir += dt * boost;
+    } else {
+      scrollEased = scrollNow;
+    }
+    gl.uniform1f(U.time, clock() + stir);
+    gl.uniform1f(U.scroll, (reduce || stilled) ? 0 : scrollEased / window.innerHeight);
+    gl.uniform1f(U.calm, calmAt(scrollEased));
     gl.drawArrays(gl.TRIANGLES, 0, 3);
-    if (reduce || !running) { running = false; return; }
+  }
+  function frame(now) {
+    draw(now);
+    if (reduce || stilled || !running) { running = false; return; }
     requestAnimationFrame(frame);
   }
   function play() {
-    if (running || reduce) return;
+    if (running || reduce || stilled) return;
     running = true;
-    // Restart the clock where it stopped, so coming back to the hero doesn't
-    // jump the field forward by however long the visitor spent reading below.
-    start = performance.now() - elapsed;
+    last = 0;
     requestAnimationFrame(frame);
   }
-  function pause() {
-    if (!running) return;
-    elapsed = performance.now() - start;
-    running = false;
-  }
 
-  // A full-viewport fragment shader has no business running while the visitor
-  // is three sections down reading the FAQ. Draw one frame so the hero is
-  // painted, then animate only while it is actually on screen.
-  requestAnimationFrame(frame);
-  // The accessibility menu's "stop animations" reaches here (a11y.js): the
-  // gradient is the one thing on the page that moves on its own forever.
-  var stilled = document.documentElement.classList.contains('a11y-still');
-  if (stilled) pause();
-  window.addEventListener('orli:motion-still', function () { stilled = true; pause(); });
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    boost = Math.min(boost + Math.abs(y - scrollNow) / window.innerHeight * 1.6, 2.5);
+    scrollNow = y;
+    // Still: no motion, but the wash still follows where the reader is.
+    if (reduce || stilled) requestAnimationFrame(draw);
+  }, { passive: true });
+
+  requestAnimationFrame(draw);
+  // The accessibility menu's "stop animations" reaches here (a11y.js).
+  window.addEventListener('orli:motion-still', function () { stilled = true; running = false; requestAnimationFrame(draw); });
   window.addEventListener('orli:motion-go', function () { stilled = false; play(); });
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      if (entries.some(function (e) { return e.isIntersecting; }) && !stilled) play();
-      else pause();
-    }, { threshold: 0 }).observe(canvas);
-  } else {
-    play();
-  }
+  play();
 })();

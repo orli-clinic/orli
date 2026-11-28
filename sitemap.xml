@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Every public, indexable page, at the address Cloudflare serves with a 200:
-     /features, not /features.html (that one 307-redirects here). Leave out
+     /panel, not /panel.html (that one 307-redirects here). Leave out
      privacy.html, terms.html and 404.html, which are noindex. Update <lastmod> when a
      page's content changes, and add a new page here and to llms.txt. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://orliclinic.com/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
-    <loc>https://orliclinic.com/features</loc>
-    <lastmod>2026-11-13</lastmod>
+    <loc>https://orliclinic.com/phone</loc>
+    <lastmod>2026-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://orliclinic.com/chat</loc>
+    <lastmod>2026-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://orliclinic.com/booking</loc>
+    <lastmod>2026-11-28</lastmod>
+  </url>
+  <url>
+    <loc>https://orliclinic.com/forms</loc>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://orliclinic.com/panel</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-11-27</lastmod>
   </url>
   <url>
     <loc>https://orliclinic.com/pricing</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://orliclinic.com/integration</loc>
